@@ -3,16 +3,19 @@
 
 <%= form_for(@post) do |f| %>
 
-  <dl>
+<dl>
   <dd><%= label_tag(:title_label, "Title")%></dd>
   <dt><%= f.text_field :title %></dt>
-  </dl>
-  
-  <dl>
+</dl>
+<dl>
+  <dd><%= label_tag(:permalink_label, "Permalink")%></dd>
+  <dt><%= f.text_field :permalink %></dt>
+</dl>
+<dl>
   <dd><%= label_tag(:content_label, "Content")%></dd>
   <dt><%= f.text_area :content, :size => "60x12" %></dt>
-  </dl>
-  
-  <div><%= submit_tag "Create" %></div>
-  
+</dl>
+
+<div><%= submit_tag "Create" %></div>
+
 <% end %>

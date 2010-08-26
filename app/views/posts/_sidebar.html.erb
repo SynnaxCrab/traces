@@ -1,0 +1,10 @@
+<aside>
+  <section id="recent">
+    <h2>Recent Posts</h2>
+    <ul>
+      <% posts.each do |post|%>
+      <li><%= link_to post.title, post %></li>
+      <% end %>
+    </ul>
+  </section>
+</aside>

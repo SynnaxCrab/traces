@@ -1,0 +1,11 @@
+<article>
+  <header>
+    <h1><%= post.title %></h1>
+    <time datetime="<%= post.created_at.to_date.to_s %>">
+      <%= post.created_at.to_time.getlocal.to_datetime.to_formatted_s(:long) %>
+    </time>
+  </header>
+  <section>
+    <%= post.content%>
+  </section>
+</article>

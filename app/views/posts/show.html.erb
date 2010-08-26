@@ -1,0 +1,5 @@
+<% @post.each do |post|%>
+  <%= render :partial => "article", :locals => { :post => post } %>
+<% end %>
+
+<%= debug params %>

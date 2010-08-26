@@ -1,1 +1,9 @@
-hello world!
+<%= render :partial => "sidebar", :locals => { :posts => @recent_posts } %>
+
+<section id="contents">
+<% @posts.each do |post|%>
+<%= render :partial => "article", :locals => { :post => post } %>
+<% end %>
+</section>
+
+<%= debug params %>

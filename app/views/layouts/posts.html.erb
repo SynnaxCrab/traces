@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <%= stylesheet_link_tag "traces" %>
+  <% if controller.action_name == "new" or controller.action_name == "create"%>
+  <title>Creating New Post</title>
+  <% else %>
+
+  <% unless @posts.nil? %>
+  <% unless  @posts.all.nil? %>
+  <title>Traces</title>
+  <% end %>
+  <% else%>
+
+  <% unless @post.nil? %>
+  <% unless  @post.first.nil? %>
+  <title><%= @post.first.title %> | Traces</title>
+  <% end %>
+  <% else%>
+  <title>Traces</title>
+  <% end %>
+  <% end %>
+
+  <% end %>
+</head>
+<body>
+  <section id="main">
+    <header id="top">
+      <h1><%= link_to "Traces", root_url %></h1>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+    </footer>
+  </section>
+</body>
+</html>

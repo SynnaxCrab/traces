@@ -1,6 +1,14 @@
 Traces::Application.routes.draw do
   
   resources :posts
+  
+  root :to => "posts#index"
+  
+  match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
+  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[1-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+  
+  match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }
+  match '/:username' => 'users#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
