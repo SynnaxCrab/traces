@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
   
   def index
     @recent_posts = Post.recent
@@ -8,6 +9,7 @@ class PostsController < ApplicationController
   def show
     @recent_posts = Post.recent
     @post = Post.where("id = ?", params[:id].to_i)
+    @comment = Comment.new
   end
   
   def new
@@ -31,6 +33,10 @@ class PostsController < ApplicationController
       @post = Post.where("title = ? AND created_at BETWEEN ? AND ?", params[:title], @begin_time, @end_time)
     else
       @posts = Post.where("created_at BETWEEN ? AND ?", @begin_time, @end_time)
+    end
+    
+    unless @post.nil?
+      @comment = Comment.new
     end
     
     logger.debug Time.now

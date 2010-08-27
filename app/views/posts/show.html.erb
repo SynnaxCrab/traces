@@ -1,5 +1,43 @@
+<%= render :partial => "sidebar", :locals => { :posts => @recent_posts } %>
+
+<section id="contents">
 <% @post.each do |post|%>
-  <%= render :partial => "article", :locals => { :post => post } %>
+<%= render :partial => "article", :locals => { :post => post } %>
+</section>
+
+<section id="comments">
+  <h3><%= post.comments.size %> Comment(s) to <%= post.title%></h3>
+  <ol id="commentslist">
+    <% post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.name %> wrote: </p>
+      <p><%= comment.content %></p>
+    </li>
+    <% end %>
+  </ol>
+  <h3>Leave Your Comment</h3>
+  <%= form_for [post, @comment] do |f| %>
+
+  <p>
+    <%= f.text_field :name %>
+    <%= label_tag(:comment_name, "Name")%>
+  </p>
+  <p>
+    <%= f.text_field :mail %>
+    <%= label_tag(:comment_mail, "Mail")%>
+  </p>
+  <p>
+    <%= f.text_field :website %>
+    <%= label_tag(:comment_website, "Website")%>
+  </p>
+  <p>
+    <%= f.text_area :content, :size => "60x12" %>
+  </p>
+  <p>
+  <%= submit_tag "Comment" %>
+  </p>
+<% end %>
+</section>
 <% end %>
 
 <%= debug params %>

@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :mail
       t.string :website
       t.text :content
+      t.references :post
 
       t.timestamps
     end
