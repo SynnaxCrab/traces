@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <%= stylesheet_link_tag "traces" %>
+  <%= include_tiny_mce_if_needed %>
+  
   <% if controller.action_name == "new" or controller.action_name == "create"%>
   <title>Creating New Post</title>
   <% else %>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  uses_tiny_mce
   before_filter :authenticate, :except => [:index, :show]
   
   def index
