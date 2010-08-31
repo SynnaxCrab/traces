@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   def show
     @recent_posts = Post.recent
     @post = Post.where("id = ?", params[:id].to_i)
-    @comment = Comment.new
   end
   
   def new
