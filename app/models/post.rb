@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :terms
   
   validates_presence_of :title, :content
+  #validates_uniqueness_of :slug
   
   scope :created, lambda { where("created_at <= ? ", Time.zone.now) }
   scope :recent, created.order("created_at desc")

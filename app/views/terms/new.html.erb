@@ -1,0 +1,10 @@
+<h1>Add New Tag</h1>
+
+
+<%= form_for(@term) do |f| %>
+<p>
+  <%= f.text_field :name %>
+</p>
+<%= submit_tag "add" %>
+
+<% end %>

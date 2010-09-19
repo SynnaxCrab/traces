@@ -10,13 +10,7 @@ class CommentsController < ApplicationController
       else
         format.html { redirect_to @post}
       end
-    end
-    
-    #if @comment.save
-    #  redirect_to post_url(@comment.post_id)
-    #else
-    #  redirect_to post_url(@comment.post_id)
-    #end      
+    end    
     
   end
 end

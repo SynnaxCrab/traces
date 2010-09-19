@@ -10,6 +10,12 @@ $(document).ready(function() {
     $.post($(this).attr("action"), $(this).serialize(), null, "script");
     return false;
   }), 
+  
+  $("#tag_new").submit(function() {
+    $.post($(this).attr("action"), $(this).serialize(), null, "script");
+    return false;
+  }),
+  
   $("#add_tag").click(function() {
     $("#tags").append("test");
     return false;

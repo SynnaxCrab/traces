@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20100830030836) do
 
   create_table "terms", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "looking"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

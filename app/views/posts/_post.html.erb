@@ -1,6 +1,6 @@
 <article>
   <header>
-    <h1><%= post.title %></h1>
+    <h1><%= link_to post.title, post_slug(post) %></h1>
     <time datetime="<%= post.created_at.to_date.to_s %>">
       <%= post.created_at.to_time.getlocal.to_datetime.to_formatted_s(:long) %>
     </time>
@@ -8,4 +8,16 @@
   <section>
     <%=raw post.content%>
   </section>
+  <footer>
+    <p>
+    tags:<% post.terms.find(:all, :conditions => "looking = 'tags' ").each do |term| %>
+      <%= term %> 
+    <% end %>
+    </p>
+    <p>
+    created in <% post.terms.find(:all, :conditions => "looking = 'categories' ").each do |term| %>
+      <%= term %> 
+    <% end %>
+    </p>
+  </footer>
 </article>

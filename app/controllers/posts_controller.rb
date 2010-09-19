@@ -1,15 +1,18 @@
 class PostsController < ApplicationController
   uses_tiny_mce
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all]
   
   def index
     @recent_posts = Post.recent
     @posts = Post.order("created_at desc")
+    @tags = Term.tags
   end
   
   def show
-    @recent_posts = Post.recent
+    #@recent_posts = Post.recent
     @post = Post.where("id = ?", params[:id].to_i)
+    redirect_to post_slug(@post.first)
+    #@tags = Term.tags
   end
   
   def new
@@ -25,12 +28,18 @@ class PostsController < ApplicationController
     end
   end
   
+  def show_redirect
+    @post = Post.where("id = ?", params[:title].to_i)
+    redirect_to post_slug(@post.first)
+  end
+  
   def show_all
     @recent_posts = Post.recent
+    @tags = Term.tags
     parse_time
     
     unless params[:title].nil?
-      @post = Post.where("title = ? AND created_at BETWEEN ? AND ?", params[:title], @begin_time, @end_time)
+      @post = Post.where("id = ? AND created_at BETWEEN ? AND ?", params[:title].to_i, @begin_time, @end_time)
     else
       @posts = Post.where("created_at BETWEEN ? AND ?", @begin_time, @end_time)
     end

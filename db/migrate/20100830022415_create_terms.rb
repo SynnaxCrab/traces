@@ -2,7 +2,7 @@ class CreateTerms < ActiveRecord::Migration
   def self.up
     create_table :terms do |t|
       t.string :name
-      t.string :type
+      t.string :looking
 
       t.timestamps
     end

@@ -1,0 +1,12 @@
+<h1>Add New Tag</h1>
+
+<section id="tags">
+</section>
+
+<%= form_for @tag, :as => :tag, :url => tags_path do |f| %>
+<p>
+  <%= f.text_field :name %>
+</p>
+<%= submit_tag "add" %>
+
+<% end %>

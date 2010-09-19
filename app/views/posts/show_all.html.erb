@@ -1,1 +1,9 @@
-<%= debug params %>
+<%= render :partial => "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
+
+<section id="contents">
+  <% unless @posts.nil? %>
+    <%= render @posts %>
+  <% else %>
+    <%= render @post %>
+  <% end %>
+</section>
