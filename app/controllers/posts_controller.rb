@@ -76,7 +76,7 @@ class PostsController < ApplicationController
         @end_time += "-01"
       else
         @begin_time = @begin_time + "-" + params[:day]
-        @end_time = @begin_time.to_date.next_day.to_s
+        @end_time = @begin_time.to_date.next.to_s
       end
     end
 
