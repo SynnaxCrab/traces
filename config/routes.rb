@@ -17,10 +17,10 @@ Traces::Application.routes.draw do
   root :to => "posts#index"
   
   match "/:year(/:month)/:title" => "posts#show_redirect", 
-  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[1-2]/, :title => /\d-.*/ }
+  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :title => /\d-.*/ }
   
   match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
-  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[1-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
   
   # match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }
   # match '/:username' => 'users#show'
