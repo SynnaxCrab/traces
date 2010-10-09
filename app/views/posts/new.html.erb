@@ -1,21 +1,4 @@
 <h1>Creating New Post</h1>
 
 
-<%= form_for(@post) do |f| %>
-
-<dl>
-  <dd><%= label_tag(:title_label, "Title")%></dd>
-  <dt><%= f.text_field :title %></dt>
-</dl>
-<dl>
-  <dd><%= label_tag(:slug_label, "Slug")%></dd>
-  <dt><%= f.text_field :slug %></dt>
-</dl>
-<dl>
-  <dd><%= label_tag(:content_label, "Content")%></dd>
-  <dt><%= f.text_area :content, :size => "60x12", :class => "mceEditor"%></dt>
-</dl>
-
-<div><%= submit_tag "Create" %></div>
-
-<% end %>
+<%= render :partial => 'form', :locals => { :post => @post } %>

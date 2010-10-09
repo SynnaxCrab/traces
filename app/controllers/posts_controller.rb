@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   
   def index
     @recent_posts = Post.recent
-    @posts = Post.order("created_at desc")
+    @posts = Post.order("created_at desc limit 12")
     @tags = Term.tags
   end
   
@@ -19,12 +19,26 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   
+  def edit
+    @post = Post.where("id = ?", params[:id].to_i)
+  end
+  
   def create
     @post = Post.new(params[:post])
     if @post.save
       redirect_to @post
     else
       render :new
+    end
+  end
+  
+  def update
+    @post = Post.find(params[:id].to_i)
+    
+    if @post.update_attributes(params[:post])
+      redirect_to @post
+    else
+      render :edit
     end
   end
   

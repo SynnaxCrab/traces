@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   #validates_uniqueness_of :slug
   
   scope :created, lambda { where("created_at <= ? ", Time.zone.now) }
-  scope :recent, created.order("created_at desc")
+  scope :recent, created.order("created_at desc limit 5")
   def to_param
     #{}"#{title.gsub(/[^a-z0-9]+/i, '-')}"
     "#{id}-#{title.parameterize}"

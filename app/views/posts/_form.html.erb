@@ -1,0 +1,18 @@
+<%= form_for(post) do |f| %>
+
+<dl>
+  <dd><%= label_tag(:title_label, "Title")%></dd>
+  <dt><%= f.text_field :title %></dt>
+</dl>
+<dl>
+  <dd><%= label_tag(:slug_label, "Slug")%></dd>
+  <dt><%= f.text_field :slug %></dt>
+</dl>
+<dl>
+  <dd><%= label_tag(:content_label, "Content")%></dd>
+  <dt><%= f.text_area :content, :size => "150x40", :class => "mceEditor"%></dt>
+</dl>
+
+<%= f.submit %>
+
+<% end %>
