@@ -1,6 +1,6 @@
 Traces::Application.routes.draw do
   
-  resources :posts do
+  resources :posts, :except => :index do
     resources :comments
     resources :terms 
     resources :tags  

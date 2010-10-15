@@ -3,8 +3,15 @@ class PostsController < ApplicationController
   before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all]
   
   def index
+    if params[:page].nil?
+      page_offset = 0
+    else
+      page_offset = params[:page].to_i - 1
+    end
+    
     @recent_posts = Post.recent
-    @posts = Post.order("created_at desc limit 12")
+    @posts = Post.order("created_at DESC").limit(8).offset(page_offset * 8)
+    #@postss = Post.paginate :page => params[:page], :order => 'created_at DESC'
     @tags = Term.tags
   end
   
