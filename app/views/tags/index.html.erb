@@ -3,7 +3,7 @@
 </section>
 
 <h1>Add New Tag</h1>
-<%= form_for @tag, :as => :tag, :url => tags_path do |f| %>
+<%= form_for @tag, :as => :tag, :url => tags_path, :remote => true do |f| %>
 <p>
   <%= f.text_field :name %>
 </p>

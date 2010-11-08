@@ -8,6 +8,10 @@ class TagsController < ApplicationController
     @tag = Term.new
   end
   
+  def show
+
+  end
+  
   def create
     @tag = Term.new(params[:tag])
     @tag.looking = "tag"

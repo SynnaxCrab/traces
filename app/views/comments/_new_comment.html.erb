@@ -1,5 +1,5 @@
 <h3>Leave Your Comment</h3>
-<%= form_for [post, Comment.new] do |f| %>
+<%= form_for [post, Comment.new], :remote => true do |f| %>
 
 <p>
   <%= f.text_field :name %>

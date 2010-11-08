@@ -6,17 +6,17 @@
     </time>
   </header>
   <section>
-    <%=raw post.content%>
+    <%=raw Kramdown::Document.new(post.content).to_html%>
   </section>
   <footer>
     <p>
-    tags:<% post.terms.find(:all, :conditions => "looking = 'tags' ").each do |term| %>
-      <%= term %> 
+    tags:<% post.terms.find(:all, :conditions => "looking = 'tag' ").each do |tag| %>
+      <%= tag.name %> 
     <% end %>
     </p>
     <p>
-    created in <% post.terms.find(:all, :conditions => "looking = 'categories' ").each do |term| %>
-      <%= term %> 
+    created in <% post.terms.find(:all, :conditions => "looking = 'category' ").each do |category| %>
+      <%= category.name %> 
     <% end %>
     </p>
   </footer>

@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  uses_tiny_mce
   before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all]
   
   def index
@@ -24,6 +23,8 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    @tags = Term.tags
+    #3.times { @post.terms.build }
   end
   
   def edit

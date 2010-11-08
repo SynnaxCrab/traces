@@ -10,9 +10,18 @@
 </dl>
 <dl>
   <dd><%= label_tag(:content_label, "Content")%></dd>
-  <dt><%= f.text_area :content, :size => "150x40", :class => "mceEditor"%></dt>
+  <dt><%= f.text_area :content, :size => "150x40" %></dt>
 </dl>
+
+<p>
+  Tags:(seperated by comma)
+</p>
+
+<p>
+<%= text_area_tag("post[tag_attributes]", "", :size => "25x4") %>
+</p>
 
 <%= f.submit %>
 
 <% end %>
+
