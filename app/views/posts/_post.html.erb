@@ -14,10 +14,5 @@
       <%= tag.name %> 
     <% end %>
     </p>
-    <p>
-    created in <% post.terms.find(:all, :conditions => "looking = 'category' ").each do |category| %>
-      <%= category.name %> 
-    <% end %>
-    </p>
   </footer>
 </article>

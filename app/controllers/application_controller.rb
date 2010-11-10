@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def post_slug(post)
     date_array = post.created_at.to_time.to_formatted_s(:db).split(' ').first.split('-')
-    "/" + date_array.join("/") + "/" + post.id.to_s + "-" + post.title.parameterize
+    "/" + date_array.join("/") + "/" + post.id.to_s + "-" + post.slug #title.parameterize
   end
   
   protected

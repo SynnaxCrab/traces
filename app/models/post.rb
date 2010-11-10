@@ -17,8 +17,11 @@ class Post < ActiveRecord::Base
     end
   end
   
-  def to_param
+  
+  #def to_param
     #{}"#{title.gsub(/[^a-z0-9]+/i, '-')}"
-    "#{id}-#{title.parameterize}"
-  end
+    #{}"#{id}-#{title.parameterize}"
+    #{}"#{id}-#{slug}"
+  #end
+  
 end

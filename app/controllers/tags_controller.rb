@@ -3,13 +3,18 @@ class TagsController < ApplicationController
     @tags = Term.tags.order("created_at")
     @tag = Term.new
   end
-  
-  def new
-    @tag = Term.new
-  end
+
+  def update
+    @tag = Term.tags.where("name = ?", params[:id])
+    
+    if @tag.first.update_attributes(params[:tag])
+      redirect_to tags_path
+    end
+  end  
   
   def show
-
+    @tag = Term.tags.where("name = ?", params[:id])
+    @posts = Post.order("created_at DESC")
   end
   
   def create
