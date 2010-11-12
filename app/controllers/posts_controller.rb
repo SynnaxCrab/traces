@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     end
     
     @recent_posts = Post.recent
-    @posts = Post.order("created_at DESC").limit(8).offset(page_offset * 8)
+    @posts = Post.order("created_at DESC").limit(5).offset(page_offset * 5)
     #@postss = Post.paginate :page => params[:page], :order => 'created_at DESC'
     @tags = Term.tags
   end
@@ -24,7 +24,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @tags = Term.tags
-    #3.times { @post.terms.build }
   end
   
   def edit

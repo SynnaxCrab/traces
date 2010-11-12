@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>Traces</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "bw" %>
   <%= javascript_include_tag "jquery", "jquery.rails.js", "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<div class="wrap">
 <%= yield %>
-
+</div>
 </body>
 </html>

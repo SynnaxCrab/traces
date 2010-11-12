@@ -1,4 +1,4 @@
-<h3>Leave Your Comment</h3>
+<p>Leave Your Comment</p>
 <%= form_for [post, Comment.new], :remote => true do |f| %>
 
 <p>
@@ -17,6 +17,6 @@
   <%= f.text_area :content, :size => "60x12" %>
 </p>
 <p>
-  <%= submit_tag "Comment" %>
+  <%= submit_tag "Leave Your Comment" %>
 </p>
 <% end %>

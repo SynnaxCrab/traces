@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <%= stylesheet_link_tag "traces" %>
+  <%= stylesheet_link_tag "bw" %>
   <%= javascript_include_tag "jquery", "jquery.rails", "application" %>
   <%= csrf_meta_tag %>
 
@@ -24,13 +24,8 @@
   <% end %>
 </head>
 <body>
+  <div class="wrap">
   <header id="top">
-    <section id="site_meta">
-      <ul>
-        <li>Site Admin</li>
-        <li>Subscribe RSS Feed</li>
-      </ul>
-    </section>
     <h1><%= link_to "时之刻痕", root_url %></h1>
     <nav>
       <ul>
@@ -44,5 +39,6 @@
 
   <footer>
   </footer>
+  </div>
 </body>
 </html>

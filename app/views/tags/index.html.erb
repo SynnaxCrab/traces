@@ -1,6 +1,5 @@
 <section id="tags">
   <%= render :partial => "tag", :collection => @tags %>
-</section>
 
 <h3>Add New Tag</h3>
 <%= form_for @tag, :as => :tag, :url => tags_path, :remote => true do |f| %>
@@ -10,3 +9,4 @@
 <%= submit_tag "add" %>
 
 <% end %>
+</section>

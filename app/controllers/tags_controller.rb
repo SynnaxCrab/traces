@@ -13,7 +13,7 @@ class TagsController < ApplicationController
   end  
   
   def show
-    @tag = Term.tags.where("name = ?", params[:id])
+    @tag = Term.tags.where("slug = ?", params[:id])
     @posts = Post.order("created_at DESC")
   end
   

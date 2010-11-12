@@ -1,5 +1,3 @@
-<%= render :partial => "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
-
 <section id="contents">
   <% unless @posts.nil? %>
     <%= render @posts %>
@@ -10,7 +8,6 @@
 
 <% unless @post.nil? %>
 <section id="comments">
-  <h3 id="comments_count"><%= @post.first.comments.size %> Comment(s) to <%= @post.first.title%></h3>
     <ol id="comments_list">
       <%= render @post.first.comments %>
     </ol>
