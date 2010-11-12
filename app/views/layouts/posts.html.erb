@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <%= auto_discovery_link_tag(:rss, {:action => "feed"},
+    {:title => "RSS Feed"}) %>
   <%= stylesheet_link_tag "bw" %>
   <%= javascript_include_tag "jquery", "jquery.rails", "application" %>
   <%= csrf_meta_tag %>

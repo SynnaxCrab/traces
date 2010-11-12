@@ -16,6 +16,8 @@ Traces::Application.routes.draw do
   
   root :to => "posts#index"
   
+  match '/feed' => 'posts#feed'
+  
   match "/:year(/:month)/:title" => "posts#show_redirect", 
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :title => /\d-.*/ }
   

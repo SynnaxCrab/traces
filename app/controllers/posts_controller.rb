@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all]
+  before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all, :feed]
   
   def index
     if params[:page].nil?
@@ -71,6 +71,14 @@ class PostsController < ApplicationController
     
     logger.debug Time.now
     logger.debug @post
+  end
+  
+  def feed
+    @posts = Post.order("created_at DESC")
+    
+    respond_to do |format|
+      format.rss
+    end
   end
   
   private
