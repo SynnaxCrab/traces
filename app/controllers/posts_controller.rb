@@ -74,10 +74,10 @@ class PostsController < ApplicationController
   end
   
   def feed
-    @posts = Post.order("created_at DESC")
+    @posts = Post.order("created_at DESC").limit(10)
     
     respond_to do |format|
-      format.rss
+      format.xml
     end
   end
   
