@@ -1,5 +1,5 @@
 set :application, "Traces"
-set :repository,  "git://github.com/winfield/Traces.git"
+set :repository,  "git://github.com/winfield/traces.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
