@@ -94,5 +94,3 @@ DEPENDENCIES
   sqlite3-ruby
   unicorn
 
-METADATA
-  version: 1.0.6
