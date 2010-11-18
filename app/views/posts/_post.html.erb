@@ -12,19 +12,15 @@
     <% end %>
     </p>
   </section>
-  <header>
-    <h1><%= link_to post.title, post_slug(post) %></h1>
-  </header>
   <section id="post_content">
+    <h1><%= link_to post.title, post_slug(post) %></h1>
     <%=raw Kramdown::Document.new(post.content).to_html%>
   </section>
-  <footer>
-    <p>
-      <% if post.comments.size == 0 %>
-        <%= link_to "No Comments Yet. Leave One?", post_slug(post) + "#comments" %>
-      <% else%>
-        <%= post.comments.size %> Comments
-      <% end %>
-    </p>
-  </footer>
+  <p>
+    <% if post.comments.size == 0 %>
+      <%= link_to "No Comments Yet. Leave One?", post_slug(post) + "#comments" %>
+    <% else%>
+      <%= post.comments.size %> Comments
+    <% end %>
+  </p>
 </article>
