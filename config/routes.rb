@@ -1,5 +1,7 @@
 Traces::Application.routes.draw do
   
+  devise_for :admins, :path_names => { :sign_up => "new" }
+
   resources :posts, :except => :index do
     resources :comments
     resources :terms 

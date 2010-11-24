@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all, :feed]
+  #before_filter :authenticate, :except => [:index, :show, :show_redirect, :show_all, :feed]
+  before_filter :authenticate_admin!, :except => [:index, :show, :show_redirect, :show_all, :feed]
   
   def index
     if params[:page].nil?

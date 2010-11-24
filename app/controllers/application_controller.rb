@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
     "/" + date_array.join("/") + "/" + post.id.to_s + "-" + post.slug #title.parameterize
   end
   
-  protected
+  # protected
   
-  def authenticate 
-    authenticate_or_request_with_http_basic do |username, password| 
-      username == USERNAME &&  
-      password == PASSWORD 
-      end 
-  end 
+  # def authenticate 
+  #   authenticate_or_request_with_http_basic do |username, password| 
+  #     username == USERNAME &&  
+  #     password == PASSWORD 
+  #     end 
+  # end 
 end
