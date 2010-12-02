@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
+  belongs_to :admin
   has_and_belongs_to_many :terms
   
   validates_presence_of :title, :content
@@ -17,6 +18,12 @@ class Post < ActiveRecord::Base
     end
   end
   
+  def tags_to_add=(tags_to_add)
+    tags_to_add.each do |tag_id|
+      tag = Term.find(tag_id)
+      terms << tag
+    end    
+  end
   
   #def to_param
     #{}"#{title.gsub(/[^a-z0-9]+/i, '-')}"

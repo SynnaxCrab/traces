@@ -29,10 +29,12 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.where("id = ?", params[:id].to_i)
+    @tags = Term.tags
   end
   
   def create
     @post = Post.new(params[:post])
+    @post.admin = current_admin
     if @post.save
       redirect_to @post
     else

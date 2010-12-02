@@ -15,7 +15,7 @@
 <%= form_for @tag.first, :as => :tag, :url => tag_path(@tag.first), :html => { :method => :put } do |f| %>
 <p>
   <% @posts.each do |post| %>
-      <%= check_box_tag "tag[posts_to_add][#{post.id}]", "#{post.id}" %> <%= post.title %>
+      <p><%= check_box_tag "tag[posts_to_add][#{post.id}]", "#{post.id}" %> <%= post.title %></p>
   <% end %>
 </p>
 <%= submit_tag "add" %>

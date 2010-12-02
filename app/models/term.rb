@@ -12,8 +12,7 @@ class Term < ActiveRecord::Base
     posts_to_add.each do |post_id|
       post = Post.find(post_id)
       posts << post
-    end
-    
+    end    
   end
   
   def to_param
