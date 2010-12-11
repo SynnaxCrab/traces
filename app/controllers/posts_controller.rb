@@ -77,9 +77,12 @@ class PostsController < ApplicationController
   end
   
   def feed
-    @posts = Post.order("created_at DESC").limit(7)
+    @posts = Post.order("created_at DESC").limit(1)
     
     respond_to do |format|
+      format.html do
+        redirect_to feed_path(:format => :atom), :status => :moved_permanently
+      end
       format.xml do
         redirect_to feed_path(:format => :atom), :status => :moved_permanently
       end

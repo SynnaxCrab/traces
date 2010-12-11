@@ -44,11 +44,17 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <header>
-    <h1><%= link_to "时之刻痕", root_url %></h1>
+    <h1><%= link_to "Traces", root_url %></h1>
+    <section id="colors">
+      <ul>
+        <li><%= link_to image_tag("feed.png", :size => "36x36", :alt => "Feed"), feed_path %></li>
+        <li><%= link_to image_tag("twitter.png", :size => "36x36", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
+      </ul>
+    </section>
     <nav>
       <ul>
         <li><%= link_to "Home", root_url %></li>
-        <li><%= link_to "About", "/about" %></li>
+        <li><%= link_to "About", "http://about.me/lainuo" %></li>
         <% if admin_signed_in? %>
         <li><%= link_to "New", new_post_path %></li>
         <li><%= link_to "Sign Out", destroy_admin_session_path %></li>
@@ -62,6 +68,11 @@
   <%= yield %>
 
   <footer>
+    <section id="whatever">
+    </section>
+    <section id="tools">
+      Powered by Heroku and Ruby on Rails
+    <section>
   </footer>
 </body>
 </html>
