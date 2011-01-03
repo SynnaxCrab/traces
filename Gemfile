@@ -9,6 +9,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'will_paginate', '~> 3.0.pre2'
 gem 'kramdown'
 gem 'devise'
+gem 'devise_couch'
+gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
 # Use unicorn as the web server
 gem 'unicorn'
 

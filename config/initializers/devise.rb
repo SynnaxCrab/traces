@@ -12,7 +12,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  # require 'devise/orm/active_record'
+  require 'devise/orm/couchrest_model'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
@@ -25,8 +26,8 @@ Devise.setup do |config|
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
 
-  # Tell if authentication through HTTP Basic Auth is enabled. True by default.
-  # config.http_authenticatable = true
+  # Tell if authentication through HTTP Basic Auth is enabled. False by default.
+  # config.http_authenticatable = false
 
   # Set this to true to use Basic Auth for AJAX requests.  True by default.
   # config.http_authenticatable_on_xhr = true
@@ -46,7 +47,7 @@ Devise.setup do |config|
   config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "d8c07791b8fa32b6f6ef9d6d29ce0da19c8b4b25e0a00594f3aa46cddcc8cb1bc119b1ab2a7629321a1cf135e53093d182a5d2747298e8c3bc5a8f9310a5bdee"
+  config.pepper = "d00fa0a56037c86ae743fbe99f76f605bd8957dc3b772b49a3e5374f41abd7c6b2cc6d538b0d70b1a4c77b210c3fc638e67a04db6152c281317bc25cb9cd8c4b"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time

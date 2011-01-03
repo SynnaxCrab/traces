@@ -22,10 +22,18 @@
 </p>
 
 <p>
-  <% tags.each do |tag| %>
-      <p><%= check_box_tag "post[tags_to_add][#{tag.id}]", "#{tag.id}" %> <%= tag.name %></p>
-  <% end %>
+  <a id='get_tags' href="/tags" data-remote="true">show current tags</a>
 </p>
+
+<div id='all_tags'>
+</div>
+
+<!--
+<p>
+  <% tags.each do |tag| %>
+      <%= check_box_tag "post[tags_to_add][#{tag.id}]", "#{tag.id}" %> <%= tag.name %>  
+  <% end %>
+</p>-->
 
 <%= f.submit %>
 

@@ -16,6 +16,14 @@ $(document).ready(function() {
     return false;
   }),
   
+  $("#get_tags").click(function() {
+    return false;
+  }),
+  
+  $(".dir").live("click", function() {
+    alert("kkk");
+    return false;
+  }),
   //setInterval(function() {
   //  $.get("/tags/test");
   //}, 5000);

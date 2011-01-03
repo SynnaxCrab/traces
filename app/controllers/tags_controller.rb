@@ -2,6 +2,12 @@ class TagsController < ApplicationController
   def index
     @tags = Term.tags.order("created_at")
     @tag = Term.new
+    @dirs = `ls`
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
