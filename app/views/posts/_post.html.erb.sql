@@ -5,6 +5,7 @@
     <time datetime="<%= post.created_at.to_date.to_s %>">
       <%= post.created_at.to_time.getlocal.to_datetime.to_formatted_s(:long) %>
     </time>
+    by <%= post.admin.name %>
     </p>
     <p>
     tags:<% post.terms.find(:all, :conditions => "looking = 'tag' ").each do |tag| %>
@@ -22,7 +23,7 @@
         <%= post.comments.size %> Comments
       <% end %>
     </p>
-    <% if user_signed_in? %>
+    <% if admin_signed_in? %>
       <%= link_to "edit", edit_post_path(post.id) %>
     <% end %>
   </section>

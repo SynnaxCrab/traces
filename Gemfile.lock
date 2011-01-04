@@ -9,6 +9,18 @@ GIT
       railties (~> 3.0.0.rc)
       tzinfo (~> 0.3.22)
 
+GIT
+  remote: git://github.com/shenoudab/devise_couch.git
+  revision: af2432f818c469a586b5406934974a1834f6d7e4
+  specs:
+    devise_couch (1.0.0.beta2)
+
+GIT
+  remote: git://github.com/shenoudab/orm_adapter.git
+  revision: 0561c1cacfc9c839ad4ebcf132e9f5cbf1e9e7c7
+  specs:
+    orm_adapter (0.0.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -52,10 +64,10 @@ GEM
       json (>= 1.4.6)
       mime-types (>= 1.15)
       rest-client (>= 1.5.1)
-    devise (1.1.5)
+    devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.2)
       warden (~> 1.0.2)
-    devise_couch (0.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     highline (1.6.1)
@@ -115,9 +127,10 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   couchrest_model!
-  devise
-  devise_couch
+  devise (= 1.2.rc)
+  devise_couch!
   kramdown
+  orm_adapter!
   rails
   sqlite3-ruby
   unicorn
