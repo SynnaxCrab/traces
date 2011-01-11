@@ -8,12 +8,17 @@ gem 'rails'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'will_paginate', '~> 3.0.pre2'
 gem 'kramdown'
-#gem 'devise'
-gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-gem 'devise', '1.2.rc'
-#gem 'devise_couch'
-gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
+#gem 'devise', '1.1.5'
+
+gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
 gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+
+gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
+gem 'devise',:git => 'git://github.com/plataformatec/devise.git' # '1.2.rc'
+gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
+
+gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
+
 # Use unicorn as the web server
 gem 'unicorn'
 

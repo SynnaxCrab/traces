@@ -1,0 +1,7 @@
+<section id="contents">
+  <% unless @articles.nil? %>
+    <%= render @articles %>
+  <% else %>
+    <%= render @article %>
+  <% end %>
+</section>

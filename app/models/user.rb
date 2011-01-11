@@ -4,7 +4,7 @@ class User < CouchRest::Model::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  use_database CouchRest.database!("http://127.0.0.1:5984/devise_couch")
+  use_database @@CouchDB.default_database
   
   property :name
   timestamps!

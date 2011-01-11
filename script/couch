@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+APP_PATH = File.expand_path('../../config/application',  __FILE__)
+require File.expand_path('../../config/boot',  __FILE__)
+require 'active_record'
+require 'couchrest_model'
+require 'json'
+
+@@CouchDB = CouchRest.new("http://127.0.0.1:5984")
+@@CouchDB.default_database = 'traces'
+ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => "../db/development.sqlite3")
+
+class Post < ActiveRecord::Base
+end
+
+class Article < CouchRest::Model::Base
+  use_database @@CouchDB.default_database
+  
+  property :slug
+  property :title
+  property :content
+  property :author
+  property :format
+  property :tags
+  property :created_at
+  property :updated_at
+  
+end
+
+@posts = Post.all
+
+@posts.each do |post|
+  @couch_post = Article.new
+  @couch_post.slug = post.slug
+  @couch_post.title = post.title
+  @couch_post.content = post.content
+  @couch_post.format = "Markdown"
+  @couch_post.created_at = post.created_at
+  @couch_post.updated_at = post.updated_at
+  @couch_post.save
+end

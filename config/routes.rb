@@ -10,6 +10,8 @@ Traces::Application.routes.draw do
     resources :tags  
   end
   
+  resources :articles
+  
   resources :terms do
     resources :posts
   end
@@ -18,14 +20,18 @@ Traces::Application.routes.draw do
     resources :posts
   end
   
-  root :to => "posts#index"
+  root :to => "articles#index"
+  #root :to => "posts#index"
   
-  match '/feed' => 'posts#feed'
+  #match '/feed' => 'posts#feed'
+  match '/feed' => 'articles#feed'
   
-  match "/:year(/:month)/:title" => "posts#show_redirect", 
+  #match "/:year(/:month)/:title" => "posts#show_redirect", 
+  match "/:year(/:month)/:slug" => "articles#show_redirect",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :title => /\d-.*/ }
   
-  match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
+  #match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
+  match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
   
   # match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }

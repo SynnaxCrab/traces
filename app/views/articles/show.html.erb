@@ -1,0 +1,14 @@
+<%= render :partial => "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
+
+<section id="contents">
+  <%= render @post %>
+</section>
+
+<section id="comments">
+  <h3 id="comments_count"><%= @post.first.comments.size %> Comment(s) to <%= @post.first.title%></h3>
+    <ol id="comments_list">
+      <%= render @post.first.comments %>
+    </ol>
+  
+  <%= render :partial => "comments/new_comment", :locals => { :post => @post.first }%>
+</section>
