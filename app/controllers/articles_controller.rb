@@ -53,6 +53,7 @@ class ArticlesController < ApplicationController
        @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
      end
      
+     #redirect_to 404 if @article.nil? && @articles.nil?
    end
    
    def feed

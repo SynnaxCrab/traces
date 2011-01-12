@@ -1,4 +1,6 @@
 Traces::Application.configure do
+  @@CouchDB = CouchRest.new("http://127.0.0.1:5984")
+  @@CouchDB.default_database = 'traces'
   # Settings specified here will take precedence over those in config/environment.rb
 
   # The production environment is meant for finished, "live" apps.

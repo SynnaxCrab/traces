@@ -35,6 +35,7 @@ end
   @couch_post.title = post.title
   @couch_post.content = post.content
   @couch_post.format = "Markdown"
+  @couch_post.tags = []
   @couch_post.created_at = post.created_at
   @couch_post.updated_at = post.updated_at
   @couch_post.save
