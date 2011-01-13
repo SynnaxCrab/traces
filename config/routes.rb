@@ -1,16 +1,13 @@
 Traces::Application.routes.draw do
   
-  devise_for :users
-
-  #devise_for :admins, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
+  ## routes for sql implement
+  devise_for :admins, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
 
   resources :posts, :except => :index do
     resources :comments
     resources :terms 
     resources :tags  
   end
-  
-  resources :articles
   
   resources :terms do
     resources :posts
@@ -20,15 +17,24 @@ Traces::Application.routes.draw do
     resources :posts
   end
   
-  root :to => "articles#index"
-  #root :to => "posts#index"
+  root :to => "posts#index"
   
-  #match '/feed' => 'posts#feed'
-  match '/feed' => 'articles#feed'
+  match '/feed' => 'posts#feed'
   
-  #match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
-  match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
+  match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+  
+  ## routes for CouchDB
+  #devise_for :users
+  #resources :articles
+    
+  #root :to => "articles#index"
+
+  #match '/feed' => 'articles#feed'
+  
+  
+  #match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
+  #:constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
   
   #match "/:year(/:month)/:slug" => "posts#show_redirect",
   #:constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d-.*/ } 

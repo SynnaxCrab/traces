@@ -1,0 +1,1 @@
+curl https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/_replicate -H 'Content-Type: application/json' -d '{"source" : "https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/traces", "target" : "http://lainuo:b3ig337@lainuo.cloudant.com/traces", "continuous":true}'
