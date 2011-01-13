@@ -55,11 +55,11 @@
       <ul>
         <li><%= link_to "Home", root_url %></li>
         <li><%= link_to "About", "http://about.me/lainuo" %></li>
-        <% if user_signed_in? %>
+        <% if admin_signed_in? %>
         <li><%= link_to "New", new_post_path %></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+        <li><%= link_to "Sign Out", destroy_admin_session_path %></li>
         <% else %>
-        <li><%= link_to "Sign In", new_user_session_path %>
+        <li><%= link_to "Sign In", new_admin_session_path %>
         <% end %>
       </ul>
     </nav>

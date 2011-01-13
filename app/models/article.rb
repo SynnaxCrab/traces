@@ -20,8 +20,7 @@ class Article < CouchRest::Model::Base
       }
     }
     "
-  
-
+    
   def tag_attributes=(tag_attributes)
     tag_attributes.split(',').each do |tag|     
       self.tags << tag.sub(/\s/, "")
@@ -32,5 +31,10 @@ class Article < CouchRest::Model::Base
     #{}"#{title.gsub(/[^a-z0-9]+/i, '-')}"
     #{}"#{id}-#{title.parameterize}"
     "#{slug}"
+  end
+  
+  private
+  def timestamps!
+    
   end
 end
