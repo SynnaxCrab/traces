@@ -11,7 +11,8 @@ gem 'kramdown'
 #gem 'devise', '1.1.5'
 
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
-gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+gem 'couchrest_model', :git => 'git://github.com/winfield/couchrest_model.git'
+#gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
 
 gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
 gem 'devise',:git => 'git://github.com/plataformatec/devise.git' # '1.2.rc'

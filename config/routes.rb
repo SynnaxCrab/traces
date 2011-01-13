@@ -1,44 +1,47 @@
 Traces::Application.routes.draw do
   
   ## routes for sql implement
-  devise_for :admins, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
-
-  resources :posts, :except => :index do
-    resources :comments
-    resources :terms 
-    resources :tags  
-  end
+  # devise_for :admins, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
+  # 
+  #   resources :posts, :except => :index do
+  #     resources :comments
+  #     resources :terms 
+  #     resources :tags  
+  #   end
+  #   
+  #   resources :terms do
+  #     resources :posts
+  #   end
+  #   
+  #   resources :tags do
+  #     resources :posts
+  #   end
+  #   
+  #   root :to => "posts#index"
+  #   
+  #   match '/feed' => 'posts#feed'
   
-  resources :terms do
-    resources :posts
-  end
-  
-  resources :tags do
-    resources :posts
-  end
-  
-  root :to => "posts#index"
-  
-  match '/feed' => 'posts#feed'
-  
-  match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
-  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+  #clea the uri from "2010/XXX" or "2010/09/XXX" all to "2010/09/23/XXX"
+  # match "/:year(/:month)/:title" => "posts#show_redirect",
+  #   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d-.*/ }
+  #   
+  #   match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
+  #   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
   
   ## routes for CouchDB
-  #devise_for :users
-  #resources :articles
-    
-  #root :to => "articles#index"
+  devise_for :users
+  resources :articles
 
-  #match '/feed' => 'articles#feed'
-  
-  
-  #match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
-  #:constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
-  
-  #match "/:year(/:month)/:slug" => "posts#show_redirect",
-  #:constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d-.*/ } 
-  
+  root :to => "articles#index"
+
+  match '/feed' => 'articles#feed'
+
+  match "/:year(/:month)/:slug" => "articles#show_redirect",
+  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/ }
+
+  match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
+  :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+
   # match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }
   # match '/:username' => 'users#show'
   # The priority is based upon order of creation:

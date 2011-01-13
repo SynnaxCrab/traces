@@ -8,19 +8,8 @@ GIT
       rest-client (~> 1.5.1)
 
 GIT
-  remote: git://github.com/couchrest/couchrest_model.git
-  revision: 1d0df87e34a1a01b41adecea9538fe143d95bd91
-  specs:
-    couchrest_model (1.0.0.beta8)
-      activemodel (~> 3.0.0.rc)
-      couchrest (~> 1.0.1)
-      mime-types (~> 1.15)
-      railties (~> 3.0.0.rc)
-      tzinfo (~> 0.3.22)
-
-GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: d87521723d5976a863f3c80721a71a253f496861
+  revision: 692f7b27ffb3e8e1cf4600a6d75ae451e1e61247
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
@@ -44,6 +33,17 @@ GIT
   revision: e8c8f70af1590af6380efadefcfe3de28614e658
   specs:
     rails3-generators (0.12.1)
+
+GIT
+  remote: git://github.com/winfield/couchrest_model.git
+  revision: a43814e7288251ea51adae0c8dab6870b960d334
+  specs:
+    couchrest_model (1.0.0.beta8)
+      activemodel (~> 3.0.0.rc)
+      couchrest (~> 1.0.1)
+      mime-types (~> 1.15)
+      railties (~> 3.0.0.rc)
+      tzinfo (~> 0.3.22)
 
 GEM
   remote: http://rubygems.org/

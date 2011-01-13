@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
    end
    
    def show_redirect
-     @article = Article.where("id = ?", params[:title].to_i)
+     @article = Article.by_slug(:key => params[:slug]).first
      redirect_to article_slug(@article)
    end
 
@@ -48,7 +48,8 @@ class ArticlesController < ApplicationController
      parse_time
 
      unless params[:slug].nil?
-       @article = Article.by_slug(:key => params[:slug])
+       #raise "#{@begin_time} : #{@end_time} : #{params[:slug]}"
+       @article = Article.by_slug_created_at(:startkey => [params[:slug], @begin_time], :endkey => [params[:slug], @end_time])
      else
        @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
      end
