@@ -54,6 +54,9 @@ Devise.setup do |config|
   # using other encryptors, it sets how many times you want the password re-encrypted.
   config.stretches = 10
 
+  # Setup a pepper to generate the encrypted password.
+  # config.pepper = "a7f8629fc967e7b7deaf036caac1c9b3941a0f92f03ca0aff0e86c3d0c332f670618fcc82a89755c74b2fe6fd16550284e4d685e8a4dee0a2a3b304a0f9698eb"
+
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is 0.days
@@ -124,9 +127,6 @@ Devise.setup do |config|
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
   # REST_AUTH_SITE_KEY to pepper)
   # config.encryptor = :sha512
-
-  # Setup a pepper to generate the encrypted password.
-  # config.pepper = "8c819d9868bd36e7c499147d1e7cf805fe88b9e87f6e581c27fb0b299302477cf496370b06d3f31bdbbbc30e692123ce7f9631ec5c3fe499d2ebd4516220344a"
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key

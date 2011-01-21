@@ -58,7 +58,17 @@ class ArticlesController < ApplicationController
    end
    
    def feed
-    
+     @articles = Article.by_created_at :descending => true, :limit => 1
+
+     respond_to do |format|
+       format.html do
+         redirect_to feed_path(:format => :atom), :status => :moved_permanently
+       end
+       format.xml do
+         redirect_to feed_path(:format => :atom), :status => :moved_permanently
+       end
+       format.atom
+     end
    end
    
    def parse_time

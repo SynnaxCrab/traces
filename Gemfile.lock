@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 692f7b27ffb3e8e1cf4600a6d75ae451e1e61247
+  revision: 971f68f97d472d4b3b9244594b85759ddf76d1ca
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: git://github.com/shenoudab/orm_adapter.git
-  revision: 0561c1cacfc9c839ad4ebcf132e9f5cbf1e9e7c7
+  revision: dcf9cd38b4fcd098b38eeb6096ac0c7002fd9a88
   specs:
     orm_adapter (0.0.3)
 
@@ -36,13 +36,13 @@ GIT
 
 GIT
   remote: git://github.com/winfield/couchrest_model.git
-  revision: a43814e7288251ea51adae0c8dab6870b960d334
+  revision: c1a8db314b9e41d15124865d1f76e6ea80b7e68d
   specs:
-    couchrest_model (1.0.0.beta8)
-      activemodel (~> 3.0.0.rc)
+    couchrest_model (1.0.0)
+      activemodel (~> 3.0.0)
       couchrest (~> 1.0.1)
       mime-types (~> 1.15)
-      railties (~> 3.0.0.rc)
+      railties (~> 3.0.0)
       tzinfo (~> 0.3.22)
 
 GEM
@@ -75,7 +75,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
-    arel (2.0.6)
+    arel (2.0.7)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     capistrano (2.5.19)
@@ -101,7 +101,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.0.23)
+    net-ssh (2.0.24)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     polyglot (0.3.1)
@@ -130,7 +130,7 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.23)
+    tzinfo (0.3.24)
     unicorn (3.3.1)
       kgio (~> 2.1)
       rack

@@ -22,9 +22,9 @@ class Article < CouchRest::Model::Base
   property :author
   property :format
   property :tags
-  property :created_at
-  property :updated_at
-  #timestamps!
+  #property :created_at
+  #property :updated_at
+  timestamps!
   
 end
 
@@ -37,10 +37,10 @@ end
   @couch_post.content = post.content.sub(/>/, "")
   @couch_post.format = "Markdown"
   @couch_post.tags = []
-  @couch_post.created_at = post.created_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
-  @couch_post.updated_at = post.updated_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
-  @couch_post.save
+  #@couch_post.created_at = post.created_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
+  #@couch_post.updated_at = post.updated_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
+  #@couch_post.save
 end
 
-#@article = Article.new
-#@article.save
+@article = Article.new
+@article.save

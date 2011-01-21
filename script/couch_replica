@@ -1,1 +1,7 @@
 curl https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/_replicate -H 'Content-Type: application/json' -d '{"source" : "https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/traces", "target" : "http://lainuo:b3ig337@lainuo.cloudant.com/traces", "continuous":true}'
+
+curl https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/_replicate -H 'Content-Type: application/json' -d '{"source" : "https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/traces", "target" : "http://admin:7HOuwYvoaL3oYR@lainuo.couchone.com/traces", "continuous":true}'
+
+curl http://127.0.0.1:5984/_replicate -H 'Content-Type: application/json' -d '{"source" : "http://127.0.0.1:5984/traces_dev", "target" : "https://app344128.heroku:XqrEEByRyoBEKNKVmtpmBedy@app344128.heroku.cloudant.com/traces", "continuous":true}'
+
+curl http://127.0.0.1:5984/_replicate -H 'Content-Type: application/json' -d '{"source":"http://admin:7HOuwYvoaL3oYR@lainuo.couchone.com/traces", "target":"http://127.0.0.1:5984/traces", "continuous":true}'
