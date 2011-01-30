@@ -8,4 +8,15 @@ class RegistrationsController < Devise::RegistrationsController
   #    redirect_to root_url
   #  end
   #end
+  
+  def new
+    if User.all.empty?
+      puts "empty"
+      super
+    else
+      puts "not empty"
+      redirect_to root_url
+    end
+  end
+  
 end

@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
    
    def create
      @article = Article.new(params[:article])
-     @article.author = current_user.name
+     @article.author = current_user.username
      if @article.save
        redirect_to @article
      else

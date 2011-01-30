@@ -7,7 +7,7 @@ require 'couchrest_model'
 require 'json'
 
 @@CouchDB = CouchRest.new("http://127.0.0.1:5984")
-@@CouchDB.default_database = 'traces_dev'
+@@CouchDB.default_database = 'traces'
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => "../db/development.sqlite3")
 
 class Post < ActiveRecord::Base
@@ -22,9 +22,9 @@ class Article < CouchRest::Model::Base
   property :author
   property :format
   property :tags
-  #property :created_at
-  #property :updated_at
-  timestamps!
+  property :created_at
+  property :updated_at
+  #timestamps!
   
 end
 
@@ -37,10 +37,11 @@ end
   @couch_post.content = post.content.sub(/>/, "")
   @couch_post.format = "Markdown"
   @couch_post.tags = []
-  #@couch_post.created_at = post.created_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
-  #@couch_post.updated_at = post.updated_at.utc.strftime("%Y-%m-%d %H:%M:%S +0000")
-  #@couch_post.save
+  @couch_post.author = "lainuo"
+  @couch_post.created_at = post.created_at.utc.strftime("%Y-%m-%dT%H:%M:%S+00:00")
+  @couch_post.updated_at = post.updated_at.utc.strftime("%Y-%m-%dT%H:%M:%S+00:00")
+  @couch_post.save
 end
 
-@article = Article.new
-@article.save
+#@article = Article.new
+#@article.save

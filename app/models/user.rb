@@ -6,7 +6,9 @@ class User < CouchRest::Model::Base
 
   use_database @@CouchDB.default_database
   
+  property :username
   property :name
+  
   timestamps!
   
   view_by :email

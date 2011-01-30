@@ -29,7 +29,7 @@ Traces::Application.routes.draw do
   #   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
   
   ## routes for CouchDB
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
   resources :articles
 
   root :to => "articles#index"
