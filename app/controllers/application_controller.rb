@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
+  rescue_from Article::ArticleNotFound, :with => :couch_not_found
   protect_from_forgery
   
   USERNAME, PASSWORD = "lainuo", "h123456" 
@@ -26,4 +27,10 @@ class ApplicationController < ActionController::Base
   #     password == PASSWORD 
   #     end 
   # end 
+  
+  private
+  def couch_not_found
+    flash[:error] = "You don't have access to this section."
+    render :file => "#{Rails.root.to_s}/public/404.html", :layout => false, :status => 404
+  end
 end

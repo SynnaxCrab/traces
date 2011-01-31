@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed]
+  before_filter :check_article_exist
 
    def index
      @articles = Article.by_created_at :descending => true, :limit => 5
@@ -98,4 +99,10 @@ class ArticlesController < ApplicationController
      end
        
    end
+   
+   private
+   def check_article_exist
+     raise Article::ArticleNotFound if @articles.nil? && @article.nil?
+   end
+   
 end

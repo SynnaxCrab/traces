@@ -13,13 +13,13 @@
   <% else %>
 
   <% unless @posts.nil? %>
-  <title>Traces</title>
+  <title><%= t(:blog_title) %></title>
   <% else%>
 
   <% unless @post.nil? %>
-  <title><%= @post.first.title %> | Traces</title>
+  <title><%= @post.first.title %> | <%= t(:blog_title) %></title>
   <% else%>
-  <title>Traces</title>
+  <title><%= t(:blog_title) %></title>
   <% end %>
   <% end %>
 

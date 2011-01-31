@@ -1,5 +1,8 @@
 class Article < CouchRest::Model::Base
   
+  class ArticleNotFound < StandardError
+  end
+  
   use_database @@CouchDB.default_database
   
   property :slug

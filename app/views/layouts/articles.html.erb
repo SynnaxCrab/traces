@@ -12,14 +12,14 @@
   <title>Creating New Post</title>
   <% else %>
 
-  <% unless @posts.nil? %>
-  <title>Traces</title>
+  <% unless @articles.nil? %>
+  <title><%= t(:blog_title) %></title>
   <% else%>
 
-  <% unless @post.nil? %>
-  <title><%= @post.first.title %> | Traces</title>
+  <% unless @article.nil? %>
+  <title><%= @article.first.title %> | <%= t(:blog_title) %></title>
   <% else%>
-  <title>Traces</title>
+  <title><%= t(:blog_title) %></title>
   <% end %>
   <% end %>
 
