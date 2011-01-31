@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed]
-  before_filter :check_article_exist
 
    def index
      @articles = Article.by_created_at :descending => true, :limit => 5
@@ -55,6 +54,9 @@ class ArticlesController < ApplicationController
        @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
      end
      
+     if (@article.nil? || @article.empty?) && (@articles.nil? || @articles.empty?)
+       render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404 
+     end
      #redirect_to 404 if @article.nil? && @articles.nil?
    end
    
@@ -98,11 +100,6 @@ class ArticlesController < ApplicationController
        end
      end
        
-   end
-   
-   private
-   def check_article_exist
-     raise Article::ArticleNotFound if @articles.nil? && @article.nil?
    end
    
 end

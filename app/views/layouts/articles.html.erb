@@ -16,7 +16,7 @@
   <title><%= t(:blog_title) %></title>
   <% else%>
 
-  <% unless @article.nil? %>
+  <% unless @article.nil? || @article.empty?%>
   <title><%= @article.first.title %> | <%= t(:blog_title) %></title>
   <% else%>
   <title><%= t(:blog_title) %></title>
