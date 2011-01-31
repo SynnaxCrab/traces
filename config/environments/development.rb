@@ -22,5 +22,6 @@ Traces::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
-  config.time_zone = "Beijing"
+  # customized time zone, and I really hate "Beijing"
+  config.time_zone = "Taipei"
 end
