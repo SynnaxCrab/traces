@@ -35,12 +35,14 @@ class ArticlesController < ApplicationController
    
    def show
      @article = Article.by_slug(:key => params[:id]).first
-     redirect_to article_slug(@article)
+     #redirect_to article_slug(@article)
+     redirect_or_render_404(@article)
    end
    
    def show_redirect
      @article = Article.by_slug(:key => params[:slug]).first
-     redirect_to article_slug(@article)
+     #redirect_to article_slug(@article)
+     redirect_or_render_404(@article)
    end
 
    def show_all
@@ -102,4 +104,12 @@ class ArticlesController < ApplicationController
        
    end
    
+   private
+   def redirect_or_render_404(article)
+     if article.nil?
+       render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
+     else
+       redirect_to article_slug(article)
+     end
+   end
 end

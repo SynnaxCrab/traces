@@ -7,7 +7,7 @@ require 'couchrest_model'
 require 'json'
 
 @@CouchDB = CouchRest.new("http://127.0.0.1:5984")
-@@CouchDB.default_database = 'traces'
+@@CouchDB.default_database = 'traces_dev'
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => "../db/development.sqlite3")
 
 class Post < ActiveRecord::Base
