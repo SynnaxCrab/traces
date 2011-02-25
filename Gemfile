@@ -20,11 +20,14 @@ gem 'devise',:git => 'git://github.com/plataformatec/devise.git' # '1.2.rc'
 gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
 gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
+group :development, :test do
+  gem 'rspec-rails'
+end
 # Use unicorn as the web server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
