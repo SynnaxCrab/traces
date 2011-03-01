@@ -1,4 +1,4 @@
-<%= form_for(article) do |f| %>
+<%= form_for article, :html => {:multipart => true} do |f| %>
 
 <dl>
   <dd><%= label_tag(:title_label, "Title")%></dd>
@@ -18,7 +18,7 @@
 </p>
 
 <p>
-<%= text_area_tag("article[tag_attributes]", "", :size => "25x4") %>
+  <%= text_area_tag("article[tag_attributes]", "", :size => "25x4") %>
 </p>
 
 <p>
@@ -27,6 +27,13 @@
 
 <div id='all_tags'>
 </div>
+
+<p>  
+  <%= file_field_tag("article[attachments][1]") %>  
+</p>
+<p>  
+  <%= file_field_tag("article[attachments][2]") %>  
+</p>
 
 <%= f.submit %>
 

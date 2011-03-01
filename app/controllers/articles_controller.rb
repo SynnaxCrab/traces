@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
    def create
      @article = Article.new(params[:article])
      @article.author = current_user.username
+     # set format as markdown here 
+     @article.format = "Markdown"
      if @article.save
        redirect_to @article
      else

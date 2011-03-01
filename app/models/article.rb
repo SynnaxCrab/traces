@@ -23,7 +23,14 @@ class Article < CouchRest::Model::Base
       }
     }
     "
-    
+   
+  def attachments=(attachments)
+    attachments.each do |attachment|
+      #raise "#{attachment[1].class}"
+      self.create_attachment(:file => attachment[1], :name => attachment[1].original_filename)
+    end
+  end 
+  
   def tag_attributes=(tag_attributes)
     tag_attributes.split(',').each do |tag|     
       self.tags << tag.sub(/\s/, "")
@@ -37,7 +44,5 @@ class Article < CouchRest::Model::Base
   end
   
   private
-  def timestamps!
-    
-  end
+
 end
