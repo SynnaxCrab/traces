@@ -197,6 +197,28 @@ article #post_content a {
   background:none repeat scroll 0 0 #EEF4FF;
 }
 
+article code,pre
+{
+  font-family:"Monaco", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 150%;
+}
+
+article pre
+{
+  -moz-border-radius:5px;
+  -moz-box-shadow:0 -1px 0 #444;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #444;
+  background-color:#222;
+  color:#fff;
+  font-size: 13px;
+  padding: 20px;
+  text-shadow:0 1px 0 #000;
+  width: 490px;
+  margin: 0px 0px 0px -40px;
+}
+
 #comments {
   margin-left: 177px;
   margin-top: 30px;
