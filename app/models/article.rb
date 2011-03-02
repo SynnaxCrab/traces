@@ -27,7 +27,7 @@ class Article < CouchRest::Model::Base
   def attachments=(attachments)
     attachments.each do |attachment|
       #raise "#{attachment[1].class}"
-      self.create_attachment(:file => attachment[1], :name => attachment[1].original_filename)
+      self.create_attachment(:file => attachment, :name => attachment.original_filename)
     end
   end 
   
