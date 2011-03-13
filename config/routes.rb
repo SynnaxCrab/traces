@@ -30,11 +30,16 @@ Traces::Application.routes.draw do
   
   ## routes for CouchDB
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
-  resources :articles
+  resources :articles do
+    collection do
+      get 'show_all'
+    end
+  end
 
   root :to => "articles#index"
 
   match '/feed' => 'articles#feed'
+  match '/sitemap' => 'sitemap#index'
 
   match "/:year(/:month)/:slug" => "articles#show_redirect",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d{3,}|\D+/ }
