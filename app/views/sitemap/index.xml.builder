@@ -2,7 +2,7 @@ xml.instruct!
  
 xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   xml.url do
-    xml.loc         "http://www.lainuo.com"
+    xml.loc         "http://www.lainuo.info"
     xml.lastmod     Time.zone.at(@articles.first.created_at.to_time).strftime("%Y-%m-%d")
     xml.changefreq  "always"
   end
