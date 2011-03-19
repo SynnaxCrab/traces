@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <%= auto_discovery_link_tag(:atom, {:action => "feed"}) %>
+  <%= auto_discovery_link_tag(:rss, {:action => "feed"}) %>
+  <%= stylesheet_link_tag "bw" %>
+  <%= javascript_include_tag "jquery", "jquery.rails", "application" %>
+  <%= csrf_meta_tag %>
+
+  <% if controller.action_name == "new" or controller.action_name == "create"%>
+  <title>Creating New Post</title>
+  <% else %>
+
+  <% unless @articles.nil? %>
+  <title><%= t(:blog_title) %></title>
+  <% else%>
+
+  <% unless @article.nil? || @article.empty?%>
+  <title><%= @article.title %> | <%= t(:blog_title) %></title>
+  <% else%>
+  <title><%= t(:blog_title) %></title>
+  <% end %>
+  <% end %>
+
+  <% end %>
+</head>
+<body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <header>
+    <h1><%= link_to t(:blog_title), root_url %></h1>
+    <section id="colors">
+      <ul>
+        <li><%= link_to image_tag("feed.png", :size => "36x36", :alt => "Feed"), feed_path %></li>
+        <li><%= link_to image_tag("twitter.png", :size => "36x36", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
+      </ul>
+    </section>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_url %></li>
+        <li><%= link_to "About", "http://about.me/lainuo" %></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "New", new_article_path %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+        <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <%= yield %>
+
+  <footer>
+    <section id="whatever">
+    </section>
+    <section id="tools">
+      Powered by Heroku and Ruby on Rails
+    <section>
+  </footer>
+</body>
+</html>
