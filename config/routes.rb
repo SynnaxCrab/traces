@@ -30,11 +30,7 @@ Traces::Application.routes.draw do
   
   ## routes for CouchDB
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
-  resources :articles do
-    collection do
-      get 'show_all'
-    end
-  end
+  resources :articles
 
   root :to => "articles#index"
 
