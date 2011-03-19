@@ -1,17 +1,17 @@
 GIT
   remote: git://github.com/couchrest/couchrest.git
-  revision: 12828d3122a78428c86f6e5eabe5ac6024a70835
+  revision: 1e4ed383a52786770c04b6b49d02047bce1ddf8b
   specs:
-    couchrest (1.0.1)
-      json (~> 1.4.6)
+    couchrest (1.0.2)
+      json (~> 1.5.1)
       mime-types (~> 1.15)
-      rest-client (~> 1.5.1)
+      rest-client (~> 1.6.1)
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 307fe6cb60a4863561beb61c247844056dc94b68
+  revision: b23e2e807a3dc350f724b0f23320394ff006857c
   specs:
-    devise (1.2.rc)
+    devise (1.2.rc2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -82,7 +82,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
-    json (1.4.6)
+    json (1.5.1)
     kramdown (0.13.2)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -91,7 +91,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     polyglot (0.3.1)
-    rack (1.2.1)
+    rack (1.2.2)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.7)
@@ -110,7 +110,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rest-client (1.5.1)
+    rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
@@ -131,7 +131,7 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.24)
+    tzinfo (0.3.25)
     warden (1.0.3)
       rack (>= 1.0.0)
 

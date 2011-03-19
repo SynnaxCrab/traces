@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  layout :determine_layout
   before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed]
 
    def index
@@ -113,6 +114,14 @@ class ArticlesController < ApplicationController
        render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
      else
        redirect_to article_slug(article)
+     end
+   end
+   
+   def determine_layout
+     if action_name == 'new' or action_name == 'edit'
+       "articles_without_ga"
+     else       
+       "articles"
      end
    end
 end
