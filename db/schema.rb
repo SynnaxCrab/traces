@@ -15,9 +15,7 @@ ActiveRecord::Schema.define(:version => 20101124114737) do
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
-    t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0
     t.datetime "current_sign_in_at"
@@ -33,13 +31,13 @@ ActiveRecord::Schema.define(:version => 20101124114737) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "comments", :force => true do |t|
-    t.string    "name"
-    t.string    "mail"
-    t.string    "website"
-    t.text      "content"
-    t.integer   "post_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.string   "mail"
+    t.string   "website"
+    t.text     "content"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
@@ -57,36 +55,11 @@ ActiveRecord::Schema.define(:version => 20101124114737) do
   end
 
   create_table "terms", :force => true do |t|
-    t.string    "name"
-    t.string    "looking"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "slug"
-  end
-
-  create_table "wp_posts", :primary_key => "ID", :force => true do |t|
-    t.integer  "post_author",           :limit => 20,  :default => 0,         :null => false
-    t.datetime "post_date",                                                   :null => false
-    t.datetime "post_date_gmt",                                               :null => false
-    t.text     "post_content",                                                :null => false
-    t.text     "post_title",                                                  :null => false
-    t.text     "post_excerpt",                                                :null => false
-    t.string   "post_status",           :limit => 20,  :default => "publish", :null => false
-    t.string   "comment_status",        :limit => 20,  :default => "open",    :null => false
-    t.string   "ping_status",           :limit => 20,  :default => "open",    :null => false
-    t.string   "post_password",         :limit => 20,  :default => "",        :null => false
-    t.string   "post_name",             :limit => 200, :default => "",        :null => false
-    t.text     "to_ping",                                                     :null => false
-    t.text     "pinged",                                                      :null => false
-    t.datetime "post_modified",                                               :null => false
-    t.datetime "post_modified_gmt",                                           :null => false
-    t.text     "post_content_filtered",                                       :null => false
-    t.integer  "post_parent",           :limit => 20,  :default => 0,         :null => false
-    t.string   "guid",                                 :default => "",        :null => false
-    t.integer  "menu_order",                           :default => 0,         :null => false
-    t.string   "post_type",             :limit => 20,  :default => "post",    :null => false
-    t.string   "post_mime_type",        :limit => 100, :default => "",        :null => false
-    t.integer  "comment_count",         :limit => 20,  :default => 0,         :null => false
+    t.string   "name"
+    t.string   "looking"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
   end
 
 end

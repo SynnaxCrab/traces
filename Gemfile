@@ -5,7 +5,7 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'will_paginate', '~> 3.0.pre2'
 gem 'kramdown'
 #gem 'devise'
@@ -21,7 +21,8 @@ gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
 gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
 group :development, :test do
-  gem 'rspec-rails'
+#  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 # Use unicorn as the web server
 # gem 'unicorn'
