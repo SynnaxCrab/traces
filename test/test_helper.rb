@@ -10,4 +10,7 @@ class ActiveSupport::TestCase
   # fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  @@CouchDB.default_database.recreate!
+  
+  FACTORIES_PATH = File.join(File.dirname(__FILE__), '/factories')
 end
