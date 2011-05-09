@@ -14,7 +14,11 @@ class Article < CouchRest::Model::Base
   
   timestamps!
   
+  validates_presence_of :title, :slug
+  validates_uniqueness_of :slug
+    
   view_by :created_at
+  view_by :title
   view_by :slug
   view_by :slug_created_at, :map => "
     function(doc) {
@@ -26,14 +30,14 @@ class Article < CouchRest::Model::Base
    
   def attachments=(attachments)
     attachments.each do |attachment|
-      #raise "#{attachment[1].class}"
+      #raise "#{attachment.class}"
       self.create_attachment(:file => attachment, :name => attachment.original_filename)
     end
   end 
   
   def tag_attributes=(tag_attributes)
-    tag_attributes.split(',').each do |tag|     
-      self.tags << tag.sub(/\s/, "")
+    tag_attributes.split(%r{,\s*}).each do |tag|     
+      self.tags << tag
     end
   end
   

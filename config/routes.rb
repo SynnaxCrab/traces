@@ -31,6 +31,7 @@ Traces::Application.routes.draw do
   ## routes for CouchDB
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
   resources :articles
+  resources :diaries
 
   root :to => "articles#index"
 
