@@ -7,12 +7,19 @@ class DiariesControllerTest < ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = Factory.create(:user)
     sign_in @user
+    @user_is_destroyed = false
   end
   
   def teardown
-    @user.destroy  
+    @user.destroy unless @user_is_destroyed
   end
   
+  test "should not get accessed if not authenticated" do
+    @user_is_destroyed = @user.destroy
+    get :index
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
   test "should get index" do
     get :index
     assert_response :success
