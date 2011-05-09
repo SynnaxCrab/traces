@@ -2,11 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   include ActionDispatch::TestProcess  
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-  
+
   test "should not save an article without a title" do
     article = Article.new
     assert !article.save
