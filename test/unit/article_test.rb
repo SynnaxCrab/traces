@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  include ActionDispatch::TestProcess  
 
+  include ActionDispatch::TestProcess
+  
   test "should not save an article without a title" do
     article = Article.new
     assert !article.save

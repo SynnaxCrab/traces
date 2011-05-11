@@ -1,4 +1,10 @@
-<li>
-  <p><%= comment.name %> wrote: </p>
+<li id="comment-<%= comment.id %>">
+  <p><%= link_to comment.name, comment.website %> wrote: 
+  <% if user_signed_in? %>
+    <%= link_to 'X', comment, :confirm => 'Are you sure?', :method => :delete, :remote => true %>
+  <% end %>
+  </p>
+  Created @
+  <p><%= link_to Time.zone.at(comment.created_at.to_time).to_datetime.to_formatted_s(:long), "#comment-" + comment.id %></p>
   <p><%= comment.content %></p>
 </li>
