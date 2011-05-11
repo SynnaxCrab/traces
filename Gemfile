@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails'
-
+gem "dynamic_form"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

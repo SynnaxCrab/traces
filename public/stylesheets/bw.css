@@ -41,7 +41,7 @@ body {
 a { color:#000; text-decoration: none }
 a:hover { color:#066; text-decoration: underline }
 
-p, ul, ol, li { 
+p, ul, ol, li {
   margin-bottom: 18px; 
 }
 
@@ -215,8 +215,8 @@ article pre
   font-size: 13px;
   padding: 20px;
   text-shadow:0 1px 0 #000;
-  width: 490px;
-  margin: 0px 0px 0px -40px;
+  /*width: 490px;*/
+  margin: 0px 0px 18px -40px;
 }
 
 #comments {

@@ -23,7 +23,7 @@ $(document).ready(function() {
   $(".dir").live("click", function() {
     alert("kkk");
     return false;
-  }),
+  })
   //setInterval(function() {
   //  $.get("/tags/test");
   //}, 5000);

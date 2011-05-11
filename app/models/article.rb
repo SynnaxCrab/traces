@@ -26,8 +26,15 @@ class Article < CouchRest::Model::Base
         emit([doc.slug, doc.created_at.substr(0, 10)]);
       }
     }
-    "
-   
+  "
+  view_by :comments_article_created_at, :map => "
+    function(doc) {
+      if ((doc['couchrest-type'] == 'Comment')) {
+        emit([doc.article_id, doc.created_at]);
+      }
+    }
+  "
+  
   def attachments=(attachments)
     attachments.each do |attachment|
       #raise "#{attachment.class}"

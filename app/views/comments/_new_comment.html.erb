@@ -1,12 +1,12 @@
 <p>Leave Your Comment</p>
-<%= form_for [post, Comment.new], :remote => true do |f| %>
+<%= form_for [article, Comment.new], :remote => true do |f| %>
 
 <p>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %> *
   <%= label_tag(:comment_name, "Name")%>
 </p>
 <p>
-  <%= f.text_field :mail %>
+  <%= f.text_field :email %> *
   <%= label_tag(:comment_mail, "Mail")%>
 </p>
 <p>

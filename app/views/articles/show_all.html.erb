@@ -3,5 +3,22 @@
     <%= render @articles %>
   <% else %>
     <%= render @article %>
+    <section id="comments">
+      <h3>
+        <span id="comments_count"><%= @comments.size %> 
+        <% if @comments.size > 1 %> 
+        Comments
+        <% else %> 
+        Comment 
+        <% end %>
+        </span>
+        to 
+        <%= @article.title%></h3>
+        <ol id="comments_list">
+          <%= render @comments %>
+        </ol>
+      <%= error_messages_for :comment %>
+      <%= render :partial => "comments/new_comment", :locals => { :article => @article }%>
+    </section>
   <% end %>
 </section>
