@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
        #raise "#{@begin_time} : #{@end_time} : #{params[:slug]}"
        @article = Article.by_slug_created_at(:startkey => [params[:slug], @begin_time], :endkey => [params[:slug], @end_time])
        @article = @article.first
-       @comments = Article.by_comments_article_created_at(:startkey => @article.id)
+       @comments = Article.by_comments_article_created_at(:startkey => [@article.id])
        "#{}"
      else
        @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
