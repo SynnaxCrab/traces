@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <%= auto_discovery_link_tag(:atom, {:action => "feed"}) %>
   <%= auto_discovery_link_tag(:rss, {:action => "feed"}) %>
-  <%= stylesheet_link_tag "bw" %>
-  <%= javascript_include_tag "jquery", "jquery.rails", "application" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 
   <% if controller.action_name == "new" or controller.action_name == "create"%>

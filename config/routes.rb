@@ -37,7 +37,8 @@ Traces::Application.routes.draw do
   end
   resources :comments
 
-  root :to => "articles#index"
+  #root :to => "articles#index"
+  root :to => 'backbone#index'
 
   match '/feed' => 'articles#feed'
   match '/sitemap' => 'sitemap#index'
