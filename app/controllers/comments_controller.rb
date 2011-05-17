@@ -13,14 +13,31 @@ class CommentsController < ApplicationController
   #   end    
   #   
   # end
-  def create
-    @article = Article.by_slug(:key => params[:article_id]).first
-    @comment = Comment.new(params[:comment])
-    @comment.article_id = @article.id
-    
+  
+  def index
+    # @article = Article.by_slug(:key => params[:article_id]).first
+    # @comments = Comment.by_article_created_at(:startkey => @article.id)
+    @comments = Comment.by_article_created_at(:startkey => params[:article_id])
     respond_to do |format|
-      if @comment.save
+      format.json { render json: @comments }
+    end
+  end
+  
+  def create
+    unless params[:article_id].nil?
+      @article = Article.by_slug(:key => params[:article_id]).first
+      @comment = Comment.new(params[:comment])
+      @comment.article_id = @article.id
+    else
+      @comment = Comment.new(params[:comment])
+      @comment.article_id = params[:comment][:article_id]
+      #raise "#{@comment}"
+    end
+       
+    respond_to do |format|
+      if @comment.save!
         format.html { redirect_to @article }
+        format.json { render json: @comment }
         format.js
       else
         format.js

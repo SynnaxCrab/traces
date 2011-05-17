@@ -10,6 +10,11 @@ module ApplicationHelper
     root_url + date_array.join("/") + "/" + article.slug #title.parameterize
   end
   
+  def article_relative_slug(article)
+    date_array = article.created_at.to_time.to_formatted_s(:db).split(' ').first.split('-')
+    "/" + date_array.join("/") + "/" + article.slug #title.parameterize
+  end
+  
   def extract_content(article)
     # article.content.gsub!(/\(stub_image:.*\)/) do |s|
     #   "(" + article.uri + "/" + s.split(/:\s*/)[1]

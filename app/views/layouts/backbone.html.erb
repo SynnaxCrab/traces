@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <meta charset="utf-8" />
+    <%= auto_discovery_link_tag(:atom, {:controller => "articles", :action => "feed"}) %>
+    <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
+    <%= stylesheet_link_tag "backbone" %>
+    <%= javascript_include_tag "application" %>
+    <title>Traces</title>
+  </head>
+  <body>
+    <header>
+      <h1><%= link_to "Traces", root_url %></h1>
+      <section id="colors">
+        <ul>
+          <li><%= link_to image_tag("feed.png", :size => "36x36", :alt => "Feed"), feed_path %></li>
+          <li><%= link_to image_tag("twitter.png", :size => "36x36", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
+        </ul>
+      </section>
+      <nav>
+        <ul>
+          <li id="nav_home"><%= link_to "Home", "" %></li>
+          <li><%= link_to "About", "http://about.me/lainuo" %></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="contents">
+      <%= yield %>
+    </section>
+  </body>
+  <script type="text/javascript"> 
+    $(function() {
+      $('article h1 a').click(function(e) {
+        if (e.which === 2 || e.metaKey || e.ctrlKey) {
+          return true;
+        }
+        e.preventDefault();
+        return window.location.hash = $(e.target).attr('href');
+      });
+      $('#nav_home').click(function(e) {
+        if (e.which === 2 || e.metaKey || e.ctrlKey) {
+          return true;
+        }
+        e.preventDefault();
+        return window.location.hash = $(e.target).attr('href');
+      });
+      App.initialize();
+    });
+  </script>
+</html>

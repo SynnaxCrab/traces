@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>Traces</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <section id="contents">
+    </section>
+  </body>
+</html>
