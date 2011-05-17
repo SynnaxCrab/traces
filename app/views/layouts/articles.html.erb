@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <%= auto_discovery_link_tag(:atom, {:action => "feed"}) %>
-  <%= auto_discovery_link_tag(:rss, {:action => "feed"}) %>
-  <%= stylesheet_link_tag "bw" %>
-  <%= javascript_include_tag "jquery", "jquery.rails", "application" %>
+  <%= auto_discovery_link_tag(:atom, {:controller => "articles", :action => "feed"}) %>
+  <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 
   <% if controller.action_name == "new" or controller.action_name == "create"%>
@@ -43,6 +43,7 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <p class="is_init_req"><p>
   <header>
     <h1><%= link_to t(:blog_title), root_url %></h1>
     <section id="colors">

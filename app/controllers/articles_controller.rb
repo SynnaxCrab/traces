@@ -4,6 +4,11 @@ class ArticlesController < ApplicationController
 
    def index
      @articles = Article.by_created_at :descending => true, :limit => 5
+     respond_to do |format|
+       format.html
+       format.json { render json: @articles}
+     end
+     #render :json => @articles
    end
    
    def new
@@ -57,13 +62,17 @@ class ArticlesController < ApplicationController
        @article = Article.by_slug_created_at(:startkey => [params[:slug], @begin_time], :endkey => [params[:slug], @end_time])
        @article = @article.first
        @comments = Article.by_comments_article_created_at(:startkey => [@article.id])
-       "#{}"
      else
        @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
      end
      
      if (@article.nil? || @article.empty?) && (@articles.nil? || @articles.empty?)
        render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404 
+     end
+     
+     respond_to do |format|
+       format.html
+       format.json { render json: @article }
      end
      #redirect_to 404 if @article.nil? && @articles.nil?
    end
