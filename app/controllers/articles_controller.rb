@@ -44,7 +44,10 @@ class ArticlesController < ApplicationController
    def show
      @article = Article.by_slug(:key => params[:id]).first
      #redirect_to article_slug(@article)
-     redirect_or_render_404(@article)
+     respond_to do |format|
+       format.html { redirect_or_render_404(@article) }
+       format.json { render json: @article }
+     end
    end
    
    def show_redirect
