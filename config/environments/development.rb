@@ -24,4 +24,8 @@ Traces::Application.configure do
   
   # customized time zone, and I really hate "Beijing"
   config.time_zone = "Taipei"
+  
+  # Compress both stylesheets and JavaScripts
+  # config.assets.js_compressor  = :uglifier
+  # config.assets.css_compressor = :scss
 end
