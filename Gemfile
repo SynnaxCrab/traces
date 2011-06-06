@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.beta1'
+# gem 'rails', '3.1.0.beta1'
 gem 'dynamic_form'
 # gem 'jammit'
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Asset template engines
 gem 'sass'

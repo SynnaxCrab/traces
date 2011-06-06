@@ -17,7 +17,8 @@ class CommentsController < ApplicationController
   def index
     # @article = Article.by_slug(:key => params[:article_id]).first
     # @comments = Comment.by_article_created_at(:startkey => @article.id)
-    @comments = Comment.by_article_created_at(:startkey => [params[:article_id]])
+    @comments = Comment.by_article_created_at(:startkey => [params[:article_id]],
+                                              :endkey => [params[:article_id], Time.now])
     respond_to do |format|
       format.json { render json: @comments }
     end
