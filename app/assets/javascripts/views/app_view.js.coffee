@@ -23,19 +23,11 @@ App.Views.Articles = Backbone.View.extend
     #alert(@el.data("events"))
   
   events:
-    'click #comments button'  :  'showComments'
-    #'click input:submit'   :  'newComment'
+    'click .comments button'  :  'showComments'
     
   showComments: (e) ->
     # commentsView = new App.Views.Comments(slug:e.target.id)
     commentsViewEl = $("##{e.target.id}").parent()
-    #commentsView = new App.Views.Comments(articleId:e.target.id)
+    # commentsView = new App.Views.Comments(articleId:e.target.id)
     commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id)
-  
-  newComment: (e) ->
-    targetId = e.target.id
-    articleId = targetId.split("_")[2]
-    alert(articleId)
-    
-  newCommentAttributes: ->
     

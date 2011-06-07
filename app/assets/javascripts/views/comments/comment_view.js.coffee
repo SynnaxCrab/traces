@@ -1,6 +1,7 @@
 App.Views.Comment = Backbone.View.extend
   tagName  :  "li"
-  template :  COMMENT_TEMPLATE
+  #template :  COMMENT_TEMPLATE
+  template :  JST["templates/comment"].call(this)
   
   initialize: ->
     _.bindAll this, 'render'
