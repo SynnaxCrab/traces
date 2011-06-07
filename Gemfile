@@ -32,7 +32,7 @@ group :development, :test do
 end
 
 group :production do
-  # gem 'therubyracer-heroku'
+  gem 'therubyracer-heroku'
 end
 
 # Use unicorn as the web server
