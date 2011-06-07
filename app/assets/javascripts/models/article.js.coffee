@@ -1,4 +1,4 @@
-Article = Backbone.Model.extend
+window.Article = Backbone.Model.extend
   url: ->
     #"articles/#{ @id }"
     "articles/#{ @get("slug") }"

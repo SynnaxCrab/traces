@@ -1,4 +1,4 @@
-Comment = Backbone.Model.extend
+window.Comment = Backbone.Model.extend
   url: -> "comments"
     
   initialize: ->
