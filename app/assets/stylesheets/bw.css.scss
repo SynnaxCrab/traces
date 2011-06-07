@@ -175,7 +175,7 @@ article footer {
   color: #666;
 }
 
-article #post_meta {
+article .post_meta {
   float: left;
   width: 152px;
   font-size: 12px;
@@ -183,17 +183,17 @@ article #post_meta {
   padding: 3px 0;
 }
 
-article #post_content {
+article .post_content {
   margin-left:177px;
   /* width: 480px; */
   text-align:left;
 }
 
-article #post_content a {
+article .post_content a {
   font-weight:bold;
 }
 
-article #post_content a {
+article .post_content a {
   background:none repeat scroll 0 0 #EEF4FF;
 }
 
@@ -225,8 +225,24 @@ article pre
   text-align:left;
 }
 
-#comments_list {
+.comments {
+  margin-left: 177px;
+  margin-top: 30px;
+  text-align:left;
+}
+
+.comments_list {
   padding-left: 40px;
+  text-align:left;
+}
+
+.comments input[type="text"]
+{
+  padding: 5px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #BDC1A3;
+  color: #363636;
+  font-size: 8pt;
   text-align:left;
 }
 

@@ -1,5 +1,5 @@
 <article>
-  <section id="post_meta">
+  <section class="post_meta">
     <p>
     Created @ 
     <time datetime="<%= article.created_at.to_date.to_s %>">
@@ -11,7 +11,7 @@
 
     </p>
   </section>
-  <section id="post_content">
+  <section class="post_content">
     <h1><%= link_to article.title, article_relative_slug(article) %></h1>
     <%=raw Kramdown::Document.new(extract_content(article)).to_html%>
     <p>

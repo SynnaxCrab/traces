@@ -1,6 +1,8 @@
 App.Views.Comments = Backbone.View.extend
-  template : COMMENT_HEADER
-  newCommentTemplate : NEW_COMMENT
+  #template : COMMENT_HEADER
+  template : JST["templates/comment_header"].call(this)
+  #newCommentTemplate : NEW_COMMENT
+  newCommentTemplate : JST["templates/new_comment"].call(this)
   initialize: ->
     _.bindAll this, 'addAll', 'addOne'
     
@@ -16,7 +18,7 @@ App.Views.Comments = Backbone.View.extend
   addOne: (comment) ->
     commentView = new App.Views.Comment(model:comment, id:"comment-"+comment.get("_id"))
     commentRendered = commentView.render().el
-    @el.find("#comments_list").append(commentRendered)
+    @el.find(".comments_list").append(commentRendered)
 
   addAll: ->
     @el.children().remove()
@@ -39,10 +41,10 @@ App.Views.Comments = Backbone.View.extend
     #alert(articleId)
     return { comment: {
       "article_id"       :  articleId
-      "content"          :  $("#comment_content").val(),
-      "email"            :  $("#comment_email").val(),
-      "name"             :  $("#comment_name").val(),
-      "website"          :  $("#comment_website").val(),
+      "content"          :  $("#comment_content_" + articleId).val(),
+      "email"            :  $("#comment_email_" + articleId).val(),
+      "name"             :  $("#comment_name_" + articleId).val(),
+      "website"          :  $("#comment_website_" + articleId).val(),
       #"couchrest-type"   :  "Comment",
       #created_at       :  new Date(),
       #updated_at       :  new Date()
