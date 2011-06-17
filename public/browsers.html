@@ -2,13 +2,51 @@
 <html>
 <head>
   <title>Oops...You have an outdated browser</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {margin: 0 auto;}
+    #container {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      padding-left: 50px;
+      padding-right: 50px;
+      margin: 50px;
+    }
+    h1 {
+      margin: 20px;
+      font-size: 60px;
+    }
+    #browsers ul {
+      list-style: none outside none;
+      margin: 0;
+      padding: 0;
+    }
+    #browsers ul li {
+      float: left;
+    }
+    #browsers ul li a {
+      margin: 15px;
+      padding: 15px;
+    }
+  </style>
 </head>
 
 <body>
   <!-- This file lives in public/browsers.html -->
-  <div class="dialog">
-    <h1>Please upgrade your browser</h1>
-    <p>You may upgrade to IE9, Firefox 4, Safari 5, Google Chrome or Opera</p>
+  <div id="container">
+  <h1>You need a better browser</h1>
+  <div id="browsers">
+  <ul>
+    <li><a href="http://www.mozilla.com/"><img alt="Mozilla Firefox" height="150" src="/images/Firefox.png" width="150" /></a></li>
+    <li><a href="http://www.google.com/chrome/"><img alt="Google Chrome" height="150" src="/images/Chrome.png" width="150" /></a></li>
+    <li><a href="http://www.apple.com/safari/"><img alt="Apple Safari" height="150" src="/images/Safari.png" width="150" /></a></li>
+    <li><a href="http://www.opera.com/"><img alt="Opera" height="150" src="/images/Opera.png" width="150" /></a></li>
+    <li><a href="http://www.microsoft.com/IE9"><img alt="Microsoft IE 9" height="150" src="/images/IE9.png" width="150" /></a></li>
+  </ul>
+  </div>
   </div>
 </body>
 </html>
