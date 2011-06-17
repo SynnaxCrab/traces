@@ -20,6 +20,7 @@ class DiariesControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_redirected_to new_user_session_path
   end
+  
   test "should get index" do
     get :index
     assert_response :success
