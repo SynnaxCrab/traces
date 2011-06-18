@@ -1,4 +1,6 @@
-App.Views.Articles = Backbone.View.extend  
+App.Views.Articles = Backbone.View.extend
+  footTemplate : JST["templates/footer"].call(this)  
+  
   initialize: ->
     _.bindAll this, 'addAll', 'addOne'
     
@@ -20,7 +22,7 @@ App.Views.Articles = Backbone.View.extend
   addAll: ->
     @el.children().remove()
     @collection.each(@addOne)
-    #alert(@el.data("events"))
+    @el.append(@footTemplate)
   
   events:
     'click .comments button'  :  'showComments'
