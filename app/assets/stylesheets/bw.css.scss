@@ -8,7 +8,7 @@ header, article, footer, aside, nav, details, summary, section, section header h
 }
 
 html {
-  background: none repeat scroll 0 0 #C4C4C4;
+  background: url('/images/bg-site.png') repeat scroll 0 0 #C4C4C4;
   height:100%;
 }
 
@@ -22,9 +22,9 @@ body {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background: none repeat scroll 0 0 #FFFFFF;
+  background: url('/images/bg-content.jpg') repeat scroll 0 0 #FFFFFF;
   border-color: #AAAAAA;
-  border-style: solid;
+//  border-style: solid;
   border-width: 0 1px;
   color: #000000;
   /*text-align: center;*/
@@ -257,13 +257,32 @@ article pre
 
 footer {
   border-top: 1px solid #ccc;
-  height: 60px;
+  height: 100px
 }
 
 footer #whatever {
-  height: 50px;
+//  height: 50px;
 }
 
 footer #tools {
   float: right;
+}
+
+footer #tools h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+footer #tools ul {
+  list-style: none outside none;
+  margin-left: 50px;
+  padding: 0;
+}
+
+footer #tools ul li {
+  float: right;
+}
+
+footer #tools ul li a {
+  margin-right: 15px;
 }
