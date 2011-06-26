@@ -22,6 +22,9 @@ App.Views.Articles = Backbone.View.extend
       window.location.hash = $(e.target).attr('href')
   addAll: ->
     $("#loader").remove()
+    $("header").children().remove()
+    $("#contents").children().remove()
+    $("footer").children().remove()
     $("header").append(@headerTemplate).fadeIn("slow")
     @collection.each(@addOne)
     $("footer").append(@footerTemplate).fadeIn("slow")
