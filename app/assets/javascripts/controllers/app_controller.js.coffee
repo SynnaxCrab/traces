@@ -7,7 +7,7 @@ App.Controllers.Articles = Backbone.Controller.extend
     
   initialize: ->
     @articlesCollection = new App.Collections.Articles
-    @articlesView = new App.Views.Articles(el:$("#contents"), collection:@articlesCollection)
+    @articlesView = new App.Views.Articles(el:$("body"), collection:@articlesCollection)
     
   index: ->
     isInitReq = $(".is_init_req").length

@@ -22,24 +22,14 @@
     </script>
   </head>
   <body>
+    <div id="loader"><div class="loading">Loading...</div></div>
     <header>
-      <h1><%= link_to "Traces", root_url %></h1>
-      <section id="colors">
-        <ul>
-          <li><%= link_to image_tag("feed.png", :size => "36x36", :alt => "Feed"), feed_path %></li>
-          <li><%= link_to image_tag("twitter.png", :size => "36x36", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
-        </ul>
-      </section>
-      <nav>
-        <ul>
-          <li id="nav_home"><%= link_to "Home", "" %></li>
-          <li><%= link_to "About", "http://about.me/lainuo" %></li>
-        </ul>
-      </nav>
     </header>
     <section id="contents">
       <%= yield %>
     </section>
+    <footer>
+    </footer>
   </body>
   <script type="text/javascript"> 
     $(function() {
