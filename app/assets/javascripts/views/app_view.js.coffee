@@ -1,5 +1,6 @@
 App.Views.Articles = Backbone.View.extend
-  footTemplate : JST["templates/footer"].call(this)  
+  headerTemplate : JST["templates/header"].call(this)
+  footerTemplate : JST["templates/footer"].call(this)  
   
   initialize: ->
     _.bindAll this, 'addAll', 'addOne'
@@ -11,8 +12,8 @@ App.Views.Articles = Backbone.View.extend
   addOne: (article) ->
     articleView = new App.Views.Article(model:article)
     articleRendered = articleView.render().el
-    @el.append(articleRendered)
-    # article.comments.fetch()
+    $("#contents").append(articleRendered)
+    # @el.append(articleRendered)
     
     $('article h1 a').click (e) ->
       return true if e.which == 2 or e.metaKey or e.ctrlKey
@@ -20,10 +21,15 @@ App.Views.Articles = Backbone.View.extend
       e.preventDefault()
       window.location.hash = $(e.target).attr('href')
   addAll: ->
-    @el.children().remove()
+    $("#loader").remove()
+    $("header").append(@headerTemplate).fadeIn("slow")
     @collection.each(@addOne)
-    @el.append(@footTemplate)
-  
+    $("footer").append(@footerTemplate).fadeIn("slow")
+    # @el.children().remove()
+    # @el.append(@headerTemplate)
+    # @collection.each(@addOne)
+    # @el.append(@footerTemplate)
+    
   events:
     'click .comments button'  :  'showComments'
     

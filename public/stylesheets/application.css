@@ -7,7 +7,7 @@ html{background:url("/images/bg-site.png") repeat scroll 0 0 #c4c4c4;height:100%
 html,input,textarea{font:12px/1.6 "Lucida Grande",Helvetica,Arial,sans-serif;}
 body{-moz-border-bottom-colors:none;-moz-border-image:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background:url("/images/bg-content.jpg") repeat scroll 0 0 white;border-color:#AAAAAA;border-width:0 1px;color:#000000;/*text-align:center;*/
 margin:0 auto;width:880px;/* min-height:500px;*/
-padding:20px 40px;font-size:16px;line-height:24px;font-family:"Lucida Grande",Verdana,Arial,sans-serif;}
+padding-right:40px;padding-left:40px;font-size:16px;line-height:24px;font-family:"Lucida Grande",Verdana,Arial,sans-serif;}
 a{color:#000;text-decoration:none;}
 a:hover{color:#066;text-decoration:underline;}
 p,ul,ol,li{margin-bottom:18px;}
@@ -17,9 +17,11 @@ h3{font-size:18px;line-height:18px;margin-bottom:20px;}
 h4{font-size:17px;line-height:28px;color:#B41717;font-weight:bold;margin-bottom:24px;letter-spacing:10px;}
 label{font-size:12px;}
 .wrap{margin:0 auto;padding:0;width:840px;}
+#loader{background:url("/images/bg-site.png") repeat scroll 0 0 white;width:100%;height:100%;position:absolute;left:0px;z-index:100;padding:0px;margin:0px;}
+#loader .loading{margin:250px auto;width:240px;padding:0px;color:#717880;font-size:50px;font-weight:bold;text-align:center;text-shadow:0 1px 0 #fff;}
 /* HEADER */
 header{/*padding:30px 0 45px 0;*/
-border-bottom:1px solid #666;text-align:left;}
+padding-top:20px;border-bottom:1px solid #666;text-align:left;}
 header h1{font-size:26px;color:#000;/*font-weight:normal;*/}
 header nav{/*
 display:inline;float:left;margin-top:10px;*/
