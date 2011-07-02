@@ -13,4 +13,9 @@ class ActiveSupport::TestCase
   @@CouchDB.default_database.recreate!
   
   FACTORIES_PATH = File.join(File.dirname(__FILE__), '/factories')
+  
+  def article_slug(article)
+    date_array = article.created_at.to_time.to_formatted_s(:db).split(' ').first.split('-')
+    "/" + date_array.join("/") + "/" + article.slug #title.parameterize
+  end
 end

@@ -12,7 +12,7 @@
     </p>
   </section>
   <section id="post_content">
-    <h1><%= link_to article.title, article_slug(article) %></h1>
+    <h1><%= link_to article.title, diary_path(article) %></h1>
     <%=raw Kramdown::Document.new(extract_content(article)).to_html%>
     <p>
 
