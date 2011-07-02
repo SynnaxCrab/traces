@@ -99,7 +99,7 @@ class ArticlesController < ApplicationController
    end
    
    def feed
-     @articles = Article.by_created_at :descending => true, :limit => 1
+     @articles = Article.by_published_at :descending => true, :limit => 1
 
      respond_to do |format|
        format.html do

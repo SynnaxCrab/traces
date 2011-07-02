@@ -60,4 +60,14 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:articles)
   end
 
+  test "should get drafts" do
+    get :drafts
+    assert_not_nil assigns(:articles)
+  end
+  
+  test "should get feed" do
+    get :feed
+    assert_not_nil assigns(:articles)
+    assert_redirected_to feed_path(:format => :atom)
+  end
 end
