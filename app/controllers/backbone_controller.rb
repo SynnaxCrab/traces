@@ -11,7 +11,7 @@ class BackboneController < ApplicationController
     end
     
     if is_googlebot?
-      @articles = Article.by_created_at :descending => true, :limit => 5
+      @articles = Article.by_published_at :descending => true, :limit => 5
       respond_to do |format|
         format.html
         format.json { render json: @articles}

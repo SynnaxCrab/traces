@@ -35,6 +35,7 @@ class ArticlesController < ApplicationController
      # set format as markdown here 
      @article.format = "Markdown"
      if @article.save
+       flash[:notice] = "Article was successfully created !"
        redirect_to @article
      else
        render :new
@@ -49,6 +50,7 @@ class ArticlesController < ApplicationController
      @article = Article.by_slug(:key => params[:id]).first
 
      if @article.update_attributes(params[:article])
+       flash[:notice] = "Article was successfully updated !"
        redirect_to @article
      else
        render :edit
@@ -82,7 +84,7 @@ class ArticlesController < ApplicationController
        @comments = Article.by_comments_article_created_at(:startkey => [@article.id], 
                                                           :endkey => [@article.id, Time.now])
      else
-       @articles = Article.by_created_at(:startkey => @begin_time, :endkey => @end_time)
+       @articles = Article.by_published_at(:startkey => @begin_time, :endkey => @end_time)
      end
      
      if (@article.nil? || @article.empty?) && (@articles.nil? || @articles.empty?)
