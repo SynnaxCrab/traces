@@ -40,6 +40,7 @@ Traces::Application.routes.draw do
   #root :to => "articles#index"
   root :to => 'backbone#index'
 
+  match '/drafts' => 'articles#drafts'
   match '/feed' => 'articles#feed'
   match '/sitemap' => 'sitemap#index'
 

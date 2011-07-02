@@ -9,6 +9,7 @@ class Article < CouchRest::Model::Base
   property :title
   property :content
   property :author
+  property :is_draft
   property :format
   property :tags, [String]
   
@@ -16,13 +17,26 @@ class Article < CouchRest::Model::Base
   
   validates_presence_of :title, :slug
   validates_uniqueness_of :slug
-    
-  view_by :created_at
+  
+  view_by :saved_at, :map => "
+    function(doc) {
+      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
+        emit(doc['created_at'], null);
+      }
+    }
+  "  
+  view_by :published_at, :map => "
+    function(doc) {
+      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['created_at'] != null)) {
+        emit(doc['created_at'], null);
+      }
+    }
+  "
   view_by :title
   view_by :slug
-  view_by :slug_created_at, :map => "
+  view_by :slug_published_at, :map => "
     function(doc) {
-      if ((doc['couchrest-type'] == 'Article') && (doc['slug'] != null) && (doc['created_at'] != null)) {
+      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
         emit([doc.slug, doc.created_at.substr(0, 10)]);
       }
     }
