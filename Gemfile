@@ -1,15 +1,24 @@
 source 'http://rubygems.org'
+source 'http://gems.github.com'
 
-gem 'rails', '3.1.0.rc4'
-gem 'dynamic_form'
+gem 'rails', '3.1.0.rc5'
+
+# gem 'dynamic_form'
 # gem 'jammit'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Asset template engines
-gem 'sass'
-gem 'coffee-script'
-gem 'uglifier'
+# gem 'sass'
+# gem 'coffee-script'
+# gem 'uglifier'
+# gem 'ejs'
+
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+end
 gem 'ejs'
 
 gem 'jquery-rails'
@@ -17,22 +26,22 @@ gem 'jquery-rails'
 gem 'kramdown'
 
 gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
-gem 'couchrest_model', :git => 'git://github.com/winfield/couchrest_model.git'
-#gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+#gem 'couchrest_model', :git => 'git://github.com/winfield/couchrest_model.git'
+gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
 
 gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-gem 'devise',:git => 'git://github.com/plataformatec/devise.git' # '1.2.rc'
+gem 'devise',:git => 'git://github.com/plataformatec/devise.git'
 gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
 gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
-group :development, :test do
+group :test do
 # gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'turn', :require => false
 end
 
 group :production do
-  gem 'therubyracer-heroku'
+  # gem 'therubyracer-heroku'
 end
 
 # Use unicorn as the web server

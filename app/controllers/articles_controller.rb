@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   layout :determine_layout
-  before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed]
+  before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed, :more]
 
    def index
      @articles = Article.by_published_at :descending => true, :limit => 5
@@ -109,6 +109,13 @@ class ArticlesController < ApplicationController
          redirect_to feed_path(:format => :atom), :status => :moved_permanently
        end
        format.atom
+     end
+   end
+   
+   def more
+     @articles = Article.by_published_at :descending => true, :limit => 5, :skip => params[:size]
+     respond_to do |format|
+       format.json { render json: @articles}
      end
    end
    

@@ -43,6 +43,7 @@ Traces::Application.routes.draw do
   match '/drafts' => 'articles#drafts'
   match '/feed' => 'articles#feed'
   match '/sitemap' => 'sitemap#index'
+  match '/articles/more/:size' => 'articles#more'
 
   match "/:year(/:month)/:slug" => "articles#show_redirect",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d{3,}|\D+/ }

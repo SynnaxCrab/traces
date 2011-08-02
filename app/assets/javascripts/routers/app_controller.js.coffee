@@ -1,4 +1,4 @@
-App.Controllers.Articles = Backbone.Controller.extend
+App.Routers.Articles = Backbone.Router.extend
   routes:
     # "articles/:slug"  :  "edit"  
     ""  :  "index"

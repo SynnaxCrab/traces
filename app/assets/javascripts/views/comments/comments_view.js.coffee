@@ -11,7 +11,7 @@ App.Views.Comments = Backbone.View.extend
     # @collection = new App.Collections.Comments(article_slug:@options.slug)
     @collection = new App.Collections.Comments(articleId:@options.articleId)
     @collection
-      .bind('refresh', @addAll)
+      .bind('reset', @addAll)
       .bind('add', @addOne)
     @collection.fetch()
     

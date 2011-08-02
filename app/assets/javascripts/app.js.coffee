@@ -7,8 +7,8 @@ window.Markdown = new Showdown.converter()
 
 window.App =
   Views: {}
-  Controllers: {}
+  Routers: {}
   Collections: {}
   initialize: ->
-    new App.Controllers.Articles()
+    new App.Routers.Articles()
     Backbone.history.start()
