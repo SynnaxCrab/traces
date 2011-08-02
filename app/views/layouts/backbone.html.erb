@@ -6,6 +6,7 @@
     <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
     <title>Traces</title>
     <script type="text/javascript">
 
@@ -28,6 +29,9 @@
     <section id="contents">
       <%= yield %>
     </section>
+    <div id="more">
+      <button>More Articles ... </button>
+    </div>
     <footer>
     </footer>
   </body>
