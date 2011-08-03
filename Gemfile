@@ -3,7 +3,7 @@ source 'http://gems.github.com'
 
 gem 'rails', '3.1.0.rc5'
 
-# gem 'dynamic_form'
+gem 'dynamic_form'
 # gem 'jammit'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

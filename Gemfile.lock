@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 560961e3fc88f4b00588e24bf13a74061cf58bb9
+  revision: 919404df53a0ee9a8c5be50a3d74acf10ac2e38c
   specs:
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
@@ -90,6 +90,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.1)
+    dynamic_form (1.1.4)
     ejs (1.0.0)
     erubis (2.7.0)
     execjs (1.2.1)
@@ -139,7 +140,7 @@ GEM
     rdoc (3.9.1)
     rest-client (1.6.3)
       mime-types (>= 1.16)
-    sass (3.1.5)
+    sass (3.1.6)
     sass-rails (3.1.0.rc.5)
       actionpack (~> 3.1.0.rc1)
       railties (~> 3.1.0.rc1)
@@ -172,6 +173,7 @@ DEPENDENCIES
   couchrest_model!
   devise!
   devise_couch!
+  dynamic_form
   ejs
   factory_girl_rails
   jquery-rails
