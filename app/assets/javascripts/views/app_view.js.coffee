@@ -35,7 +35,7 @@ App.Views.Articles = Backbone.View.extend
     
   addMore: ->
     $("#more").append(@moreLoadingTemplate)
-    @collection.url = "articles/more/" + @collection.size()
+    @collection.url = "articles/?skip=" + @collection.size()
     @collection.fetch({add: true})
     @collection.url = "articles"
     $("#more_loading").remove();
