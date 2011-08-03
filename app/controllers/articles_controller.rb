@@ -78,7 +78,6 @@ class ArticlesController < ApplicationController
      parse_time
 
      unless params[:slug].nil?
-       #raise "#{@begin_time} : #{@end_time} : #{params[:slug]}"
        @article = Article.by_slug_published_at(:startkey => [params[:slug], @begin_time], 
                                              :endkey => [params[:slug], @end_time])
        @article = @article.first
