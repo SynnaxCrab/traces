@@ -11,4 +11,4 @@ window.App =
   Collections: {}
   initialize: ->
     new App.Routers.Articles()
-    Backbone.history.start()
+    Backbone.history.start({pushState: true})

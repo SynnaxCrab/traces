@@ -19,7 +19,9 @@ App.Views.Articles = Backbone.View.extend
       return true if e.which == 2 or e.metaKey or e.ctrlKey
 
       e.preventDefault()
-      window.location.hash = $(e.target).attr('href')
+      Backbone.history.navigate($(e.target).attr('href'), true); 
+      # window.location.hash = $(e.target).attr('href')
+      
   addAll: ->
     $("#loader").remove()
     $("header").children().remove()
@@ -28,6 +30,12 @@ App.Views.Articles = Backbone.View.extend
     $("header").append(@headerTemplate).fadeIn("slow")
     @collection.each(@addOne)
     $("footer").append(@footerTemplate).fadeIn("slow")
+    $('#nav_home').click (e) ->
+      return true if e.which == 2 or e.metaKey or e.ctrlKey
+
+      e.preventDefault()
+      Backbone.history.navigate($(e.target).attr('href'), true); 
+      # window.location.hash = $(e.target).attr('href')
     
   events:
     'click .comments button'  :  'showComments'
