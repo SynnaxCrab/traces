@@ -14,30 +14,33 @@ App.Views.Articles = Backbone.View.extend
     articleView = new App.Views.Article(model:article)
     articleRendered = articleView.render().el
     $("#contents").append(articleRendered)
-    
+      
+  addAll: ->
+    if $("#loader").length
+      $("#loader").remove()
+    $("#contents").children().remove()
+    unless $("header").children().length
+      $("header").append(@headerTemplate).fadeIn("slow")
+    @collection.each(@addOne)
+    unless $("footer").children().length
+      $("footer").append(@footerTemplate).fadeIn("slow")
+    $('#nav_home').click (e) ->
+      return true if e.which == 2 or e.metaKey or e.ctrlKey
+
+      e.preventDefault()
+      Backbone.history.navigate($(e.target).attr('href'), true) 
+      _gaq.push(['_trackPageview', $(location).attr('pathname')])
+      # window.location.hash = $(e.target).attr('href')
+         
     $('article h1 a').click (e) ->
       return true if e.which == 2 or e.metaKey or e.ctrlKey
 
       e.preventDefault()
       if $(e.target).attr('href') isnt ""
-        Backbone.history.navigate($(e.target).attr('href'), true); 
+        Backbone.history.navigate($(e.target).attr('href'), true)
+        _gaq.push(['_trackPageview', $(location).attr('pathname')])
       # window.location.hash = $(e.target).attr('href')
-      
-  addAll: ->
-    $("#loader").remove()
-    $("header").children().remove()
-    $("#contents").children().remove()
-    $("footer").children().remove()
-    $("header").append(@headerTemplate).fadeIn("slow")
-    @collection.each(@addOne)
-    $("footer").append(@footerTemplate).fadeIn("slow")
-    $('#nav_home').click (e) ->
-      return true if e.which == 2 or e.metaKey or e.ctrlKey
 
-      e.preventDefault()
-      Backbone.history.navigate($(e.target).attr('href'), true); 
-      # window.location.hash = $(e.target).attr('href')
-    
   events:
     'click .comments button'  :  'showComments'
     'click #more button'      :  'addMore'
