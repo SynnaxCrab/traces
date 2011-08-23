@@ -1,18 +1,9 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '3.1.0.rc6'
 
 gem 'dynamic_form'
-# gem 'jammit'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# Asset template engines
-# gem 'sass'
-# gem 'coffee-script'
-# gem 'uglifier'
-# gem 'ejs'
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
@@ -25,14 +16,15 @@ gem 'jquery-rails'
 
 gem 'kramdown'
 
-gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
-#gem 'couchrest_model', :git => 'git://github.com/winfield/couchrest_model.git'
-gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+# gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
+# gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+gem 'couchrest_model'
 
 gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-gem 'devise',:git => 'git://github.com/plataformatec/devise.git'
+# gem 'devise',:git => 'git://github.com/plataformatec/devise.git'
+gem 'devise'
 gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
-gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
+# gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
 group :test do
 # gem 'rspec-rails'
