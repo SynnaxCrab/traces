@@ -19,7 +19,8 @@ App.Views.Articles = Backbone.View.extend
       return true if e.which == 2 or e.metaKey or e.ctrlKey
 
       e.preventDefault()
-      Backbone.history.navigate($(e.target).attr('href'), true); 
+      if $(e.target).attr('href') isnt ""
+        Backbone.history.navigate($(e.target).attr('href'), true); 
       # window.location.hash = $(e.target).attr('href')
       
   addAll: ->
