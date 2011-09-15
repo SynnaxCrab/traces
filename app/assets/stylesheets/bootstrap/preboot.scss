@@ -162,7 +162,8 @@ $analog2:           adjust-hue($baseColor, -22);
   line-height: $lineHeight;
 }
 @mixin sans-serif-font($weight: normal, $size: 14px, $lineHeight: 20px) {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // modified by winfield
+  font-family: "Lucida Grande", Verdana, "Helvetica Neue", Helvetica, 'Liberation Sans',FreeSans, Arial, sans-serif;
   font-size: $size;
   font-weight: $weight;
   line-height: $lineHeight;

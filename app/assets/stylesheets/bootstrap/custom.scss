@@ -6,7 +6,10 @@ header {
   }
 
   .outside-links {
-    float: left;
+    float: right;
+    ul li a {
+      padding: 10px 10px 6px;
+    }
   }
 }
 
@@ -14,9 +17,14 @@ article {
   margin-top: 40px;
   margin-bottom: 40px;
   
+  h1, h2 {
+    margin-bottom: 18px;
+  }
+  
   p {
     font-size: 16px;
     color: #222;
+    line-height: 24px;
   }
   
   code, pre {
@@ -56,7 +64,7 @@ article {
     }
     
     .comments_list {
-      padding-left: 40px;
+      padding-left: 20px;
       text-align: left;
       a {
         font-size: 14px;
@@ -77,6 +85,14 @@ article {
     
     .input {
       margin-left: 100px;
+    }
+    
+    .xxlarge {
+      height: 80px;
+    }
+    
+    .actions {
+      padding: 17px 20px 18px 40px;
     }
   }
 }
