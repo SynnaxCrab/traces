@@ -43,7 +43,7 @@ App.Views.Articles = Backbone.View.extend
 
   events:
     'click .comments button'  :  'showComments'
-    'click #more button'      :  'addMore'
+    'click #show-more-articles button'      :  'addMore'
     
   addMore: ->
     $("#more").append(@moreLoadingTemplate)

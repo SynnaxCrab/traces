@@ -33,6 +33,7 @@ class Article < CouchRest::Model::Base
     }
   "
   view_by :title
+  view_by :_id
   view_by :slug
   view_by :slug_published_at, :map => "
     function(doc) {
