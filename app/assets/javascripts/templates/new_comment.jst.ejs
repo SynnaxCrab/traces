@@ -1,19 +1,31 @@
-<p>Leave Your Comment</p> 
-<p>
-  <input id="comment_name_{{articleId}}" name="comment[name]" size="30" type="text" />
-  <label for="comment_name_{{articleId}}">* Name</label>
-</p> 
-<p>
-  <input id="comment_email_{{articleId}}" name="comment[email]" size="30" type="text" />
-  <label for="comment_mail_{{articleId}}">* Mail</label>
-</p>
-<p>
-  <input id="comment_website_{{articleId}}" name="comment[website]" size="30" type="text" />
-  <label for="comment_website_{{articleId}}">Website</label>
-</p>
-<p>
-  <textarea cols="60" id="comment_content_{{articleId}}" name="comment[content]" rows="12"></textarea>
-</p>
-<p>
-  <input id="comment_commit_{{articleId}}" name="commit" type="submit" value="Leave Your Comment" />
-</p>
+<fieldset>
+  <legend>Leave Your Comment</legend> 
+  <div class="clearfix">
+    <label for="comment_name_{{articleId}}">Name *</label>
+    <div class="input">
+      <input id="comment_name_{{articleId}}" name="comment[name]" size="30" type="text" />
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="comment_mail_{{articleId}}">Mail *</label>
+    <div class="input">
+      <input id="comment_email_{{articleId}}" name="comment[email]" size="30" type="text" />
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="comment_website_{{articleId}}">Website</label>
+    <div class="input">
+      <input id="comment_website_{{articleId}}" name="comment[website]" size="30" type="text" />
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="comment_content_{{articleId}}">Content</label>
+    <div class="input">
+      <textarea id="comment_content_{{articleId}}" name="comment[content]" class="xxlarge"></textarea>
+    </div>
+  </div>
+    
+  <div class="actions">
+    <button id="comment_commit_{{articleId}}" type="submit" class="btn primary">Leave Your Comment</button>
+  </div>
+</fieldset>
