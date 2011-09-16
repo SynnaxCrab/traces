@@ -27,6 +27,9 @@ class CommentsController < ApplicationController
   def create
     unless params[:article_id].nil?
       @article = Article.by__id(:key => params[:article_id]).first
+      if @article.nil?
+        @article = Article.by_slug(:key => params[:article_id]).first
+      end
       @comment = Comment.new(params[:comment])
       @comment.article_id = @article.id
     else
