@@ -1,22 +1,34 @@
-<p>Leave Your Comment</p>
 <%= form_for [article, Comment.new], :remote => true do |f| %>
-
-<p>
-  <%= f.text_field :name %> *
-  <%= label_tag(:comment_name, "Name")%>
-</p>
-<p>
-  <%= f.text_field :email %> *
-  <%= label_tag(:comment_mail, "Mail")%>
-</p>
-<p>
-  <%= f.text_field :website %>
-  <%= label_tag(:comment_website, "Website")%>
-</p>
-<p>
-  <%= f.text_area :content, :size => "60x12" %>
-</p>
-<p>
-  <%= submit_tag "Leave Your Comment" %>
-</p>
+  <fieldset>
+    <legend>Leave Your Comment</legend>
+  
+    <div class="clearfix">
+      <%= label_tag(:comment_name, "Name *")%>
+      <div class="input">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= label_tag(:comment_mail, "Mail *")%>
+      <div class="input">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= label_tag(:comment_website, "Website")%>
+      <div class="input">
+        <%= f.text_field :website %>
+      </div>
+    </div>
+    <div class="clearfix">
+      <%= label_tag(:comment_content, "Content")%>
+      <div class="input">
+        <%= f.text_area :content, :size => "60x12", :class => "xxlarge" %>
+      </div>
+    </div>
+  
+    <div class="actions">
+      <%= button_tag "Leave Your Comment", :class => "btn primary" %>
+    </div>
+  </fieldset>
 <% end %>
