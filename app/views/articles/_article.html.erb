@@ -1,22 +1,17 @@
 <article>
+  <section class="post_title">
+    <h1><%= link_to article.title, article_relative_slug(article) %></h1>
+  </section>
   <section class="post_meta">
     <p>
     Created @ 
     <time datetime="<%= article.created_at.to_date.to_s %>">
       <%= Time.zone.at(article.created_at.to_time).to_datetime.to_formatted_s(:long) %>
-      <!--<%= article.created_at.to_time.getlocal.to_datetime.to_formatted_s(:long) %>-->
     </time>
-    </p>
-    <p>
-
     </p>
   </section>
   <section class="post_content">
-    <h1><%= link_to article.title, article_relative_slug(article) %></h1>
     <%=raw Kramdown::Document.new(extract_content(article)).to_html%>
-    <p>
-
-    </p>
     <% if user_signed_in? %>
       <%= link_to "edit", edit_article_path(article.slug) %>
     <% end %>

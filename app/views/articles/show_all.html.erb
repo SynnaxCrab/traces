@@ -3,7 +3,7 @@
     <%= render @articles %>
   <% else %>
     <%= render @article %>
-    <section id="comments">
+    <section class="comments">
       <h3>
         <span class="comments_count"><%= @comments.size %> 
         <% if @comments.size > 1 %> 
@@ -14,7 +14,7 @@
         </span>
         to 
         <%= @article.title%></h3>
-        <ol class="comments_list">
+        <ol id="comments_list" class="comments_list">
           <%= render @comments %>
         </ol>
       <%= error_messages_for :comment %>
