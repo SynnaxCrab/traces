@@ -74,8 +74,7 @@ html, body {
 }
 body {
 // modified by winfield
-//  margin: 0 auto;
-//  width: 880px;
+  background: url('/assets/bg-stark.png') repeat scroll 0 0 #C4C4C4;
   margin: 0;
   @include sans-serif-font(normal,$basefont,$baseline);
   color: $gray;
