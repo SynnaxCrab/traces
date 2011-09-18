@@ -81,14 +81,19 @@ class ArticlesController < ApplicationController
        @article = Article.by_slug_published_at(:startkey => [params[:slug], @begin_time], 
                                              :endkey => [params[:slug], @end_time])
        @article = @article.first
-       @comments = Article.by_comments_article_created_at(:startkey => [@article.id], 
+       unless @article.nil?
+         @comments = Article.by_comments_article_created_at(:startkey => [@article.id], 
                                                           :endkey => [@article.id, Time.now])
+       else
+         @comments = []
+       end
      else
        @articles = Article.by_published_at(:startkey => @begin_time, :endkey => @end_time)
      end
      
      if (@article.nil? || @article.empty?) && (@articles.nil? || @articles.empty?)
-       render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404 
+       render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
+       return
      end
      
      respond_to do |format|
