@@ -42,7 +42,7 @@ App.Views.Articles = Backbone.View.extend
       # window.location.hash = $(e.target).attr('href')
 
   events:
-    'click .comments button'  :  'showComments'
+    'click .comments button[type="button"]' :  'showComments'
     'click #show-more-articles button'      :  'addMore'
     
   addMore: ->
