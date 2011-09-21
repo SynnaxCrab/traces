@@ -7,3 +7,4 @@ tmp/
 script/couch_replica
 .sass-cache/
 config/database.yml
+config/initializers/akismet.rb

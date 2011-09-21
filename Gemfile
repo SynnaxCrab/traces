@@ -26,6 +26,7 @@ gem 'devise'
 gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
 # gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
+gem 'rakismet'
 gem 'pry', :group => :development
 
 group :test do

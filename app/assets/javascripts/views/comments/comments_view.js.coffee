@@ -13,6 +13,7 @@ App.Views.Comments = Backbone.View.extend
     @collection
       .bind('reset', @addAll)
       .bind('add', @addOne)
+      .bind('create', @addOne)
     @collection.fetch()
     
   addOne: (comment) ->
@@ -29,13 +30,13 @@ App.Views.Comments = Backbone.View.extend
     #alert(@el.data("events"))
     
   events:
-    'click input:submit'   :  'newComment'
+    'click .actions button[type="submit"]'   :  'newComment'
     
   newComment: (e) ->
     targetId = e.target.id
     articleId = targetId.split("_")[2]
     #alert(articleId)
-    @collection.create(@newCommentAttributes(articleId))  
+    @collection.create(@newCommentAttributes(articleId))
   
   newCommentAttributes: (articleId) ->
     #alert(articleId)

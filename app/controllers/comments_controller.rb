@@ -32,6 +32,7 @@ class CommentsController < ApplicationController
       end
       @comment = Comment.new(params[:comment])
       @comment.article_id = @article.id
+      puts "#{@comment.spam?}"
     else
       @comment = Comment.new(params[:comment])
       @comment.article_id = params[:comment][:article_id]
@@ -39,12 +40,16 @@ class CommentsController < ApplicationController
     end
        
     respond_to do |format|
-      if @comment.save!
-        format.html { redirect_to @article }
-        format.json { render json: @comment }
-        format.js
+      unless @comment.spam?
+        if @comment.save!
+          format.html { redirect_to @article }
+          format.json { render json: @comment }
+          format.js
+        else
+          format.js
+        end
       else
-        format.js
+        format.json { render json: "Go hell, Spammer!"}
       end
     end
     
