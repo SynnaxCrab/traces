@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
-source 'http://gems.github.com'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 gem 'dynamic_form'
 
