@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
+# source 'http://gemcutter.org'
+# http://gems.rubyforge.org/
 
 gem 'rails', '3.1.1'
 
@@ -26,7 +28,13 @@ gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
 # gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
 
 gem 'rakismet'
-gem 'pry', :group => :development
+
+gem 'dalli'
+
+group :development do
+  gem 'pry'
+  gem 'pry-doc'
+end
 
 group :test do
 # gem 'rspec-rails'
@@ -36,7 +44,6 @@ end
 
 group :production do
   gem 'newrelic_rpm'
-  # gem 'therubyracer-heroku'
 end
 
 # Use unicorn as the web server

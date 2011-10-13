@@ -61,4 +61,7 @@ Traces::Application.configure do
   
   # customized time zone, and I really hate "Beijing"
   config.time_zone = "Taipei"
+  
+  # cache store
+  config.cache_store = :dalli_store
 end
