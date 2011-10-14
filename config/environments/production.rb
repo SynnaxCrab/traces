@@ -11,7 +11,7 @@ Traces::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=3600"
+  config.static_cache_control = "public, max-age=604800"
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
