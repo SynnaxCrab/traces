@@ -24,14 +24,21 @@ App.Views.Articles = Backbone.View.extend
     @collection.each(@addOne)
     unless $("footer").children().length
       $("footer").append(@footerTemplate).fadeIn("slow")
+    
+    if @collection.size() < 2
+      $('#show-more-articles').addClass('invisible')
+    else
+      $('#show-more-articles').removeClass('invisible')
+      
     $('#nav_home').click (e) ->
       return true if e.which == 2 or e.metaKey or e.ctrlKey
 
       e.preventDefault()
       Backbone.history.navigate($(e.target).attr('href'), true) 
       _gaq.push(['_trackPageview', $(location).attr('pathname')])
+      # for hash style
       # window.location.hash = $(e.target).attr('href')
-         
+           
     $('article h1 a').click (e) ->
       return true if e.which == 2 or e.metaKey or e.ctrlKey
 
@@ -39,11 +46,15 @@ App.Views.Articles = Backbone.View.extend
       if $(e.target).attr('href') isnt ""
         Backbone.history.navigate($(e.target).attr('href'), true)
         _gaq.push(['_trackPageview', $(location).attr('pathname')])
+      # for hash style
       # window.location.hash = $(e.target).attr('href')
+      
+    $('#nav_home').addClass("active")
 
   events:
     'click .comments button[type="button"]' :  'showComments'
     'click #show-more-articles button'      :  'addMore'
+    'click #sign_in'                        :  'login'
     
   addMore: ->
     $("#more").append(@moreLoadingTemplate)
@@ -55,4 +66,8 @@ App.Views.Articles = Backbone.View.extend
   showComments: (e) ->
     commentsViewEl = $("##{e.target.id}").parent()
     commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id)
-    
+  
+  login: (e) ->
+    return true if e.which == 2 or e.metaKey or e.ctrlKey
+
+    e.preventDefault()

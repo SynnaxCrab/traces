@@ -3,7 +3,7 @@ App.Routers.Articles = Backbone.Router.extend
     # "articles/:slug"  :  "edit"  
     ""  :  "index"
     "articles/:slug"  :  "show"
-    "/articles/:slug"  :  "show"
+    # "/articles/:slug"  :  "show"
     "/:year/:month/:day/:slug"  :  "show2"
     
   initialize: ->
