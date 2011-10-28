@@ -19,6 +19,14 @@ class BackboneController < ApplicationController
     end
   end
   
+  def signed_in_check
+    if user_signed_in?
+      render :json => current_user, :status => 200
+    else
+      render :json => "Unauthorized", :status => 401
+    end
+  end
+  
   private
   def is_googlebot? 
     ua = request.user_agent

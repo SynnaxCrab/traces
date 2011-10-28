@@ -1,3 +1,5 @@
+require 'rack/cache'
+
 Traces::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -65,4 +67,12 @@ Traces::Application.configure do
   
   # cache store
   config.cache_store = :dalli_store
+  
+  # Enable compression
+  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
+
+  # Enable Static resources Cache
+  $cache = Dalli::Client.new('localhost:11211')
+  config.middleware.use Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
+
 end

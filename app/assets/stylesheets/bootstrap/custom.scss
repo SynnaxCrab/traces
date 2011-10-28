@@ -1,3 +1,7 @@
+body {
+  background: url('/assets/bg-stark.png') repeat scroll 0 0 #C4C4C4;
+}
+
 header {
   margin-bottom: 40px;
   
@@ -10,6 +14,42 @@ header {
     ul li a {
       padding: 10px 10px 6px;
     }
+  }
+  
+  .signin-fields {
+    padding: 5px 10px 10px 10px;
+  }
+  
+  .dropdown-menu {
+    padding: 0;
+    max-width: none;
+    width: 250px;
+  }
+  
+  .textbox {
+    margin: 0;
+    padding: 0;
+  }
+  
+  input {
+    
+  }
+  
+  label {
+    padding: 0;
+    color: white;
+    font-size: 11px;
+    text-align: left;
+  }
+  
+  .subchck {
+    position: relative;
+    text-align: right;
+  }
+  
+  button {
+    display: inline-block;
+    color: #333333;
   }
 }
 
@@ -142,4 +182,10 @@ footer {
   ul li a {
     color: #fff;
   }
+}
+
+.invisible {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
 }

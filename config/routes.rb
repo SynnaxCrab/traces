@@ -30,6 +30,7 @@ Traces::Application.routes.draw do
   
   ## routes for CouchDB
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
+  devise_for :users, :controllers => { :session => "session" }
 
   resources :diaries
   resources :articles do
@@ -49,6 +50,8 @@ Traces::Application.routes.draw do
 
   match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
+  
+  match '/users/signed_in_check' => 'backbone#signed_in_check'
 
   # match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }
   # match '/:username' => 'users#show'
