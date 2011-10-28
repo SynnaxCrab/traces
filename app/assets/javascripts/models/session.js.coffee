@@ -1,16 +1,17 @@
 window.Session = Backbone.Model.extend
     
-  default:
-    sessionId : ""
-    userName  : ""
-    password  : ""
-    userId    : ""
+  # defaults:
+  #   user : 
+  #     email  : "winfield301@gmail.com"
+  #     password  : ""
+  #     remember_me : "1"
+  idAttribute: "_id"
   
-  url: ->
-    if @isAuthorized
-      "/users/sign_in"
-    else
-      "/users/sign_out"
+  # url: ->
+  #   if @isAuthorized
+  #     "/users/sign_out"
+  #   else
+  #     "/users/sign_in"
        
   isAuthorized: ->
-    Boolean @get("sessionId")
+    @get("_id")

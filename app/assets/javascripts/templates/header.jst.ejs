@@ -14,23 +14,43 @@
           <li><a href="http://apple.com">Steve Jobs 1955-2011</a></li>
         </ul>
       </div> -->
+      <div id="sign-in">
+        <ul class="nav secondary-nav">
+          <li class="dropdown">
+            <a href="users/sign_in" class="dropdown-toggle">Sign in</a>
+            <ul class="dropdown-menu">
+              <form class="signin-fields">
+                <fieldset class="textbox">
+                  <label class="username">
+                    <span>Email</span>
+                    <input type="text" value="" name="session[email]" autocomplete="on" />
+                  </label>
+                  <label class="password">
+                    <span>Password</span>
+                    <input type="password" value="" name="session[password]" />
+                  </label>
+                </fieldset>
+                <fieldset class="subchck">
+                  <label class="remember">
+                    <input type="checkbox" value="1" name="remember_me" />
+                    <span>Remember me</span>
+                  </label>
+                  <button type="submit" class="btn">Sign in</button>
+                </fieldset>
+              </form>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="sign-out" class="invisible">
+        <ul class="nav secondary-nav">
+          <a href="users/sign_out">Sign out</a>
+        </ul>
+      </div>
       <div class="outside-links">
         <ul class="nav">
           <li><a href="/feed"><img alt="Feed" src="/assets/feed-icon-28x28.png" height="20" width="20"/></a></li> 
           <li><a href="http://twitter.com/lainuo"><img alt="Twitter" src="/assets/twitter.png" height="20" width="20" /></a></li>
-        </ul>
-      </div>
-      <div>
-        <ul class="nav secondary-nav">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle">Sign in</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Secondary link</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Another link</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
     </div>

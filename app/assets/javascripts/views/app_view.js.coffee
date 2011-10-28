@@ -4,14 +4,17 @@ App.Views.Articles = Backbone.View.extend
   moreLoadingTemplate : JST["templates/loading"].call(this)
   
   initialize: ->
-    _.bindAll this, 'addAll', 'addOne'
+    _.bindAll this, 'addAll', 'addOne', 'loggedIn', 'loggedOut'
     
     @collection
       .bind('reset', @addAll)
       .bind('add', @addOne)
-      
+    
+    @options.session.bind('change', @loggedIn)
+    @options.session.bind('loggedOut', @loggedOut)
+    
   addOne: (article) ->
-    articleView = new App.Views.Article(model:article)
+    articleView = new App.Views.Article(model:article, session:@options.session)
     articleRendered = articleView.render().el
     $("#contents").append(articleRendered)
       
@@ -19,43 +22,34 @@ App.Views.Articles = Backbone.View.extend
     if $("#loader").length
       $("#loader").remove()
     $("#contents").children().remove()
-    unless $("header").children().length
-      $("header").append(@headerTemplate).fadeIn("slow")
-    @collection.each(@addOne)
-    unless $("footer").children().length
-      $("footer").append(@footerTemplate).fadeIn("slow")
     
+    @addHeader()
+    @collection.each(@addOne)
+    @addFooter()
+ 
     if @collection.size() < 2
       $('#show-more-articles').addClass('invisible')
     else
       $('#show-more-articles').removeClass('invisible')
-      
-    $('#nav_home').click (e) ->
-      return true if e.which == 2 or e.metaKey or e.ctrlKey
-
-      e.preventDefault()
-      Backbone.history.navigate($(e.target).attr('href'), true) 
-      _gaq.push(['_trackPageview', $(location).attr('pathname')])
-      # for hash style
-      # window.location.hash = $(e.target).attr('href')
-           
-    $('article h1 a').click (e) ->
-      return true if e.which == 2 or e.metaKey or e.ctrlKey
-
-      e.preventDefault()
-      if $(e.target).attr('href') isnt ""
-        Backbone.history.navigate($(e.target).attr('href'), true)
-        _gaq.push(['_trackPageview', $(location).attr('pathname')])
-      # for hash style
-      # window.location.hash = $(e.target).attr('href')
       
     $('#nav_home').addClass("active")
 
   events:
     'click .comments button[type="button"]' :  'showComments'
     'click #show-more-articles button'      :  'addMore'
-    'click #sign_in'                        :  'login'
-    
+    'click #sign-in button'                 :  'login'
+    'click #sign-out a'                     :  'logout'
+  
+  addHeader: ->
+    unless $("header").children().length
+      $("header").append(@headerTemplate).fadeIn("slow")
+    if @options.session.isAuthorized()
+      @loggedIn()
+  
+  addFooter: ->
+    unless $("footer").children().length
+      $("footer").append(@footerTemplate).fadeIn("slow")
+      
   addMore: ->
     $("#more").append(@moreLoadingTemplate)
     @collection.url = "articles/?skip=" + @collection.size()
@@ -65,9 +59,41 @@ App.Views.Articles = Backbone.View.extend
     
   showComments: (e) ->
     commentsViewEl = $("##{e.target.id}").parent()
-    commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id)
+    commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id, session:@options.session)
   
   login: (e) ->
     return true if e.which == 2 or e.metaKey or e.ctrlKey
 
     e.preventDefault()
+    
+    email = $('input[name="session[email]"]').val()
+    password = $('input[name="session[password]"]').val()
+    rememberMe = if $('input[name="remember_me"]').is(':checked') then 1 else 0
+    
+    if email is "" or password is ""
+      return false
+    
+    @options.session.set(
+      user: 
+        "email"       : email
+        "password"    : password
+        "remember_me" : rememberMe
+      {silent : true})
+            
+    @options.session.save({}, url : 'users/sign_in')
+  
+  logout: (e) ->
+    return true if e.which == 2 or e.metaKey or e.ctrlKey
+    e.preventDefault()
+    @options.session.fetch url: 'users/sign_out'
+    @options.session.trigger("loggedOut")
+    @options.session.unset '_id', silent : true
+    
+  loggedIn: ->
+    $('li.dropdown').removeClass('open')
+    $('#sign-in').addClass('invisible')
+    $('#sign-out').removeClass('invisible')
+    
+  loggedOut: ->
+    $('#sign-in').removeClass('invisible')
+    $('#sign-out').addClass('invisible')

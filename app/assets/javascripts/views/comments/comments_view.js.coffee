@@ -1,14 +1,9 @@
 App.Views.Comments = Backbone.View.extend
-  #template : COMMENT_HEADER
   template : JST["templates/comment_header"].call(this)
-  #newCommentTemplate : NEW_COMMENT
   newCommentTemplate : JST["templates/new_comment"].call(this)
   initialize: ->
     _.bindAll this, 'addAll', 'addOne'
     
-    # @el = $("##{@options.slug}").parent() 
-    # @el = $("##{@options.articleId}").parent() 
-    # @collection = new App.Collections.Comments(article_slug:@options.slug)
     @collection = new App.Collections.Comments(articleId:@options.articleId)
     @collection
       .bind('reset', @addAll)
@@ -35,7 +30,6 @@ App.Views.Comments = Backbone.View.extend
   newComment: (e) ->
     targetId = e.target.id
     articleId = targetId.split("_")[2]
-    #alert(articleId)
     @collection.create(@newCommentAttributes(articleId))
   
   newCommentAttributes: (articleId) ->
@@ -46,8 +40,5 @@ App.Views.Comments = Backbone.View.extend
       "email"            :  $("#comment_email_" + articleId).val(),
       "name"             :  $("#comment_name_" + articleId).val(),
       "website"          :  $("#comment_website_" + articleId).val(),
-      #"couchrest-type"   :  "Comment",
-      #created_at       :  new Date(),
-      #updated_at       :  new Date()
     }
     }
