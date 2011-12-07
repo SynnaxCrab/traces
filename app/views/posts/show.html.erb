@@ -9,6 +9,6 @@
     <ol id="comments_list">
       <%= render @post.first.comments %>
     </ol>
-  
+
   <%= render :partial => "comments/new_comment", :locals => { :post => @post.first }%>
 </section>

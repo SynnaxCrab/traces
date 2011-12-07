@@ -1,5 +1,5 @@
 <li id="comment-<%= comment.id %>">
-  <p><%= link_to comment.name, comment.website %> wrote: 
+  <p><%= link_to comment.name, comment.website %> wrote:
   <% if user_signed_in? %>
     <%= link_to 'X', comment, :confirm => 'Are you sure?', :method => :delete, :remote => true %>
   <% end %>

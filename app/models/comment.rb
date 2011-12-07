@@ -1,18 +1,18 @@
 class Comment < CouchRest::Model::Base
   use_database @@CouchDB.default_database
   include Rakismet::Model
-  
+
   belongs_to :article
-  
+
   property :email
   property :website
   property :name
   property :content
-  
+
   timestamps!
-  
+
   rakismet_attrs :author => :name, :author_email => :email, :author_url => :website, :content => :content
-  
+
   view_by :_id
   view_by :article_created_at, :map => "
     function(doc) {

@@ -5,11 +5,11 @@ class User < CouchRest::Model::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   use_database @@CouchDB.default_database
-  
+
   property :username
   property :name
-  
+
   timestamps!
-  
+
   view_by :email
 end
