@@ -1,3 +1,1 @@
-//$("#all_tags").html("<%= escape_javascript(render :partial => 'tag', :collection => @tags) %>");
-$("#all_tags").html("<%= escape_javascript(render :partial => 'dir', :locals => {:dirs => @dirs}) %>");
-//$("#all_tags").html("<%= escape_javascript(@dirs) %>");
+$("#all_tags").html("<%= escape_javascript(render 'dir', :locals => {:dirs => @dirs}) %>");
