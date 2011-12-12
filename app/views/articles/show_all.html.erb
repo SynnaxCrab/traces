@@ -1,5 +1,5 @@
 <section id="contents">
-  <% unless @articles.nil? %>
+  <% if @article.nil? %>
     <%= render @articles %>
   <% else %>
     <%= render @article %>

@@ -1,4 +1,4 @@
-<%= render "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
+<%= render :partial => "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
 
 <section id="contents">
   <%= render @post %>

@@ -1,18 +1,4 @@
 class CommentsController < ApplicationController
-  # def create
-  #   @post = Post.find(params[:post_id])
-  #   @comment = @post.comments.build(params[:comment])
-  #
-  #   respond_to do |format|
-  #     if @comment.save
-  #       format.html { redirect_to @post}
-  #       format.js
-  #     else
-  #       format.html { redirect_to @post}
-  #     end
-  #   end
-  #
-  # end
 
   def index
     # @article = Article.by_slug(:key => params[:article_id]).first
@@ -25,19 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    unless params[:article_id].nil?
-      @article = Article.by__id(:key => params[:article_id]).first
-      if @article.nil?
-        @article = Article.by_slug(:key => params[:article_id]).first
-      end
-      @comment = Comment.new(params[:comment])
-      @comment.article_id = @article.id
-      puts "#{@comment.spam?}"
-    else
-      @comment = Comment.new(params[:comment])
-      @comment.article_id = params[:comment][:article_id]
-      #raise "#{@comment}"
-    end
+    @comment = Comment.new_by_article(params)
 
     respond_to do |format|
       unless @comment.spam?
