@@ -18,7 +18,7 @@
           <%= render @comments %>
         </ol>
       <%= error_messages_for :comment %>
-      <%= render :partial => "comments/new_comment", :locals => { :article => @article }%>
+      <%= render "comments/new_comment", :article => @article %>
     </section>
   <% end %>
 </section>
