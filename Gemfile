@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 # source 'http://gemcutter.org'
 # http://gems.rubyforge.org/
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.3'
 
 gem 'dynamic_form'
 
@@ -10,6 +10,7 @@ group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
+  gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
 end
 gem 'ejs'
 

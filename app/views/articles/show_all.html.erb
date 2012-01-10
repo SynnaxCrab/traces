@@ -1,24 +1,24 @@
 <section id="contents">
-  <% unless @articles.nil? %>
+  <% if @article.nil? %>
     <%= render @articles %>
   <% else %>
     <%= render @article %>
     <section class="comments">
       <h3>
-        <span class="comments_count"><%= @comments.size %> 
-        <% if @comments.size > 1 %> 
+        <span class="comments_count"><%= @comments.size %>
+        <% if @comments.size > 1 %>
         Comments
-        <% else %> 
-        Comment 
+        <% else %>
+        Comment
         <% end %>
         </span>
-        to 
+        to
         <%= @article.title%></h3>
         <ol id="comments_list" class="comments_list">
           <%= render @comments %>
         </ol>
       <%= error_messages_for :comment %>
-      <%= render :partial => "comments/new_comment", :locals => { :article => @article }%>
+      <%= render "comments/new_comment", :article => @article %>
     </section>
   <% end %>
 </section>

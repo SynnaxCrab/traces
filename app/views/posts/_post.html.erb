@@ -1,15 +1,15 @@
 <article>
   <section id="post_meta">
     <p>
-    Created @ 
-    <time datetime="<%= post.created_at.to_date.to_s %>">
+      Created @
+      <time datetime="<%= post.created_at.to_date.to_s %>">
       <%= post.created_at.to_time.getlocal.to_datetime.to_formatted_s(:long) %>
     </time>
     by <%= post.admin.name %>
     </p>
     <p>
     tags:<% post.terms.find(:all, :conditions => "looking = 'tag' ").each do |tag| %>
-      <%= tag.name %> 
+      <%= tag.name %>
     <% end %>
     </p>
   </section>

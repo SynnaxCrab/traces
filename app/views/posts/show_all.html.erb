@@ -8,10 +8,10 @@
 
 <% unless @post.nil? %>
 <section id="comments">
-    <ol id="comments_list">
-      <%= render @post.first.comments %>
-    </ol>
-  
-  <%= render :partial => "comments/new_comment", :locals => { :post => @post.first }%>
+  <ol id="comments_list">
+    <%= render @post.first.comments %>
+  </ol>
+
+  <%= render "comments/new_comment", :locals => { :post => @post.first }%>
 </section>
 <% end %>

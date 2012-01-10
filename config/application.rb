@@ -46,10 +46,10 @@ module Traces
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.1'
-    
+
     config.rakismet.key = '4004ed7752c5'
     config.rakismet.url = 'http://www.lainuo.info/'
   end

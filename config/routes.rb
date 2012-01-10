@@ -1,33 +1,33 @@
 Traces::Application.routes.draw do
-  
+
   ## routes for sql implement
   # devise_for :admins, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
-  # 
+  #
   #   resources :posts, :except => :index do
   #     resources :comments
-  #     resources :terms 
-  #     resources :tags  
+  #     resources :terms
+  #     resources :tags
   #   end
-  #   
+  #
   #   resources :terms do
   #     resources :posts
   #   end
-  #   
+  #
   #   resources :tags do
   #     resources :posts
   #   end
-  #   
+  #
   #   root :to => "posts#index"
-  #   
+  #
   #   match '/feed' => 'posts#feed'
-  
+
   #clea the uri from "2010/XXX" or "2010/09/XXX" all to "2010/09/23/XXX"
   # match "/:year(/:month)/:title" => "posts#show_redirect",
   #   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :slug => /\d-.*/ }
-  #   
-  #   match "/:year((/:month(/:day))(/:title))" => "posts#show_all", 
+  #
+  #   match "/:year((/:month(/:day))(/:title))" => "posts#show_all",
   #   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
-  
+
   ## routes for CouchDB
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
   devise_for :users, :controllers => { :session => "session" }
@@ -50,7 +50,7 @@ Traces::Application.routes.draw do
 
   match "/:year((/:month(/:day))(/:slug))" => "articles#show_all",
   :constraints => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/, :day => /0[1-9]|1\d|2\d|3[0-1]/ }
-  
+
   match '/users/signed_in_check' => 'backbone#signed_in_check'
 
   # match '/:id' => 'posts#show', :constraints => { :id => /\d.+/ }

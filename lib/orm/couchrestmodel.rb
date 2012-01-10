@@ -1,7 +1,7 @@
 module Devise
   module Orm
     module CouchRestModel
-      module Hook        
+      module Hook
         def devise_modules_hook!
           extend Schema
           create_views_by_authentication_keys
@@ -22,7 +22,7 @@ module Devise
       module Schema
         include Devise::Schema
         # Tell how to apply schema methods.
-        def apply_devise_schema(name, type, options={})          
+        def apply_devise_schema(name, type, options={})
           return unless Devise.apply_schema
           type = String if name == :sign_in_count
           type = Time if type == DateTime

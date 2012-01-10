@@ -61,13 +61,13 @@ Traces::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
+
   # customized time zone, and I really hate "Beijing"
   config.time_zone = "Taipei"
-  
+
   # cache store
   config.cache_store = :dalli_store
-  
+
   # Enable compression
   config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
 

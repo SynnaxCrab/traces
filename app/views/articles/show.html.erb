@@ -1,5 +1,3 @@
-<%= render :partial => "sidebar", :locals => { :posts => @recent_posts, :tags => @tags } %>
-
 <section id="contents">
   <%= render @post %>
 </section>
@@ -11,6 +9,6 @@
   <ol class="comments_list">
     <%= render @post.first.comments %>
   </ol>
-  
-  <%= render :partial => "comments/new_comment", :locals => { :post => @post.first }%>
+
+  <%= render "comments/new_comment", :locals => { :post => @post.first }%>
 </section>

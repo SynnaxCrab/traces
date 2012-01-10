@@ -1,7 +1,7 @@
 <%= form_for [article, Comment.new], :remote => true do |f| %>
   <fieldset>
     <legend>Leave Your Comment</legend>
-  
+
     <div class="clearfix">
       <%= label_tag(:comment_name, "Name *")%>
       <div class="input">
@@ -26,7 +26,7 @@
         <%= f.text_area :content, :size => "60x12", :class => "xxlarge" %>
       </div>
     </div>
-  
+
     <div class="actions">
       <%= button_tag "Leave Your Comment", :class => "btn primary" %>
     </div>
