@@ -4,7 +4,7 @@
   </section>
   <section class="post_meta">
     <p>
-    Created @ 
+    Created @
     <time datetime="<%= article.created_at.to_date.to_s %>">
       <%= Time.zone.at(article.created_at.to_time).to_datetime.to_formatted_s(:long) %>
     </time>

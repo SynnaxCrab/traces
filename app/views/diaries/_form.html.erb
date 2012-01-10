@@ -1,4 +1,4 @@
-<%= form_for article, :html => {:multipart => true} do |f| %>
+<%= form_for diary, :html => {:multipart => true} do |f| %>
 
 <dl>
   <dd><%= label_tag(:title_label, "Title")%></dd>
@@ -33,11 +33,11 @@
 <div id='all_tags'>
 </div>
 
-<p>  
-  <%= file_field_tag("article[attachments][]") %>  
+<p>
+  <%= file_field_tag("article[attachments][]") %>
 </p>
-<p>  
-  <%= file_field_tag("article[attachments][]") %>  
+<p>
+  <%= file_field_tag("article[attachments][]") %>
 </p>
 
 <%= f.submit %>

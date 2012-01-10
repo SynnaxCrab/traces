@@ -1,5 +1,6 @@
 /*
  * FIXME: Introduce SCSS & Sprockets
  *= require_self
- *= require ./bootstrap/bootstrap
+ *= require bootstrap
+ *= require custom
 */

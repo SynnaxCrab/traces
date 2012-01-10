@@ -1,7 +1,7 @@
 # overwrite Devise default
 
 class RegistrationsController < Devise::RegistrationsController
-  
+
   def new
     if User.all.empty?
       puts "empty"
@@ -11,5 +11,5 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to root_url
     end
   end
-  
+
 end
