@@ -2,7 +2,6 @@ App.Routers.Articles = Backbone.Router.extend
   routes:
     ""  :  "index"
     "articles/:slug"  :  "show"
-    # "/articles/:slug"  :  "show"
     "/:year/:month/:day/:slug"  :  "show2"
     
   initialize: ->
@@ -16,7 +15,7 @@ App.Routers.Articles = Backbone.Router.extend
     $('article').show(500)
     $('#show-more-articles').show(550)
     @articlesCollection.each (article) ->
-      article.set 'articleLink' : 'article/' + article.get('slug')
+      article.set 'articleLink' : 'articles/' + article.get('slug')
       
   show: (slug) ->
     # @articlesCollection.show(slug)
