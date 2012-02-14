@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require dom_ready
 //= require_tree ./effects
 //= require underscore-min
 //= require backbone-min

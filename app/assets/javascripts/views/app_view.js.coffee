@@ -35,6 +35,8 @@ App.Views.Articles = Backbone.View.extend
     $('#nav_home').addClass("active")
 
   events:
+    'click header a.brand'                  :  'home'
+    'click #nav_home'                       :  'home'
     'click #show-more-articles button'      :  'addMore'
     'click #sign-in button'                 :  'login'
     'click #sign-out a'                     :  'logout'
@@ -56,6 +58,13 @@ App.Views.Articles = Backbone.View.extend
     @collection.url = "articles"
     $("#more_loading").remove();
   
+  home: (e) ->
+    return true if e.which == 2 or e.metaKey or e.ctrlKey
+
+    e.preventDefault()
+    Backbone.history.navigate($(e.target).attr('href'), true)
+    _gaq.push(['_trackPageview', $(location).attr('pathname')])
+
   login: (e) ->
     return true if e.which == 2 or e.metaKey or e.ctrlKey
 

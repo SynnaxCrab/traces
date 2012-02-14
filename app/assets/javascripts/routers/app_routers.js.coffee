@@ -15,7 +15,8 @@ App.Routers.Articles = Backbone.Router.extend
   index: ->
     $('article').show(500)
     $('#show-more-articles').show(550)
-    # @articlesCollection.index()
+    @articlesCollection.each (article) ->
+      article.set 'articleLink' : 'article/' + article.get('slug')
       
   show: (slug) ->
     # @articlesCollection.show(slug)
