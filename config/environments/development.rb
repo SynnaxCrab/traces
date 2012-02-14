@@ -28,6 +28,8 @@ Traces::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # config.assets.logger = false
+  
   # customized time zone, and I really hate "Beijing"
   config.time_zone = "Taipei"
 end

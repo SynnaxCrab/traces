@@ -14,15 +14,14 @@ App.Views.Comments = Backbone.View.extend
   addOne: (comment) ->
     commentView = new App.Views.Comment(model:comment, id:"comment-"+comment.get("_id"))
     commentRendered = commentView.render().el
-    @el.find(".comments_list").append(commentRendered)
+    $(@el).find(".comments_list").append(commentRendered)
 
   addAll: ->
-    @el.children().remove()
+    $(@el).children().remove()
     templateData = comments_count:@collection.length
-    @el.append(Mustache.to_html(@template, templateData)).fadeIn("fast")
+    $(@el).append(Mustache.to_html(@template, templateData)).fadeIn("fast")
     @collection.each(@addOne)
-    @el.append(Mustache.to_html(@newCommentTemplate, {articleId:@options.articleId})).fadeIn("slow")
-    #alert(@el.data("events"))
+    $(@el).append(Mustache.to_html(@newCommentTemplate, {articleId:@options.articleId})).fadeIn("slow")
     
   events:
     'click .actions button[type="submit"]'   :  'newComment'

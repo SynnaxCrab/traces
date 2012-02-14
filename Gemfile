@@ -1,38 +1,37 @@
 source 'http://rubygems.org'
-# source 'http://gemcutter.org'
-# http://gems.rubyforge.org/
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.1'
 
 gem 'dynamic_form'
 
 group :assets do
-  gem 'sass-rails', "~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
-  gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+  gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
+  # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
 end
+
 gem 'ejs'
 
 gem 'jquery-rails'
 
 gem 'kramdown'
 
-# gem 'couchrest', :git => 'git://github.com/couchrest/couchrest.git'
-# gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
+# CouchDB Related
 gem 'couchrest_model'
-
 gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-# gem 'devise',:git => 'git://github.com/plataformatec/devise.git'
-gem 'devise'
-gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
-# gem 'rails3-generators', :git => 'git://github.com/shenoudab/rails3-generators.git'
+gem 'devise', '1.5.2'
+# gem 'devise_couch', :git => 'git://github.com/shenoudab/devise_couch.git'
+gem 'devise_couch', :git => 'git@github.com:winfield/devise_couch.git'
 
 gem 'rakismet'
 
 gem 'dalli'
 
 group :development do
+  gem 'thin'
+  # gem 'quiet_assets', :git => 'git://github.com/AgilionApps/quiet_assets.git'
   gem 'pry'
   gem 'pry-doc'
 end

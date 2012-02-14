@@ -35,7 +35,6 @@ App.Views.Articles = Backbone.View.extend
     $('#nav_home').addClass("active")
 
   events:
-    'click .comments button[type="button"]' :  'showComments'
     'click #show-more-articles button'      :  'addMore'
     'click #sign-in button'                 :  'login'
     'click #sign-out a'                     :  'logout'
@@ -56,10 +55,6 @@ App.Views.Articles = Backbone.View.extend
     @collection.fetch({add: true})
     @collection.url = "articles"
     $("#more_loading").remove();
-    
-  showComments: (e) ->
-    commentsViewEl = $("##{e.target.id}").parent()
-    commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id, session:@options.session)
   
   login: (e) ->
     return true if e.which == 2 or e.metaKey or e.ctrlKey

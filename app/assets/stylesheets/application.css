@@ -1,6 +1,6 @@
 /*
  * FIXME: Introduce SCSS & Sprockets
  *= require_self
- *= require bootstrap
+ *= require twitter/bootstrap
  *= require custom
 */

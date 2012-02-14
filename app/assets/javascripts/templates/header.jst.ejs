@@ -1,8 +1,12 @@
-<div class="topbar">
-  <div class="topbar-inner">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
     <div class="container">
-      <!-- <h3><a href="http://www.lainuo.info/">Traces</a></h3> -->
-      <a class="brand" href="">Traces</a>
+      <a class="brand" href="#">Traces</a>
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="i-bar"></span>
+        <span class="i-bar"></span>
+        <span class="i-bar"></span>
+      </a>
       <div class="inner-links">
         <ul class="nav">
           <li id="nav_home"><a href="">Home</a></li> 
@@ -15,9 +19,9 @@
         </ul>
       </div> -->
       <div id="sign-in">
-        <ul class="nav secondary-nav">
+        <ul class="nav pull-right">
           <li class="dropdown">
-            <a href="users/sign_in" class="dropdown-toggle">Sign in</a>
+            <a href="users/sign_in" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <form class="signin-fields">
                 <fieldset class="textbox">
@@ -31,10 +35,10 @@
                   </label>
                 </fieldset>
                 <fieldset class="subchck">
-                  <label class="remember">
+                  <div class="remember">
                     <input type="checkbox" value="1" name="remember_me" />
                     <span>Remember me</span>
-                  </label>
+                  </div>
                   <button type="submit" class="btn">Sign in</button>
                 </fieldset>
               </form>
@@ -43,8 +47,10 @@
         </ul>
       </div>
       <div id="sign-out" class="invisible">
-        <ul class="nav secondary-nav">
-          <a href="users/sign_out">Sign out</a>
+        <ul class="nav pull-right">
+          <li>
+            <a href="users/sign_out">Sign out</a>
+          </li>
         </ul>
       </div>
       <div class="outside-links">

@@ -11,8 +11,10 @@ header {
 
   .outside-links {
     float: right;
-    ul li a {
-      padding: 10px 10px 6px;
+    .nav > li > a {
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-bottom: 5px;
     }
   }
   
@@ -31,18 +33,18 @@ header {
     padding: 0;
   }
   
-  input {
-    
-  }
-  
   label {
     padding: 0;
-    color: white;
+    color: #333333;
     font-size: 11px;
     text-align: left;
   }
   
   .subchck {
+    .remember {
+      text-align: left;
+    }
+    padding: 0;
     position: relative;
     text-align: right;
   }
@@ -73,6 +75,7 @@ article {
     line-height: 150%;
     background-color: #222;
     color: #fff;
+    border: none;
   }
   
   pre {
@@ -98,17 +101,20 @@ article {
 }
 
 footer {
-//  margin-top: $baseline - 1;
-//  padding-top: $baseline - 1;
   border-top: 1px solid #eee;
-  
-  #tools {
-    float: right;
-    ul {
-      list-style: none outside none;
-      li {
-        float: right;
-        margin-left: 10px;
+  .container {
+    margin-top: 20px; 
+    #tools {
+      float: right;
+      h3 {
+        margin-bottom: 10px;
+      }
+      ul {
+        list-style: none outside none;
+        li {
+          float: right;
+          margin-left: 10px;
+        }
       }
     }
   }
@@ -134,11 +140,24 @@ footer {
   
   legend {
     margin: 0;
+    padding-left: 140px;
     font-size: 18px;
   }
   
-  label {
-    width: 80px;
+  .form-horizontal {
+    .form-actions {
+      padding: 17px 20px 18px 40px;  
+    }
+    
+    .control-group {
+      label {
+        width: 80px;     
+      }
+    
+      .controls {
+        margin-left: 100px;
+      }
+    }
   }
   
   .input {
@@ -146,11 +165,8 @@ footer {
   }
   
   .xxlarge {
-    height: 80px;
-  }
-  
-  .actions {
-    padding: 17px 20px 18px 40px;
+    height: 100px;
+    width: 530px;
   }
 }
 
