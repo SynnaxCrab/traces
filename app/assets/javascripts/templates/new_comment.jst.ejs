@@ -1,31 +1,33 @@
-<fieldset>
-  <legend>Leave Your Comment</legend> 
-  <div class="clearfix">
-    <label for="comment_name_{{articleId}}">Name *</label>
-    <div class="input">
-      <input id="comment_name_{{articleId}}" name="comment[name]" size="30" type="text" />
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Leave Your Comment</legend> 
+    <div class="control-group">
+      <label for="comment_name_{{articleId}}">Name *</label>
+      <div class="controls">
+        <input id="comment_name_{{articleId}}" name="comment[name]" size="30" type="text" />
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <label for="comment_mail_{{articleId}}">Mail *</label>
-    <div class="input">
-      <input id="comment_email_{{articleId}}" name="comment[email]" size="30" type="text" />
+    <div class="control-group">
+      <label for="comment_mail_{{articleId}}">Mail *</label>
+      <div class="controls">
+        <input id="comment_email_{{articleId}}" name="comment[email]" size="30" type="text" />
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <label for="comment_website_{{articleId}}">Website</label>
-    <div class="input">
-      <input id="comment_website_{{articleId}}" name="comment[website]" size="30" type="text" />
+    <div class="control-group">
+      <label for="comment_website_{{articleId}}">Website</label>
+      <div class="controls">
+        <input id="comment_website_{{articleId}}" name="comment[website]" size="30" type="text" />
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <label for="comment_content_{{articleId}}">Content</label>
-    <div class="input">
-      <textarea id="comment_content_{{articleId}}" name="comment[content]" class="xxlarge"></textarea>
+    <div class="control-group">
+      <label for="comment_content_{{articleId}}">Content</label>
+      <div class="controls">
+        <textarea id="comment_content_{{articleId}}" name="comment[content]" class="xxlarge"></textarea>
+      </div>
     </div>
-  </div>
     
-  <div class="actions">
-    <button id="comment_commit_{{articleId}}" type="submit" class="btn primary">Leave Your Comment</button>
-  </div>
-</fieldset>
+    <div class="form-actions">
+      <button id="comment_commit_{{articleId}}" type="submit" class="btn btn-primary">Leave Your Comment</button>
+    </div>
+  </fieldset>
+</form>

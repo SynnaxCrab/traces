@@ -14,6 +14,7 @@ App.Views.Article = Backbone.View.extend
 
   events:
     'click article h1 a'  :  'show'
+    'click .comments button[type="button"]' :  'showComments'
 
   show: (e) ->
     return true if @model.get('articleLink').indexOf('article') == -1
@@ -28,3 +29,7 @@ App.Views.Article = Backbone.View.extend
     $('#show-more-articles').hide()
     $('article').parent().children().hide(300)
     $(@el).show(500)
+  
+  showComments: (e) ->
+    commentsViewEl = $(@el).find('.comments')
+    commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id, session:@options.session)
