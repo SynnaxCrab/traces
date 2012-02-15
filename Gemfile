@@ -13,9 +13,9 @@ group :assets do
 end
 
 gem 'ejs'
-
 gem 'jquery-rails'
 
+# markdown
 gem 'kramdown'
 
 # CouchDB Related
