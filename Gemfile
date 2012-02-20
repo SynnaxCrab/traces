@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
+gem 'traces-vendor'
 
 gem 'dynamic_form'
 
@@ -8,9 +9,10 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-  # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
 end
+
+gem 'twitter-bootstrap-rails'
+gem 'backbone-rails'
 
 gem 'ejs'
 gem 'jquery-rails'

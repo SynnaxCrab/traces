@@ -1,8 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree ./effects
-//= require underscore-min
-//= require backbone-min
+//= require underscore
+//= require backbone
 //= require showdown
 //= require mustache
 //= require_tree ./templates
