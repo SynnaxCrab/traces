@@ -62,7 +62,6 @@ class DiariesController < ArticlesController
     parse_time
 
     unless params[:slug].nil?
-      #raise "#{@begin_time} : #{@end_time} : #{params[:slug]}"
       @diary = Diary.by_slug_created_at(:startkey => [params[:slug], @begin_time], :endkey => [params[:slug], @end_time])
       @diary = @diary.first
     else
