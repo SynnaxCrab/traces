@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 # code traces vendor files gem
 # TODO: seperate them individually
 gem 'traces-vendor'
