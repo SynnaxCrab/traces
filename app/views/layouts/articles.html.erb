@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= auto_discovery_link_tag(:atom, {:controller => "articles", :action => "feed"}) %>
   <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
   <%= stylesheet_link_tag "application" %>
@@ -41,8 +42,8 @@
 
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p class="notice" style="display: none"><%= notice %></p>
+  <p class="alert" style="display: none"><%= alert %></p>
   <p class="is_init_req"><p>
   <header>
     <div class="navbar navbar-fixed-top">
