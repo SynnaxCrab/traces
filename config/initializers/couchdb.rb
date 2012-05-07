@@ -1,7 +1,5 @@
 if Rails.env.production?
   @@CouchDB = CouchRest.new("#{ENV['CLOUDANT_URL']}")
-  #@@CouchDB = CouchRest.new("#{ENV['COUCHONE_URL']}")
-  #@@CouchDB.default_database = 'traces'
   @@CouchDB.define_available_database :default, 'traces', false
 elsif Rails.env.development?
   @@CouchDB = CouchRest.new("http://127.0.0.1:5984")
