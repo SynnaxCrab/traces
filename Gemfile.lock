@@ -5,7 +5,7 @@ GIT
     orm_adapter (0.0.3)
 
 GIT
-  remote: git@github.com:winfield/devise_couch.git
+  remote: git://github.com/winfield/devise_couch.git
   revision: 598680481d05852a1172e14ffec603673d65ce5e
   specs:
     devise_couch (1.0.0.beta2)
