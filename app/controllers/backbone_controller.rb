@@ -1,10 +1,7 @@
 class BackboneController < ApplicationController
-  #layout nil
   layout :determine_layout
   def index
-    #ua = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"
-    #ua = "Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)"
-    #ua = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+    # TODO: use user_agent gem to do this
     if is_IE_below_9?
       @is_ie_9 = true
       render :file => "#{Rails.root}/public/browsers.html", :layout => false
@@ -30,7 +27,6 @@ class BackboneController < ApplicationController
   private
   def is_googlebot?
     ua = request.user_agent
-    #ua = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 
     return false if ua.nil?
     return false unless ua.downcase.index('googlebot')
@@ -40,7 +36,6 @@ class BackboneController < ApplicationController
 
   def is_IE_below_9?
     ua = request.user_agent
-    #ua = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"
 
     return false if ua.nil?
     if ua.downcase.index('msie')
