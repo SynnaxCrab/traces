@@ -29,7 +29,7 @@ gem 'devise', '1.5.2'
 # CouchDB Related
 gem 'couchrest_model'
 gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-gem 'devise_couch', :git => 'git@github.com:winfield/devise_couch.git'
+gem 'devise_couch', :git => 'git://github.com/winfield/devise_couch.git'
 
 # anti-spam
 gem 'rakismet'
