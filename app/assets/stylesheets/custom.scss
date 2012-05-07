@@ -2,59 +2,6 @@ body {
   background: url('/assets/bg-stark.png') repeat scroll 0 0 #C4C4C4;
 }
 
-header {
-  margin-bottom: 40px;
-  
-  .inner-links {
-    float: left;
-  }
-
-  .outside-links {
-    float: right;
-    .nav > li > a {
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 5px;
-    }
-  }
-  
-  .signin-fields {
-    padding: 5px 10px 10px 10px;
-  }
-  
-  .dropdown-menu {
-    padding: 0;
-    max-width: none;
-    width: 250px;
-  }
-  
-  .textbox {
-    margin: 0;
-    padding: 0;
-  }
-  
-  label {
-    padding: 0;
-    color: #333333;
-    font-size: 11px;
-    text-align: left;
-  }
-  
-  .subchck {
-    .remember {
-      text-align: left;
-    }
-    padding: 0;
-    position: relative;
-    text-align: right;
-  }
-  
-  button {
-    display: inline-block;
-    color: #333333;
-  }
-}
-
 article {
   margin-bottom: 40px;
   
