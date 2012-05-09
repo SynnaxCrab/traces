@@ -1,5 +1,5 @@
 class DiariesController < ArticlesController
-  layout "diaries"
+  layout :layout_by_google_analytics
   before_filter :authenticate_user!
 
   def index

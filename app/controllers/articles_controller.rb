@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  layout :determine_layout
+  layout :layout_by_google_analytics
   before_filter :authenticate_user!, :except => [:index, :show, :show_redirect, :show_all, :feed, :more]
 
   def index
@@ -96,23 +96,6 @@ class ArticlesController < ApplicationController
        redirect_to feed_path(:format => :atom), :status => :moved_permanently
      end
      format.atom
-    end
-  end
-
-  protected
-  def redirect_or_render_404(article)
-    if article.nil?
-      render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
-    else
-      redirect_to article_slug(article)
-    end
-  end
-
-  def determine_layout
-    if action_name == 'new' or action_name == 'edit'
-      "articles_without_ga"
-    else
-      "articles"
     end
   end
 end
