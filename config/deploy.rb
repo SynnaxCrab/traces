@@ -31,3 +31,8 @@ namespace :deploy do
   end
 end
 
+task :cp_unicorn_server_config, :roles => :web do
+  run "cd #{deploy_to}/current/config; cp unicorn.rb.server unicorn.rb"
+end
+
+after "deploy:update_code", :cp_unicorn_server_config
