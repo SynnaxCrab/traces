@@ -21,10 +21,10 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 namespace :deploy do
   task :restart do
-    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
+    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
   task :start do
-    run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
+    run "cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D"
   end
   task :stop do
     run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
@@ -35,4 +35,4 @@ task :cp_unicorn_server_config, :roles => :web do
   run "cd #{deploy_to}/current/config; cp unicorn.rb.server unicorn.rb"
 end
 
-after "deploy:update_code", :cp_unicorn_server_config
+after "deploy:create_symlink", :cp_unicorn_server_config
