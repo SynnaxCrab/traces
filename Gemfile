@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 # code traces vendor files gem
 # TODO: seperate them individually
 gem 'traces-vendor'
@@ -37,8 +37,13 @@ gem 'rakismet'
 # memcached
 gem 'dalli'
 
+# deploy
+gem 'capistrano'
+gem 'rvm-capistrano'
+
 group :development do
-  gem 'thin'
+  gem 'unicorn'
+  gem 'foreman'
   gem 'pry'
   gem 'pry-doc'
 end
@@ -49,6 +54,6 @@ group :test do
 end
 
 group :production do
-  gem 'thin'
+  gem 'unicorn'
   gem 'newrelic_rpm'
 end
