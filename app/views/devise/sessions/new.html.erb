@@ -1,7 +1,7 @@
 <div id="sign-in-box">
   <h2>Sign in</h2>
 
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), 
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),
                :html => {:id => "new_session", :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">
@@ -22,7 +22,7 @@
       <% if devise_mapping.rememberable? -%>
         <%= f.label(:remember_me, :class => "control-label") %>
         <div class="controls">
-          <%= f.check_box :remember_me %> 
+          <%= f.check_box :remember_me %>
         </div>
       <% end -%>
     </div>
