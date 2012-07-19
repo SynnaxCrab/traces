@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= auto_discovery_link_tag(:atom, {:controller => "articles", :action => "feed"}) %>
-  <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
+  <%= auto_discovery_link_tag(:atom, feed_path) %>
+  <%= auto_discovery_link_tag(:rss, feed_path) %>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
