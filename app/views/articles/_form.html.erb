@@ -1,31 +1,31 @@
 <%= form_for article, :html => {:class => "form-horizontal", :multipart => true} do |f| %>
   <fieldset>
     <div class="control-group">
-      <%= label_tag 'article_title', 'Title:', :class => 'control-label' %>
+      <%= f.label :title, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :title, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
-      <%= label_tag 'article_slug', 'Slug:', :class => 'control-label' %>
+      <%= f.label :slug, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :slug, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
-      <%= label_tag 'article_content', "Content:", :class => 'control-label' %>
+      <%= f.label :content, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :content, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label 'article_tag_attributes', "Tags:(seperated by comma)", :class => 'control-label' %>
+      <%= f.label :tag_attributes, "Tags(seperated by comma)", :class => 'control-label' %>
       <div class="controls">
         <%= text_area_tag("article[tag_attributes]") %>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label 'article_attachments_', "File:", :class => 'control-label' %>
+      <%= label_tag 'article_attachments_', "File:", :class => 'control-label' %>
       <div class="controls">
         <%= file_field_tag("article[attachments][]") %>
       </div>
