@@ -3,25 +3,25 @@
     <div class="control-group">
       <%= label_tag 'article_title', 'Title:', :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :title, :class => 'control-label' %>
+        <%= f.text_field :title, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
       <%= label_tag 'article_slug', 'Slug:', :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :slug, :class => 'control-label' %>
+        <%= f.text_field :slug, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
       <%= label_tag 'article_content', "Content:", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :content, :size => '90x15' %>
+        <%= f.text_area :content, :class =>"input-xlarge" %>
       </div>
     </div>
     <div class="control-group">
       <%= f.label 'article_tag_attributes', "Tags:(seperated by comma)", :class => 'control-label' %>
       <div class="controls">
-        <%= text_area_tag("article[tag_attributes]", "") %>
+        <%= text_area_tag("article[tag_attributes]") %>
       </div>
     </div>
     <div class="control-group">
