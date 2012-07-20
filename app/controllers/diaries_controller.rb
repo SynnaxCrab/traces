@@ -1,5 +1,4 @@
 class DiariesController < ArticlesController
-  layout "diaries"
   before_filter :authenticate_user!
 
   def index
