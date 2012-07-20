@@ -2,19 +2,57 @@ body {
   background: url('/assets/bg-stark.png') repeat scroll 0 0 #C4C4C4;
 }
 
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+.navbar-fixed-top .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  float: right;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+.navbar-fixed-top .brand:hover {
+  text-decoration: none;
+}
+
+textarea {
+  width: auto;
+}
+
+.span12 h2 {
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+#sign-in-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+
+  h2 {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+}
+
 article {
   margin-bottom: 40px;
-  
+
   h1, h2 {
     margin-bottom: 18px;
   }
-  
+
   p {
     font-size: 16px;
     color: #222;
     line-height: 24px;
   }
-  
+
   code, pre {
     font-family:"Monaco", "Courier New", monospace;
     font-size: 12px;
@@ -23,7 +61,7 @@ article {
     color: #fff;
     border: none;
   }
-  
+
   pre {
     -moz-border-radius:5px;
     -moz-box-shadow:0 -1px 0 #444;
@@ -37,7 +75,7 @@ article {
     /*width: 490px;*/
     margin: 0px 0px 18px -40px;
   }
-  
+
   .post_meta {
     margin-bottom: 18px;
     p {
@@ -49,7 +87,7 @@ article {
 footer {
   border-top: 1px solid #eee;
   .container {
-    margin-top: 20px; 
+    margin-top: 20px;
     #tools {
       float: right;
       h3 {
@@ -66,13 +104,18 @@ footer {
   }
 }
 
+#new_article {
+  input, textarea {
+    width: 70%
+  }
+}
 .comments {
   margin-top: 30px;
   h3 {
     font-size: 18px;
     margin-bottom: 20px;
   }
-  
+
   .comments_list {
     padding-left: 20px;
     text-align: left;
@@ -83,33 +126,33 @@ footer {
       margin-bottom: 18px;
     }
   }
-  
+
   legend {
     margin: 0;
     padding-left: 140px;
     font-size: 18px;
   }
-  
+
   .form-horizontal {
     .form-actions {
-      padding: 17px 20px 18px 40px;  
+      padding: 17px 20px 18px 40px;
     }
-    
+
     .control-group {
       label {
-        width: 80px;     
+        width: 80px;
       }
-    
+
       .controls {
         margin-left: 100px;
       }
     }
   }
-  
+
   .input {
     margin-left: 100px;
   }
-  
+
   .xxlarge {
     height: 100px;
     width: 530px;
@@ -125,7 +168,7 @@ footer {
   left: 0px;
   z-index: 10001;
   padding:0px;
-  margin:0px; 
+  margin:0px;
 }
 
 #loader .loading {

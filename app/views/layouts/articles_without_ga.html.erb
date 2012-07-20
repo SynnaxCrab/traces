@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= auto_discovery_link_tag(:atom, {:controller => "articles", :action => "feed"}) %>
-  <%= auto_discovery_link_tag(:rss, {:controller => "articles", :action => "feed"}) %>
+  <%= auto_discovery_link_tag(:atom, feed_path) %>
+  <%= auto_discovery_link_tag(:rss, feed_path) %>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
@@ -29,30 +29,51 @@
 <body>
   <p class="notice" style="display: none"><%= notice %></p>
   <p class="alert" style="display: none"><%= alert %></p>
-  <p class="is_init_req"><p>
   <header>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <h3><%= link_to t(:blog_title), root_url, { :class => "brand" } %></h3>
-          <div class="inner-links">
-            <ul class="nav">
-              <li><%= link_to "Home", root_url %></li>
-              <li><%= link_to "About", "http://about.me/lainuo" %></li>
-              <% if user_signed_in? %>
-              <li><%= link_to "Diaries", diaries_path %></li>
-              <li><%= link_to "New", new_diary_path %></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path %></li>
-              <% else %>
-              <li><%= link_to "Sign In", new_user_session_path %>
-              <% end %>
-            </ul>
-          </div>
-          <div class="outside-links">
-            <ul class="nav">
-              <li><%= link_to image_tag("feed-icon-28x28.png", :size => "20x20", :alt => "Feed"), feed_path %></li>
-              <li><%= link_to image_tag("twitter.png", :size => "20x20", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
-            </ul>
+          <%= link_to t(:blog_title), root_url, { :class => "brand" } %>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="container nav-collapse">
+            <div class="inner-links">
+              <ul class="nav">
+                <li><%= link_to "Home", root_url %></li>
+                <li><%= link_to "About", "http://about.me/lainuo" %></li>
+                <% if user_signed_in? %>
+                <li><%= link_to "Diaries", diaries_path %></li>
+                <li><%= link_to "New", new_diary_path %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="divider">
+              <ul class="nav">
+                <li class="divider-vertical"></li>
+              </ul>
+            </div>
+            <% if user_signed_in? %>
+            <div id="sign-out-link">
+              <ul class="nav pull-right">
+                <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+              </ul>
+            </div>
+            <% else %>
+            <div id="sign-in-link">
+              <ul class="nav pull-right">
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+              </ul>
+            </div>
+            <% end %>
+            <div class="outside-links">
+              <ul class="nav">
+                <li><%= link_to image_tag("feed-icon-28x28.png", :size => "20x20", :alt => "Feed"), feed_path %></li>
+                <li><%= link_to image_tag("twitter.png", :size => "20x20", :alt => "Twitter"), "http://twitter.com/lainuo" %></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -66,9 +87,9 @@
       <div id="tools">
         <h3>Powered by</h3>
         <ul>
-          <li><a href="https://cloudant.com/"><img alt="Mozilla Firefox" height="30" src="/images/cloudant-logo.png"  /></a></li>
-          <li><a href="http://heroku.com/"><img alt="Heroku" height="30" src="/images/heroku-logo.png" /></a></li>
-          <li><a href="http://www.rubyonrails.org/"><img alt="Ruby on Rails" height="30" src="/images/rails.png" /></a></li>
+          <li><%= link_to image_tag("cloudant-logo.png", :height => "30", :alt => "Cloudant"), "https://cloudant.com/" %></li>
+          <li><%= link_to image_tag("heroku-logo.png", :height => "30", :alt => "Heroku"), "http://heroku.com/" %></li>
+          <li><%= link_to image_tag("rails.png", :height => "30", :alt => "Ruby on Rails"), "http://www.rubyonrails.org/" %></li>
         </ul>
       </div>
     </div>

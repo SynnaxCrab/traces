@@ -9,37 +9,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 
-  <% if controller.action_name == "new" or controller.action_name == "create"%>
-  <title>Creating New Post</title>
+  <% if controller_name == "sessions" and controller.action_name == "new"%>
+  <title>Sign in</title>
   <% else %>
-
-  <% unless @articles.nil? %>
-  <title><%= t(:blog_title) %></title>
-  <% else%>
-
-  <% unless @article.nil? || @article.empty?%>
-  <title><%= @article.title %> | <%= t(:blog_title) %></title>
-  <% else%>
   <title><%= t(:blog_title) %></title>
   <% end %>
-  <% end %>
-
-  <% end %>
-
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-498639-4']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
-
 </head>
 <body>
   <p class="notice" style="display: none"><%= notice %></p>
@@ -71,7 +45,7 @@
               </ul>
             </div>
             <% if user_signed_in? %>
-            <div id="sign-out-link">
+            <div id="sign-out-link" class="invisible">
               <ul class="nav pull-right">
                 <li><%= link_to "Sign Out", destroy_user_session_path %></li>
               </ul>
