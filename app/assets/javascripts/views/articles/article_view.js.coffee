@@ -26,10 +26,11 @@ App.Views.Article = Backbone.View.extend
       _gaq.push(['_trackPageview', $(location).attr('pathname')])
 
     @model.set 'articleLink' : @model.get('slug')
-    $('#show-more-articles').hide()
-    $('article').parent().children().hide(300)
-    $(@el).show(500)
-  
+    document.title = @model.get('title') + " | Traces"
+    $('#show-more-articles').fadeOut()
+    $('article').parent().children().fadeOut(300)
+    $(@el).fadeIn(500)
+
   showComments: (e) ->
     commentsViewEl = $(@el).find('.comments')
     commentsView = new App.Views.Comments(el:commentsViewEl, articleId:e.target.id, session:@options.session)
