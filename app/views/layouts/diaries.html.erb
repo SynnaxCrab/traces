@@ -8,21 +8,15 @@
   <%= csrf_meta_tag %>
 
   <% if controller.action_name == "new" or controller.action_name == "create"%>
-  <title>Creating New Post</title>
+    <title>Creating New Post</title>
   <% else %>
-
-  <% unless @articles.nil? %>
-  <title><%= t(:blog_title) %></title>
-  <% else%>
-
-  <% unless @article.nil? || @article.empty?%>
-  <title><%= @article.title %> | <%= t(:blog_title) %></title>
-  <% else%>
-  <title><%= t(:blog_title) %></title>
-  <% end %>
+    <% if @diaries %>
+      <title>Diaries | <%= t(:blog_title) %></title>
+    <% else %>
+      <title><%= @diary.title %> | Diaries | <%= t(:blog_title) %></title>
+    <% end %>
   <% end %>
 
-  <% end %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
