@@ -12,8 +12,9 @@ App.Routers.Articles = Backbone.Router.extend
     @articlesCollection.fetch()
 
   index: ->
-    $('article').show(500)
-    $('#show-more-articles').show(550)
+    $('article').fadeIn(500)
+    $('#show-more-articles').fadeIn(550)
+    document.title = "Traces"
     @articlesCollection.each (article) ->
       article.set 'articleLink' : 'articles/' + article.get('slug')
 
