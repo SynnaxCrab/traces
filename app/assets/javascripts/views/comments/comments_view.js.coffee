@@ -3,14 +3,14 @@ App.Views.Comments = Backbone.View.extend
   newCommentTemplate : JST["templates/new_comment"].call(this)
   initialize: ->
     _.bindAll this, 'addAll', 'addOne'
-    
+
     @collection = new App.Collections.Comments(articleId:@options.articleId)
     @collection
       .bind('reset', @addAll)
       .bind('add', @addOne)
       .bind('create', @addOne)
     @collection.fetch()
-    
+
   addOne: (comment) ->
     commentView = new App.Views.Comment(model:comment, id:"comment-"+comment.get("_id"))
     commentRendered = commentView.render().el
@@ -22,15 +22,15 @@ App.Views.Comments = Backbone.View.extend
     $(@el).append(Mustache.to_html(@template, templateData)).fadeIn("fast")
     @collection.each(@addOne)
     $(@el).append(Mustache.to_html(@newCommentTemplate, {articleId:@options.articleId})).fadeIn("slow")
-    
+
   events:
     'click .actions button[type="submit"]'   :  'newComment'
-    
+
   newComment: (e) ->
     targetId = e.target.id
     articleId = targetId.split("_")[2]
     @collection.create(@newCommentAttributes(articleId))
-  
+
   newCommentAttributes: (articleId) ->
     #alert(articleId)
     return { comment: {
