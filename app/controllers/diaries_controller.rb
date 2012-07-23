@@ -50,26 +50,4 @@ class DiariesController < ArticlesController
   def show
     @diary = Diary.by_slug(:key => params[:id]).first
   end
-
-  def show_redirect
-    @diary = Diary.by_slug(:key => params[:slug]).first
-    redirect_or_render_404(@diary)
-  end
-
-  def show_all
-
-    parse_time
-
-    unless params[:slug].nil?
-      @diary = Diary.by_slug_created_at(:startkey => [params[:slug], @begin_time], :endkey => [params[:slug], @end_time])
-      @diary = @diary.first
-    else
-      @diaries = Diary.by_created_at(:startkey => @begin_time, :endkey => @end_time)
-    end
-
-    if (@diary.nil? || @diary.empty?) && (@diaries.nil? || @diaries.empty?)
-      render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
-    end
-  end
-
 end
