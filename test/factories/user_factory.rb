@@ -1,7 +1,8 @@
-Factory.define :user do |f|
-  f.email 'fuckgfw@gmail.com'
-  f.username "lainuo"
-  f.name  'fuckgfw'
-  f.password '123456'
+FactoryGirl.define do
+  factory :user do
+    email 'fuckgfw@gmail.com'
+    username "lainuo"
+    name  'fuckgfw'
+    password '123456'
+  end
 end
-
