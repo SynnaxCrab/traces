@@ -73,4 +73,11 @@ class RoutesTest < ActionDispatch::IntegrationTest
       :month => "09",
       :slug => "abc" }
   end
+
+  test "/user/signed_in_check should be valid" do
+    assert_routing '/users/signed_in_check', {
+      :controller => 'backbone',
+      :action => 'signed_in_check'
+    }
+  end
 end
