@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/namespace'
 require 'rabl'
 
-module Api
+module API
   class Core < Sinatra::Base
     Rabl.register!
     register Sinatra::Namespace
@@ -17,7 +17,11 @@ module Api
       end
     end
 
-    get %r{/[.json]*} do
+    get '/' do
+      "Hello, This is Traces Sinatra API"
+    end
+
+    get %r{/articles(.json)?$} do
       content_type :json
       skip = params[:skip].nil? ? 0 : params[:skip]
       @articles = Article.by_published_at :descending => true, :limit => 5, :skip => skip
