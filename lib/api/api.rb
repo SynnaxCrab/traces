@@ -24,6 +24,7 @@ module API
     get %r{/articles(.json)?$} do
       content_type :json
       skip = params[:skip].nil? ? 0 : params[:skip]
+      # todo accept :limit as a param as well
       @articles = Article.by_published_at :descending => true, :limit => 5, :skip => skip
       render :rabl, :articles, :format => "json"
     end
