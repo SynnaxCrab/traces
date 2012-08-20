@@ -1,4 +1,4 @@
-require 'api/api'
+require 'api/core'
 require 'test/unit'
 require 'rack/test'
 require 'test_helper'
@@ -42,7 +42,7 @@ class ApiCoreTest < ActiveSupport::TestCase
   def test_articles_output_result
     get '/articles'
     output = JSON.parse(last_response.body)
-    assert_equal "Fuck GFW", output[0]["article"]["title"]
-    assert_equal "Freedom!", output[0]["article"]["content"]
+    assert_equal "Fuck GFW", output[0]["title"]
+    assert_equal "Freedom!", output[0]["content"]
   end
 end
