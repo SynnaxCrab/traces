@@ -12,7 +12,7 @@ App.Views.Comments = Backbone.View.extend
     @collection.fetch()
 
   addOne: (comment) ->
-    commentView = new App.Views.Comment(model:comment, id:"comment-"+comment.get("_id"))
+    commentView = new App.Views.Comment(model:comment, id:"comment-"+comment.get("id"))
     commentRendered = commentView.render().el
     $(@el).find(".comments_list").append(commentRendered)
 

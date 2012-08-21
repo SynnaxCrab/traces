@@ -2,4 +2,4 @@ App.Collections.Comments = Backbone.Collection.extend
   model: Comment
 
   initialize: (options)->
-    @url = "/articles/#{options.articleId}/comments"
+    @url = "/api/articles/#{options.articleId}/comments"
