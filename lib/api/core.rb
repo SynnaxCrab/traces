@@ -36,5 +36,14 @@ module API
       @article = Article.by_slug(:key => params[:captures][0]).first
       render :rabl, :article, :format => "json"
     end
+
+    get %r{^\/articles\/([^\/?#\.]+)\/comments(?:\.json)?$} do
+      content_type :json
+      @comments = Comment.by_article_created_at(
+        :startkey => [params[:captures][0]],
+        :endkey => [params[:captures][0], Time.now]
+      )
+      render :rabl, :comments, :format => "json"
+    end
   end
 end

@@ -12,9 +12,11 @@ class ApiCoreTest < ActiveSupport::TestCase
 
   def setup
     @article = create(:article)
+    @comment = create(:comment, {:article_id => @article.id})
   end
 
   def teardown
+    @comment.destroy
     @article.destroy
   end
 
@@ -67,5 +69,33 @@ class ApiCoreTest < ActiveSupport::TestCase
     output = JSON.parse(last_response.body)
     assert_equal "Fuck GFW", output["title"]
     assert_equal "Freedom!", output["content"]
+  end
+
+  def test_comments_url_format
+    article_id = @article.id
+    get "/articles/#{article_id}/comments"
+    assert last_response.ok?
+    get "/articles/#{article_id}/comments.json"
+    assert last_response.ok?
+    get "/articles/#{article_id}/comments.xml"
+    assert !last_response.ok?
+  end
+
+  def test_comments_output_format
+    article_id = @article.id
+    get "/articles/#{article_id}/comments"
+    assert_equal "application/json;charset=utf-8", last_response.headers["Content-Type"]
+    get "/articles/#{article_id}/comments.json"
+    assert_equal "application/json;charset=utf-8", last_response.headers["Content-Type"]
+  end
+
+  def test_comments_output_result
+    article_id = @article.id
+    get "/articles/#{article_id}/comments"
+    output = JSON.parse(last_response.body)
+    assert_equal "lainuo@outlook.com", output[0]["email"]
+    assert_equal "http://lainuo.info", output[0]["website"]
+    assert_equal "lainuo", output[0]["name"]
+    assert_equal "f7u12", output[0]["content"]
   end
 end
