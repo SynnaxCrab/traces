@@ -1,9 +1,9 @@
 App.Collections.Articles = Backbone.Collection.extend
   model: Article
-  url: '/articles'
+  url: '/api/articles'
 
   index: ->
-    @url = '/articles'
+    @url = '/api/articles'
     @fetch()
 
   show: (slug)->

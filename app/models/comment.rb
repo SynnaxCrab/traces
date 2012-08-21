@@ -13,6 +13,10 @@ class Comment < CouchRest::Model::Base
 
   rakismet_attrs :author => :name, :author_email => :email, :author_url => :website, :content => :content
 
+  def type
+    self["couchrest-type"]
+  end
+
   view_by :_id
   view_by :article_created_at, :map => "
     function(doc) {

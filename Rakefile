@@ -5,3 +5,8 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Traces::Application.load_tasks
+
+# when rake test, rake test:lib as well
+lib_task = Rake::Task["test:lib"]
+test_task = Rake::Task[:test]
+test_task.enhance { lib_task.invoke }

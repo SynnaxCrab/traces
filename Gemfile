@@ -5,6 +5,11 @@ gem 'rails', '3.2.7'
 # TODO: seperate them individually
 gem 'traces-vendor'
 
+# API
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'rabl'
+
 gem 'dynamic_form'
 
 group :assets do
