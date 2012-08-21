@@ -21,12 +21,20 @@ module API
       "Hello, This is Traces Sinatra API"
     end
 
-    get %r{/articles(.json)?$} do
+    get %r{^\/articles(\.json)?$} do
       content_type :json
       skip = params[:skip].nil? ? 0 : params[:skip]
       # todo accept :limit as a param as well
       @articles = Article.by_published_at :descending => true, :limit => 5, :skip => skip
       render :rabl, :articles, :format => "json"
+    end
+
+    # match /article/:id.?:format? for reference
+    # get %r{^\/articles\/([^\/?#\.]+)(?:\.|%2E)?([^\/?#]+)?} do
+    get %r{^\/articles\/([^\/?#\.]+)(?:\.json|%2Ejson)?$} do
+      content_type :json
+      @article = Article.by_slug(:key => params[:captures][0]).first
+      render :rabl, :article, :format => "json"
     end
   end
 end

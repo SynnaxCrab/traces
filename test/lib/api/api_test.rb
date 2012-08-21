@@ -45,4 +45,27 @@ class ApiCoreTest < ActiveSupport::TestCase
     assert_equal "Fuck GFW", output[0]["title"]
     assert_equal "Freedom!", output[0]["content"]
   end
+
+  def test_single_article_url_format
+    get '/articles/fuck-gfw'
+    assert last_response.ok?
+    get '/articles/fuck-gfw.json'
+    assert last_response.ok?
+    get '/articles/fuck-gfw.xml'
+    assert !last_response.ok?
+  end
+
+  def test_single_article_output_format
+    get '/articles/fuck-gfw'
+    assert_equal "application/json;charset=utf-8", last_response.headers["Content-Type"]
+    get '/articles/fuck-gfw.json'
+    assert_equal "application/json;charset=utf-8", last_response.headers["Content-Type"]
+  end
+
+  def test_single_article_output_result
+    get '/articles/fuck-gfw'
+    output = JSON.parse(last_response.body)
+    assert_equal "Fuck GFW", output["title"]
+    assert_equal "Freedom!", output["content"]
+  end
 end
