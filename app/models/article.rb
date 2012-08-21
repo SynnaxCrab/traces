@@ -15,6 +15,10 @@ class Article < CouchRest::Model::Base
   validates_presence_of :title, :slug
   validates_uniqueness_of :slug
 
+  def type
+    self["couchrest-type"]
+  end
+
   view_by :saved_at, :map => "
     function(doc) {
       if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {

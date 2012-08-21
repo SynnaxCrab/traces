@@ -1,2 +1,3 @@
 collection @articles
-attributes :id, :title, :content
+
+extends "article"
