@@ -1,5 +1,5 @@
 Traces::Application.routes.draw do
-  mount API::Core => '/api'
+  mount API::Traces => '/api'
 
   devise_for :users, :controllers => { :registrations => "registrations" }, :path_names => { :sign_up => "new" }
   devise_for :users, :controllers => { :session => "session" }

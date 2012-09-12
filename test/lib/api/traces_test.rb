@@ -1,13 +1,13 @@
-require 'api/core'
+require 'api/traces'
 require 'test/unit'
 require 'rack/test'
 require 'test_helper'
 
-class ApiCoreTest < ActiveSupport::TestCase
+class ApiTracesTest < ActiveSupport::TestCase
   include Rack::Test::Methods
 
   def app
-    API::Core
+    API::Traces
   end
 
   def setup
