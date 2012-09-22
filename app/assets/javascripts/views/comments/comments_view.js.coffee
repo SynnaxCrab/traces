@@ -24,20 +24,21 @@ App.Views.Comments = Backbone.View.extend
     $(@el).append(Mustache.to_html(@newCommentTemplate, {articleId:@options.articleId})).fadeIn("slow")
 
   events:
-    'click .actions button[type="submit"]'   :  'newComment'
+    'click .comments button[type="submit"]'   :  'newComment'
 
   newComment: (e) ->
+    e.preventDefault()
+
     targetId = e.target.id
     articleId = targetId.split("_")[2]
     @collection.create(@newCommentAttributes(articleId))
 
   newCommentAttributes: (articleId) ->
     #alert(articleId)
-    return { comment: {
+    return  {
       "article_id"       :  articleId
       "content"          :  $("#comment_content_" + articleId).val(),
       "email"            :  $("#comment_email_" + articleId).val(),
       "name"             :  $("#comment_name_" + articleId).val(),
       "website"          :  $("#comment_website_" + articleId).val(),
-    }
     }
