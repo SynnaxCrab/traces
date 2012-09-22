@@ -47,34 +47,34 @@ module API
       params[:comment] = JSON.parse(request.env["rack.input"].read)
       render_comments_new(env['api_version'], params)
     end
-    
-    def render_articles(api_version, params)      
+
+    def render_articles(api_version, params)
       Rabl.render(
-        core_class(api_version).articles(params), 
-        'articles', 
-        :view_path => view_path(api_version), 
+        core_class(api_version).articles(params),
+        'articles',
+        :view_path => view_path(api_version),
         :format => :json
       )
     end
-    
+
     def render_article(api_version, params)
       Rabl.render(
         core_class(api_version).article(params),
-        'article', 
-        :view_path => view_path(api_version), 
+        'article',
+        :view_path => view_path(api_version),
         :format => :json
       )
     end
-    
+
     def render_comments(api_version, params)
       Rabl.render(
         core_class(api_version).comments(params),
-        'comments', 
-        :view_path => view_path(api_version), 
+        'comments',
+        :view_path => view_path(api_version),
         :format => :json
       )
     end
-    
+
     def render_comments_new(api_version, params)
       comment = core_class(api_version).comments_create(params)
       if comment.class == Hash
@@ -84,8 +84,8 @@ module API
         status 201
         response = Rabl.render(
           comment,
-          'comment', 
-          :view_path => view_path(api_version), 
+          'comment',
+          :view_path => view_path(api_version),
           :format => :json
         )
       end
@@ -95,10 +95,10 @@ module API
     def core_class(api_version)
       Object.const_get(:API).const_get("V#{api_version}").const_get(:Core).new
     end
-    
+
     def view_path(api_version)
       "#{File.expand_path File.dirname(__FILE__)}/v#{api_version}/views"
     end
-    
+
   end
 end
