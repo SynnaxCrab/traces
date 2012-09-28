@@ -7,4 +7,6 @@ window.Article = Backbone.Model.extend
 
   initialize: ->
     @set "datetime":new Date(@get("created_at"))
-    @set "articleLink" : "articles/" + @get("slug")
+    # below works with articles/article_view 's show function
+    # @set "articleLink" : "articles/" + @get("slug")
+    @set "articleLink" : "/articles/" + @get("slug")
