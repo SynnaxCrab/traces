@@ -10,3 +10,5 @@ script/couch_replica
 config/database.yml
 config/initializers/akismet.rb
 script/delete_spams.rb
+spec/javascripts/*.js
+spec/javascripts/*/*.js

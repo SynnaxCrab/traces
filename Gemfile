@@ -46,16 +46,19 @@ gem 'dalli'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-group :development do
+group :development, :test do
   gem 'unicorn'
   gem 'foreman'
   gem 'pry'
   gem 'pry-doc'
-end
-
-group :test do
   gem 'factory_girl_rails'
   gem 'turn', :require => false
+  gem 'ruby-prof'
+  gem 'rb-fsevent', :require => false
+  gem 'guard'
+  gem 'guard-coffeescript'
+  gem 'guard-test'
+  gem 'jasmine'
 end
 
 group :production do
