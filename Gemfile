@@ -47,7 +47,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 group :development, :test do
-  gem 'unicorn'
+  gem 'thin'
   gem 'foreman'
   gem 'pry'
   gem 'pry-doc'
@@ -55,10 +55,11 @@ group :development, :test do
   gem 'turn', :require => false
   gem 'ruby-prof'
   gem 'rb-fsevent', :require => false
-  gem 'guard'
-  gem 'guard-coffeescript'
-  gem 'guard-test'
   gem 'jasmine'
+  gem 'jasminerice'
+  gem 'guard'
+  gem 'guard-test'
+  gem 'guard-jasmine'
 end
 
 group :production do
