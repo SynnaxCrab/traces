@@ -2,8 +2,8 @@ window.Markdown = new Showdown.converter()
 
 window.App =
   Views: {}
-  Routers: {}
+  Routes: {}
   Collections: {}
   initialize: ->
-    new App.Routers.Articles()
+    new App.Routes.Articles()
     Backbone.history.start({pushState: true})
