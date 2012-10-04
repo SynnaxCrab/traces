@@ -12,7 +12,10 @@ describe "Traces Articles Routes", ->
         Backbone.history.start({silent:true, pushState:true})
       catch error
         {}
-      @router.navigate("jasmine")
+      @router.navigate('jasmine')
+
+    afterEach ->
+      @router.navigate('jasmine')
 
     it "should fires the index router with a blank hash", ->
       @router.bind("route:index", @routeSpy)
