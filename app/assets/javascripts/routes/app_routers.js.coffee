@@ -15,7 +15,7 @@ App.Routes.Articles = Backbone.Router.extend
     document.title = "Traces"
 
   newArticle: ->
-    new App.Views.NewArticle(model: new Article)
+    new App.Views.NewArticle(collection: @articlesCollection)
 
   show: (slug) ->
     @articlesView.show(slug)

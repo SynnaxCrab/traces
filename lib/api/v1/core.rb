@@ -11,6 +11,13 @@ module API
         article = Article.by_slug(:key => params[:captures][0]).first
       end
 
+      def articles_create(params, current_user)
+        article = Article.new_by_user(params[:article], nil, current_user)
+
+        return {:message => "Save article failed. Sorry!"} unless article.save!
+        article
+      end
+
       def comments(params)
         comments = Comment.by_article_created_at(
           :startkey => [params[:captures][0]],
