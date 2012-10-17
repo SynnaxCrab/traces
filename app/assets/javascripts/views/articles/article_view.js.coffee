@@ -5,6 +5,7 @@ App.Views.Article = Backbone.View.extend
   initialize: ->
     _.bindAll this, 'render'
     @model.bind 'change', @render
+    @$el.attr('id', @model.id)
 
   render: ->
     templateData = @model.toJSON()
@@ -13,7 +14,8 @@ App.Views.Article = Backbone.View.extend
     return this
 
   events:
-    'click article h1 a'  :  'show'
+    # now we trigger it as a routes in app_view
+    # 'click article h1 a'  :  'show'
     'click .comments button[type="button"]' :  'showComments'
 
   show: (e) ->

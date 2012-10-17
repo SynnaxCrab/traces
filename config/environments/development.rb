@@ -29,7 +29,7 @@ Traces::Application.configure do
   config.assets.debug = true
 
   # config.assets.logger = false
-  
+
   # customized time zone, and I really hate "Beijing"
   config.time_zone = "Taipei"
 end

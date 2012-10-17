@@ -30,6 +30,7 @@ class Comment < CouchRest::Model::Base
   validates_format_of :website, :with => /(^$)|^((http|ftp|https?):\/\/((?:[-a-z0-9]+\.)+[a-z]{2,}))/
 
   def self.new_by_article(params)
+    params = params.with_indifferent_access
     unless params[:article_id].nil?
       article = Article.by__id(:key => params[:article_id]).first
       if article.nil?
