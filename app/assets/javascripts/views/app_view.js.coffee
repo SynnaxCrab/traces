@@ -108,7 +108,7 @@ App.Views.Articles = Backbone.View.extend
   logout: (e) ->
     return true if e.which == 2 or e.metaKey or e.ctrlKey
     e.preventDefault()
-    @options.session.fetch url: 'users/sign_out'
+    @options.session.fetch url : 'users/sign_out', type : 'DELETE'
     @options.session.trigger("loggedOut")
     @options.session.unset '_id', silent : true
 
