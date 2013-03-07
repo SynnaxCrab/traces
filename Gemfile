@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.12'
 # code traces vendor files gem
 # TODO: seperate them individually
 gem 'traces-vendor'
@@ -17,6 +17,8 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'twitter-bootstrap-rails'
+  gem 'less-rails'
+  gem 'therubyracer'
 end
 
 # JavaScript libs
