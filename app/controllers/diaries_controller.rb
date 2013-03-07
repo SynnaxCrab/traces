@@ -2,7 +2,7 @@ class DiariesController < ArticlesController
   before_filter :authenticate_user!
 
   def index
-    @diaries = Diary.by_created_at :descending => true, :limit => 5
+    @diaries = Diary.by_created_at.descending.limit(5).all
   end
 
   def new

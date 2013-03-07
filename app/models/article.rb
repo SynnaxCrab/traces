@@ -19,37 +19,39 @@ class Article < CouchRest::Model::Base
     self["couchrest-type"]
   end
 
-  view_by :saved_at, :map => "
-    function(doc) {
-      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
-        emit(doc['created_at'], null);
+  design do
+    view :by_saved_at, :map => "
+      function(doc) {
+        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
+          emit(doc['created_at'], null);
+        }
       }
-    }
-  "
-  view_by :published_at, :map => "
-    function(doc) {
-      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['created_at'] != null)) {
-        emit(doc['created_at'], null);
+    "
+    view :by_published_at, :map => "
+      function(doc) {
+        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['created_at'] != null)) {
+          emit(doc['created_at'], null);
+        }
       }
-    }
-  "
-  view_by :title
-  view_by :_id
-  view_by :slug
-  view_by :slug_published_at, :map => "
-    function(doc) {
-      if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
-        emit([doc.slug, doc.created_at.substr(0, 10)]);
+    "
+    view :by_title
+    view :by__id
+    view :by_slug
+    view :by_slug_published_at, :map => "
+      function(doc) {
+        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
+          emit([doc.slug, doc.created_at.substr(0, 10)]);
+        }
       }
-    }
-  "
-  view_by :comments_article_created_at, :map => "
-    function(doc) {
-      if ((doc['couchrest-type'] == 'Comment')) {
-        emit([doc.article_id, doc.created_at]);
+    "
+    view :by_comments_article_created_at, :map => "
+      function(doc) {
+        if ((doc['couchrest-type'] == 'Comment')) {
+          emit([doc.article_id, doc.created_at]);
+        }
       }
-    }
-  "
+    "
+  end
 
   def self.parse_time(params)
     if params[:month].nil?

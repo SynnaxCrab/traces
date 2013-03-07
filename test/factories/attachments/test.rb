@@ -1,1 +1,1 @@
-puts "Just another test"
+"Just another test"
