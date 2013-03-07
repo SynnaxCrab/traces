@@ -27,11 +27,13 @@ module API
       "Hello, This is Traces Sinatra API"
     end
 
+    ## articles lists api ##
     get %r{^\/articles(\.json)?$} do
       content_type :json
       render_articles(env['api_version'], params)
     end
 
+    ## single article api ##
     # match /article/:id.?:format? for reference
     # get %r{^\/articles\/([^\/?#\.]+)(?:\.|%2E)?([^\/?#]+)?} do
     get %r{^\/articles\/([^\/?#\.]+)(?:\.json|%2Ejson)?$} do
@@ -39,17 +41,20 @@ module API
       render_article(env['api_version'], params)
     end
 
+    ## article comments api ##
     get %r{^\/articles\/([^\/?#\.]+)\/comments(?:\.json)?$} do
       content_type :json
       render_comments(env['api_version'], params)
     end
 
+    ## article create api ##
     post %r{^\/articles(\.json)?$} do
       params[:article] = JSON.parse(request.env["rack.input"].read)
       content_type :json
       render_articles_new(env['api_version'], params)
     end
 
+    ## article comment create api ##
     post %r{^\/articles\/([^\/?#\.]+)\/comments(?:\.json)?$} do
       content_type :json
       params[:comment] = JSON.parse(request.env["rack.input"].read)
