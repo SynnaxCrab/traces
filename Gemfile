@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 # code traces vendor files gem
 # TODO: seperate them individually
 gem 'traces-vendor'
@@ -29,12 +29,13 @@ gem 'backbone-rails'
 gem 'kramdown'
 
 # auth
-gem 'devise', '1.5.2'
+gem 'devise'
 
 # CouchDB Related
-gem 'couchrest_model'
-gem 'orm_adapter', :git => 'git://github.com/shenoudab/orm_adapter.git'
-gem 'devise_couch', :git => 'git://github.com/winfield/devise_couch.git'
+gem 'couchrest_model', '2.0.0.beta2'
+gem 'orm_adapter'
+gem 'orm_adapter_couchrest_model', '~> 0.0.1'
+gem 'devise_couchrest_model', '~> 0.0.2'
 
 # anti-spam
 gem 'rakismet'
@@ -46,16 +47,20 @@ gem 'dalli'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-group :development do
-  gem 'unicorn'
+group :development, :test do
+  gem 'thin'
   gem 'foreman'
   gem 'pry'
   gem 'pry-doc'
-end
-
-group :test do
   gem 'factory_girl_rails'
   gem 'turn', :require => false
+  gem 'ruby-prof'
+  gem 'rb-fsevent', :require => false
+  gem 'jasmine'
+  gem 'jasminerice'
+  gem 'guard'
+  gem 'guard-test'
+  gem 'guard-jasmine'
 end
 
 group :production do

@@ -1,25 +1,21 @@
-App.Routers.Articles = Backbone.Router.extend
+App.Routes.Articles = Backbone.Router.extend
   routes:
     ""  :  "index"
+    "articles/new"  :  "newArticle" # put this before "articles/:slug", since the later will override this
     "articles/:slug"  :  "show"
-    "/:year/:month/:day/:slug"  :  "show2"
 
   initialize: ->
     @session = new window.Session
     @session.fetch url: 'users/signed_in_check'
     @articlesCollection = new App.Collections.Articles
     @articlesView = new App.Views.Articles(el:$("body"), collection:@articlesCollection, session: @session)
-    @articlesCollection.fetch()
 
   index: ->
-    $('article').fadeIn(500)
-    $('#show-more-articles').fadeIn(550)
+    @articlesCollection.fetch()
     document.title = "Traces"
-    @articlesCollection.each (article) ->
-      article.set 'articleLink' : 'articles/' + article.get('slug')
+
+  newArticle: ->
+    new App.Views.NewArticle(collection: @articlesCollection)
 
   show: (slug) ->
-    # @articlesCollection.show(slug)
-
-  show2: (year, month, day, slug) ->
-    @articlesCollection.show(slug)
+    @articlesView.show(slug)

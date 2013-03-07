@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     skip = params[:skip].nil? ? 0 : params[:skip]
-    @articles = Article.by_published_at :descending => true, :limit => 5, :skip => skip
+    @articles = Article.by_published_at.descending.limit(5).skip(skip).all
     respond_to do |format|
       format.html
       format.json { render json: @articles}
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def drafts
-    @articles = Article.by_saved_at :descending => true, :limit => 5
+    @articles = Article.by_saved_at.descending.limit(10).all
     respond_to do |format|
       format.html
       format.json { render json: @articles}
@@ -36,11 +36,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.by_slug(:key => params[:id]).first
+    @article = Article.by_slug.key(params[:id]).first
   end
 
   def update
-    @article = Article.by_slug(:key => params[:id]).first
+    @article = Article.by_slug.key(params[:id]).first
 
     if @article.update_attributes(params[:article])
       flash[:notice] = "Article was successfully updated !"
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.by_slug(:key => params[:id]).first
+    @article = Article.by_slug.key(params[:id]).first
     #redirect_to article_slug(@article)
     respond_to do |format|
       format.html { redirect_or_render_404(@article) }
@@ -60,19 +60,21 @@ class ArticlesController < ApplicationController
   end
 
   def show_redirect
-    @article = Article.by_slug(:key => params[:slug]).first
+    @article = Article.by_slug.key(params[:id]).first
     #redirect_to article_slug(@article)
     redirect_or_render_404(@article)
   end
 
   def show_all
 
-    @articles = Article.articles_by_time_slug(params, @begin_time, @end_time)
+    @articles = Article.articles_by_time_slug(params, @begin_time, @end_time).all
 
     if @articles.size == 1
       @article = @articles.first
-      @comments = Article.by_comments_article_created_at(:startkey => [@article.id],
-                                                         :endkey   => [@article.id, Time.now])
+      @comments = Article.by_comments_article_created_at.
+        startkey([@article.id]).
+        endkey([@article.id, Time.now]).
+        all
     end
 
     if (@article.nil? || @article.empty?) && (@articles.nil? || @articles.empty?)
@@ -86,7 +88,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = Article.by_published_at :descending => true, :limit => 1
+    @articles = Article.by_published_at.descending.limit(5).all
 
     respond_to do |format|
      format.html do

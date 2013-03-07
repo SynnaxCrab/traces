@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
       redirect_to article_slug(article)
     end
   end
-  
+
   def layout_by_devise
     if devise_controller?
       "devise"
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-  
+
   def layout_by_google_analytics
     if action_name == 'new' or action_name == 'edit'
       "articles_without_ga"
