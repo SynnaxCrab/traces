@@ -67,7 +67,6 @@ App.Views.Articles = Backbone.View.extend
   triggerRoutes: (e) ->
     pathname = $(location).attr('pathname')
     href = $(e.target).attr('href')
-    return true if pathname isnt '/' and href isnt '/'
     return true if e.which == 2 or e.metaKey or e.ctrlKey
 
     e.preventDefault()
@@ -81,8 +80,8 @@ App.Views.Articles = Backbone.View.extend
     return true if model.get('articleLink').indexOf('article') == -1
 
     document.title = model.get('title') + " | Traces"
-    @collection.trigger('clear')
-    @collection.trigger('add', model)
+    @clear()
+    @addOne(model)
 
   login: (e) ->
     return true if e.which == 2 or e.metaKey or e.ctrlKey
