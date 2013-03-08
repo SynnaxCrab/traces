@@ -39,10 +39,6 @@ App.Views.Articles = Backbone.View.extend
     $("#contents").children().remove()
 
   events:
-    'click header a.brand'                  :  'triggerRoutes'
-    'click #nav_home'                       :  'triggerRoutes'
-    'click #new_article'                    :  'triggerRoutes'
-    'click article h1 a'                    :  'triggerRoutes'
     'click #show-more-articles button'      :  'addMore'
     'click #sign-in button'                 :  'login'
     'click #sign-out a'                     :  'logout'
