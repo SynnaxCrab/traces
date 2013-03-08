@@ -60,15 +60,6 @@ App.Views.Articles = Backbone.View.extend
     @collection.url = "articles"
     $("#more_loading").remove()
 
-  triggerRoutes: (e) ->
-    pathname = $(location).attr('pathname')
-    href = $(e.target).attr('href')
-    return true if e.which == 2 or e.metaKey or e.ctrlKey
-
-    e.preventDefault()
-    Backbone.history.navigate($(e.target).attr('href'), true)
-    _gaq.push(['_trackPageview', pathname])
-
   show: (slug) ->
     model = @collection.find (m) ->
       m.get('slug') is slug

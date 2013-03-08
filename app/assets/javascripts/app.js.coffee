@@ -26,4 +26,5 @@ window.App =
         # `Backbone.history.navigate` is sufficient for all Routers and will
         # trigger the correct events. The Router's internal `navigate` method
         #  calls this anyways.  The fragment is sliced from the root.
+        _gaq.push(['_trackPageview', href.attr])
         Backbone.history.navigate(href.attr, {trigger: true})
