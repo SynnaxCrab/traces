@@ -39,10 +39,6 @@ App.Views.Articles = Backbone.View.extend
     $("#contents").children().remove()
 
   events:
-    'click header a.brand'                  :  'triggerRoutes'
-    'click #nav_home'                       :  'triggerRoutes'
-    'click #new_article'                    :  'triggerRoutes'
-    'click article h1 a'                    :  'triggerRoutes'
     'click #show-more-articles button'      :  'addMore'
     'click #sign-in button'                 :  'login'
     'click #sign-out a'                     :  'logout'
@@ -63,15 +59,6 @@ App.Views.Articles = Backbone.View.extend
     @collection.fetch({add: true})
     @collection.url = "articles"
     $("#more_loading").remove()
-
-  triggerRoutes: (e) ->
-    pathname = $(location).attr('pathname')
-    href = $(e.target).attr('href')
-    return true if e.which == 2 or e.metaKey or e.ctrlKey
-
-    e.preventDefault()
-    Backbone.history.navigate($(e.target).attr('href'), true)
-    _gaq.push(['_trackPageview', pathname])
 
   show: (slug) ->
     model = @collection.find (m) ->

@@ -34,7 +34,6 @@ App.Views.Comments = Backbone.View.extend
     @collection.create(@newCommentAttributes(articleId))
 
   newCommentAttributes: (articleId) ->
-    #alert(articleId)
     return  {
       "article_id"       :  articleId
       "content"          :  $("#comment_content_" + articleId).val(),
