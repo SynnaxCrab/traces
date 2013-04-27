@@ -1,5 +1,4 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
+require 'capybara/poltergeist'
 
 guard :test do
   watch(%r{^lib/(.+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
@@ -13,8 +12,7 @@ guard :test do
   watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
 end
 
-guard :jasmine do
-  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
-  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
-  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) { |m| "spec/javascripts/#{ m[1] }_spec.#{ m[2] }" }
+guard :konacha, :driver => :poltergeist do
+  watch(%r{^app/assets/javascripts/(.*)\.js(\.coffee)?$}) { |m| "#{m[1]}_spec.js" }
+  watch(%r{^spec/javascripts/.+_spec(\.js|\.js\.coffee)$})
 end

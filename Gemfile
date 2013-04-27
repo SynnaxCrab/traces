@@ -59,13 +59,15 @@ group :development, :test do
   gem 'turn', :require => false
   gem 'ruby-prof'
   gem 'rb-fsevent', :require => false
-  gem 'guard'
   gem 'guard-test'
 
   gem 'rspec-rails'
   # test js with mocha
   gem 'konacha'
   gem 'poltergeist'
+  # guard
+  gem 'guard'
+  gem 'guard-konacha'
 end
 
 group :production do
