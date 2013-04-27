@@ -1,4 +1,5 @@
-source 'http://rubygems.org'
+#source 'http://rubygems.org'
+source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.12'
 # code traces vendor files gem
@@ -58,11 +59,13 @@ group :development, :test do
   gem 'turn', :require => false
   gem 'ruby-prof'
   gem 'rb-fsevent', :require => false
-  gem 'jasmine'
-  gem 'jasminerice'
   gem 'guard'
   gem 'guard-test'
-  gem 'guard-jasmine'
+
+  gem 'rspec-rails'
+  # test js with mocha
+  gem 'konacha'
+  gem 'poltergeist'
 end
 
 group :production do
