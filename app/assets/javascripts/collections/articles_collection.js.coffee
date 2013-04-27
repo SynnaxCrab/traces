@@ -11,6 +11,4 @@ App.Collections.Articles = Backbone.Collection.extend
       @url = "#{ @url }/#{ slug }"
     else
       @url = "#{ slug }"
-    # alert($(location).attr('pathname'))
-    # alert(@url)
     @fetch()
