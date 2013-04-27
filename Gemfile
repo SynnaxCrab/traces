@@ -68,7 +68,7 @@ group :development, :test do
   # guard
   gem 'guard'
   gem 'guard-konacha'
-  gem 'terminal-notifier-guard'
+  gem 'terminal-notifier-guard', :require => false
 end
 
 group :production do

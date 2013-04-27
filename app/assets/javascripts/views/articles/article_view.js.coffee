@@ -14,8 +14,6 @@ App.Views.Article = Backbone.View.extend
     return this
 
   events:
-    # now we trigger it as a routes in app_view
-    # 'click article h1 a'  :  'show'
     'click .comments button[type="button"]' :  'showComments'
 
   show: (e) ->
