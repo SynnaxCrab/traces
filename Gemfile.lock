@@ -249,6 +249,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    terminal-notifier-guard (1.5.3)
     test-unit (2.5.4)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
@@ -321,6 +322,7 @@ DEPENDENCIES
   sass-rails
   sinatra
   sinatra-contrib
+  terminal-notifier-guard
   therubyracer
   thin
   traces-vendor
