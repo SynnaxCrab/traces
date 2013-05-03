@@ -1,4 +1,4 @@
-App.Routes.Articles = Backbone.Router.extend
+App.Router = Backbone.Router.extend
   routes:
     ""  :  "index"
     "articles/new"  :  "newArticle" # put this before "articles/:slug", since the later will override this
