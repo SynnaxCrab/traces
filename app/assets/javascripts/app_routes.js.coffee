@@ -11,7 +11,7 @@ App.Router = Backbone.Router.extend
     @articlesView = new App.Views.Articles(el:$("body"), collection:@articlesCollection, session: @session)
 
   index: ->
-    @articlesCollection.fetch()
+    @articlesCollection.fetch(reset: true)
     document.title = "Traces"
 
   newArticle: ->

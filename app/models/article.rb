@@ -1,7 +1,5 @@
 class Article < CouchRest::Model::Base
 
-  use_database @@CouchDB.default_database
-
   property :slug
   property :title
   property :content
