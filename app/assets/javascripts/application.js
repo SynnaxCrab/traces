@@ -8,7 +8,7 @@
 //= require mustache
 //= require_tree ./templates
 //= require ./app
+//= require ./app_routes
 //= require_tree ./models
 //= require_tree ./collections
-//= require_tree ./routes
 //= require_tree ./views

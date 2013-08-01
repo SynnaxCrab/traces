@@ -2,10 +2,9 @@ window.Markdown = new Showdown.converter()
 
 window.App =
   Views: {}
-  Routes: {}
   Collections: {}
   initialize: ->
-    new App.Routes.Articles()
+    new App.Router()
     Backbone.history.start({pushState: true})
 
     # All navigation that is relative should be passed through the navigate

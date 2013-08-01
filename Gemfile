@@ -65,6 +65,7 @@ group :development, :test do
   # test js with mocha
   gem 'konacha'
   gem 'poltergeist'
+  gem 'selenium-webdriver'
   # guard
   gem 'guard'
   gem 'guard-konacha'

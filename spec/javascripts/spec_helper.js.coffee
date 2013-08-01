@@ -1,3 +1,12 @@
+#= require sinon
+#= require sinon-chai
 #= require underscore
 #= require backbone
-#= require models/article
+
+mocha.ignoreLeaks()
+
+beforeEach ->
+  @sandbox = sinon.sandbox.create()
+
+afterEach ->
+  @sandbox.restore()
