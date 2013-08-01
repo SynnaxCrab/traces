@@ -1,26 +1,22 @@
 #source 'http://rubygems.org'
 source 'http://ruby.taobao.org/'
 
-gem 'rails', '3.2.12'
+gem 'rails'
 # code traces vendor files gem
 # TODO: seperate them individually
 gem 'traces-vendor'
 
 # API
-gem 'sinatra'
-gem 'sinatra-contrib'
+gem 'sinatra', require: false
+gem 'sinatra-contrib', require: false
 gem 'rabl'
 
-gem 'dynamic_form'
-
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'twitter-bootstrap-rails'
-  gem 'less-rails'
-  gem 'therubyracer'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
+gem 'therubyracer'
 
 # JavaScript libs
 gem 'ejs'
@@ -35,7 +31,7 @@ gem 'kramdown'
 gem 'devise'
 
 # CouchDB Related
-gem 'couchrest_model', '2.0.0.beta2'
+gem 'couchrest_model', git: 'https://github.com/couchrest/couchrest_model.git'
 gem 'orm_adapter'
 gem 'orm_adapter_couchrest_model', '~> 0.0.1'
 gem 'devise_couchrest_model', '~> 0.0.2'
@@ -46,15 +42,12 @@ gem 'rakismet'
 # memcached
 gem 'dalli'
 
-# deploy
-gem 'capistrano'
-gem 'rvm-capistrano'
-
 group :development, :test do
   gem 'thin'
   gem 'foreman'
   gem 'pry'
   gem 'pry-doc'
+  gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'turn', :require => false
   gem 'ruby-prof'

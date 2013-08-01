@@ -1,5 +1,4 @@
 class Comment < CouchRest::Model::Base
-  use_database @@CouchDB.default_database
   include Rakismet::Model
 
   belongs_to :article
@@ -29,7 +28,7 @@ class Comment < CouchRest::Model::Base
   end
 
   validates_presence_of :email, :name, :content
-  validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i
+  validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})\Z/i
   validates_format_of :website, :with => /(^$)|^((http|ftp|https?):\/\/((?:[-a-z0-9]+\.)+[a-z]{2,}))/
 
   def self.new_by_article(params)

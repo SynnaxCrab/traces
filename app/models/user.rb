@@ -5,8 +5,6 @@ class User < CouchRest::Model::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  use_database @@CouchDB.default_database
-
   property :email,                  String
   property :encrypted_password,     String
   property :reset_password_token,   String
