@@ -56,7 +56,6 @@ class Article < CouchRest::Model::Base
           }
         }",
       reduce: "_sum"
-
   end
 
   def self.parse_time(params)
@@ -86,10 +85,11 @@ class Article < CouchRest::Model::Base
     [begin_time, end_time]
   end
 
-  def self.new_by_user(param_article, param_commit, user)
-    article = self.new(param_article)
-    article.author = user.username
-    param_commit == "Save" ? article.is_draft = true : article.is_draft = false
+  def self.new_by_user(params, user)
+    article = new(params[:article])
+    article.author = user.id
+    article.is_draft = params[:commit] == "Save" ? true : false
+    article.save
     article
   end
 

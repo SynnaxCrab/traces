@@ -19,10 +19,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
-    @article.author = current_user.id
-    @article.is_draft = params[:commit] == "Save" ? true : false
-    @article.save
+    @article = Article.new_by_user(params, current_user)
+    respond_with(@article)
   end
 
   def edit
