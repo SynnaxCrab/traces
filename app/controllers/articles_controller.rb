@@ -59,13 +59,13 @@ class ArticlesController < ApplicationController
     @articles = Article.by_published_at.descending.limit(5).all
 
     respond_to do |format|
-     format.html do
-       redirect_to feed_path(:format => :atom), :status => :moved_permanently
-     end
-     format.xml do
-       redirect_to feed_path(:format => :atom), :status => :moved_permanently
-     end
-     format.atom
+      format.html do
+        redirect_to feed_path(:format => :atom), :status => :moved_permanently
+      end
+      format.xml do
+        redirect_to feed_path(:format => :atom), :status => :moved_permanently
+      end
+      format.atom
     end
   end
 
