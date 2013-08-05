@@ -83,11 +83,7 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (4.2.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.2.1)
-      factory_girl (~> 4.2.0)
-      railties (>= 3.0.0)
+    fabrication (2.7.2)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     ffi (1.9.0)
@@ -162,6 +158,8 @@ GEM
     pry-doc (0.4.6)
       pry (>= 0.9)
       yard (>= 0.8)
+    pry-rails (0.3.1)
+      pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rabl (0.8.6)
@@ -294,7 +292,7 @@ DEPENDENCIES
   devise
   devise_couchrest_model (~> 0.0.2)
   ejs
-  factory_girl_rails
+  fabrication
   foreman
   guard
   guard-konacha
@@ -307,8 +305,8 @@ DEPENDENCIES
   orm_adapter
   orm_adapter_couchrest_model (~> 0.0.1)
   poltergeist
-  pry
   pry-doc
+  pry-rails
   quiet_assets
   rabl
   rails

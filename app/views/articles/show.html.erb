@@ -1,14 +1,23 @@
 <section id="contents">
-  <%= render @post %>
+  <%= render @article %>
 </section>
 
 <section id="comments">
   <h3>
-    <span class="comments_count"><%= @post.first.comments.size %> Comment(s) to <%= @post.first.title %></span>
+    <span class="comments_count"><%= @comments.count %>
+    <% if @comments.count > 1 %>
+    Comments
+    <% else %>
+    Comment
+    <% end %>
+    </span>
+    to
+    <%= @article.title %></h3>
   </h3>
   <ol class="comments_list">
-    <%= render @post.first.comments %>
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
   </ol>
-
-  <%= render "comments/new_comment", :locals => { :post => @post.first }%>
+  <%= render "comments/new_comment", :article => @article %>
 </section>

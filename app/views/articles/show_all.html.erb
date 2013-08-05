@@ -1,6 +1,8 @@
 <section id="contents">
   <% if @article.nil? %>
-    <%= render @articles %>
+    <% @articles.each do |article| %>
+      <%= render article %>
+    <% end %>
   <% else %>
     <%= render @article %>
     <section class="comments">
@@ -17,7 +19,6 @@
         <ol id="comments_list" class="comments_list">
           <%= render @comments %>
         </ol>
-      <%= error_messages_for :comment %>
       <%= render "comments/new_comment", :article => @article %>
     </section>
   <% end %>
