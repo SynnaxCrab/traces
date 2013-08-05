@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:l]
   end
 
+  def render_404
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   protected
   def redirect_or_render_404(article)
     if article.nil?

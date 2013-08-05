@@ -46,10 +46,10 @@ gem 'dalli'
 group :development, :test do
   gem 'thin'
   gem 'foreman'
-  gem 'pry'
+  gem 'pry-rails'
   gem 'pry-doc'
   gem 'quiet_assets'
-  gem 'factory_girl_rails'
+  gem 'fabrication'
   gem 'turn', :require => false
   gem 'ruby-prof'
   gem 'rb-fsevent', :require => false
