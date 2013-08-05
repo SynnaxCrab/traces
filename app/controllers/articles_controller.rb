@@ -7,13 +7,11 @@ class ArticlesController < ApplicationController
   def index
     #TODO: make limit configurable || params[:limit]
     @articles = Article.by_published_at.descending.limit(5).skip(params[:skip].to_i)
-    respond_with(@articles)
   end
 
   def drafts
     #TODO: make limit configurable || params[:limit]
     @articles = Article.by_saved_at.descending.limit(10)
-    respond_with(@articles)
   end
 
   def new
@@ -25,7 +23,6 @@ class ArticlesController < ApplicationController
     @article.author = current_user.id
     @article.is_draft = params[:commit] == "Save" ? true : false
     @article.save
-    respond_with(@article)
   end
 
   def edit
@@ -33,20 +30,15 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update_attributes(params[:article])
-    respond_with(@article)
   end
 
   def show
-    if @article.is_draft
-      @comments = Article.by_comments_article_created_at.
-        startkey([@article.id]).
-        endkey([@article.id, Time.now]).
-        rows
+    redirect_to article_slug(@article) unless @article.is_draft
 
-      respond_with(@article)
-    else
-      redirect_to article_slug(@article)
-    end
+    @comments = Article.by_comments_article_created_at.
+      startkey([@article.id]).
+      endkey([@article.id, Time.now]).
+      rows
   end
 
   def show_all
