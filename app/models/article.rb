@@ -4,9 +4,9 @@ class Article < CouchRest::Model::Base
   property :title
   property :content
   property :author
-  property :is_draft
-  property :format
-  property :tags, [String]
+  property :is_draft, TrueClass, default: false
+  property :format,   String,    default: 'Markdown'
+  property :tags,     [String]
 
   timestamps!
 
@@ -81,15 +81,14 @@ class Article < CouchRest::Model::Base
   def self.new_by_user(param_article, param_commit, user)
     article = self.new(param_article)
     article.author = user.username
-    article.format = "Markdown"
     param_commit == "Save" ? article.is_draft = true : article.is_draft = false
     article
   end
 
-  def self.articles_by_time_slug(params, begin_time, end_time)
+  def self.articles_by_time_slug(params)
     begin_time, end_time = self.parse_time(params)
 
-    unless params[:slug].nil?
+    if params[:slug]
       articles = self.by_slug_published_at(:startkey => [params[:slug], begin_time],
                                            :endkey   => [params[:slug], end_time])
     else
