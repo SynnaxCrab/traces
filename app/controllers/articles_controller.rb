@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update_attributes(params[:article])
+    respond_with(@article)
   end
 
   def show
