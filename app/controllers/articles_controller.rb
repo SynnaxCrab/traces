@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
   def show
     redirect_to article_slug(@article) unless @article.is_draft
 
-    @comments = Article.by_comments_article_created_at.
+    @comments = Article.article_comments.
       startkey([@article.id]).
       endkey([@article.id, Time.now])
   end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
 
     if @articles.count == 1
       @article = @articles.first
-      @comments = Article.by_comments_article_created_at.
+      @comments = Article.article_comments.
         startkey([@article.id]).
         endkey([@article.id, Time.now])
     end
