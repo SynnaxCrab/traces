@@ -18,37 +18,45 @@ class Article < CouchRest::Model::Base
   end
 
   design do
-    view :by_saved_at, :map => "
-      function(doc) {
-        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
-          emit(doc['created_at'], null);
-        }
-      }
-    "
-    view :by_published_at, :map => "
-      function(doc) {
-        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['created_at'] != null)) {
-          emit(doc['created_at'], null);
-        }
-      }
-    "
+    view :by_saved_at,
+      map: "
+        function(doc) {
+          if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
+            emit(doc['created_at'], 1);
+          }
+        }",
+      reduce: "_sum"
+
+    view :by_published_at,
+      map: "
+        function(doc) {
+          if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['created_at'] != null)) {
+            emit(doc['created_at'], 1);
+          }
+        }",
+      reduce: "_sum"
+
     view :by_title
     view :by__id
     view :by_slug
-    view :by_slug_published_at, :map => "
-      function(doc) {
-        if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
-          emit([doc.slug, doc.created_at.substr(0, 10)]);
-        }
-      }
-    "
-    view :by_comments_article_created_at, :map => "
-      function(doc) {
-        if ((doc['couchrest-type'] == 'Comment')) {
-          emit([doc.article_id, doc.created_at]);
-        }
-      }
-    "
+    view :by_slug_published_at,
+      map: "
+        function(doc) {
+          if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
+            emit([doc.slug, doc.created_at.substr(0, 10)], 1);
+          }
+        }",
+      reduce: "_sum"
+
+    view :by_comments_article_created_at,
+      map: "
+        function(doc) {
+          if ((doc['couchrest-type'] == 'Comment')) {
+            emit([doc.article_id, doc.created_at], 1);
+          }
+        }",
+      reduce: "_sum"
+
   end
 
   def self.parse_time(params)
@@ -89,10 +97,13 @@ class Article < CouchRest::Model::Base
     begin_time, end_time = self.parse_time(params)
 
     if params[:slug]
-      articles = self.by_slug_published_at(:startkey => [params[:slug], begin_time],
-                                           :endkey   => [params[:slug], end_time])
+      articles = self.by_slug_published_at.
+        startkey([params[:slug], begin_time]).
+        endkey([params[:slug], end_time])
     else
-      articles = self.by_published_at(:startkey => begin_time, :endkey => end_time)
+      articles = self.by_published_at.
+        startkey(begin_time).
+        endkey(end_time)
     end
   end
 

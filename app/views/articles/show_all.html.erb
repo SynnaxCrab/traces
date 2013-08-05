@@ -4,11 +4,12 @@
       <%= render article %>
     <% end %>
   <% else %>
+    <%= title_content(@article) %>
     <%= render @article %>
     <section class="comments">
       <h3>
-        <span class="comments_count"><%= @comments.size %>
-        <% if @comments.size > 1 %>
+        <span class="comments_count"><%= @comments.count %>
+        <% if @comments.count > 1 %>
         Comments
         <% else %>
         Comment
@@ -17,7 +18,9 @@
         to
         <%= @article.title%></h3>
         <ol id="comments_list" class="comments_list">
-          <%= render @comments %>
+          <% @comments.each do %>
+            <%= render @comments %>
+          <% end %>
         </ol>
       <%= render "comments/new_comment", :article => @article %>
     </section>

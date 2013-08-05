@@ -37,8 +37,7 @@ class ArticlesController < ApplicationController
 
     @comments = Article.by_comments_article_created_at.
       startkey([@article.id]).
-      endkey([@article.id, Time.now]).
-      rows
+      endkey([@article.id, Time.now])
   end
 
   def show_all
@@ -48,8 +47,7 @@ class ArticlesController < ApplicationController
       @article = @articles.first
       @comments = Article.by_comments_article_created_at.
         startkey([@article.id]).
-        endkey([@article.id, Time.now]).
-        rows
+        endkey([@article.id, Time.now])
     end
 
     render_404 if @article.blank? && @articles.blank?
