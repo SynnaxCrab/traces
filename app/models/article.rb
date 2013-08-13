@@ -57,26 +57,23 @@ class Article < CouchRest::Model::Base
       end_time = Date.new(year + 1)
     else
       month = params[:month].to_i
-      end_time = Date.new(year + 1) if month + 1 > 12
 
       if params[:day].blank?
         begin_time = Date.new(year, month)
-        end_time ||= Date.new(year, month + 1)
+        end_time = month == 12 ? Date.new(year + 1) : Date.new(year, month + 1)
       else
-        day = params[:day].to_i
-        begin_time = Date.new(year, month, day)
-        end_time ||= Date.new(year, month + 1, day)
+        begin_time = end_time = Date.new(year, month, params[:day].to_i)
       end
     end
 
     [begin_time, end_time]
   end
 
-  def self.new_by_user(params, user)
+  def self.create_by_user(params, user)
     article = new(params[:article])
     article.author = user.id
     article.is_draft = params[:commit] == "Save" ? true : false
-    article.save
+    article.save!
     article
   end
 
@@ -101,13 +98,13 @@ class Article < CouchRest::Model::Base
   end
 
   def tag_attributes=(tag_attributes)
-    tag_attributes.split(%r{,\s*}).each do |tag|
-      self.tags << tag
+    tag_attributes.split(/,\s*/).each do |tag|
+      tags << tag unless tags.include?(tag)
     end
   end
 
   def to_param
-    "#{slug}"
+    slug
   end
 
 end

@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new_by_user(params, current_user)
+    @article = Article.create_by_user(params, current_user)
     respond_with(@article)
   end
 
