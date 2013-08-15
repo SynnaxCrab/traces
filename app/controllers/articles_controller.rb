@@ -19,10 +19,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
-    @article.author = current_user.id
-    @article.is_draft = params[:commit] == "Save" ? true : false
-    @article.save
+    @article = Article.create_by_user(params, current_user)
+    respond_with(@article)
   end
 
   def edit
@@ -30,12 +28,13 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update_attributes(params[:article])
+    respond_with(@article)
   end
 
   def show
     redirect_to article_slug(@article) unless @article.is_draft
 
-    @comments = Article.by_comments_article_created_at.
+    @comments = Article.article_comments.
       startkey([@article.id]).
       endkey([@article.id, Time.now])
   end
@@ -45,7 +44,7 @@ class ArticlesController < ApplicationController
 
     if @articles.count == 1
       @article = @articles.first
-      @comments = Article.by_comments_article_created_at.
+      @comments = Article.article_comments.
         startkey([@article.id]).
         endkey([@article.id, Time.now])
     end

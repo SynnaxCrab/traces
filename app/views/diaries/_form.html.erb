@@ -21,19 +21,13 @@
     <div class="control-group">
       <%= f.label :tag_attributes, "Tags(seperated by comma)", :class => 'control-label' %>
       <div class="controls">
-        <%= text_area_tag("article[tag_attributes]") %>
+        <%= text_area_tag("diary[tag_attributes]") %>
       </div>
     </div>
     <div class="control-group">
-      <%= label_tag 'article_attachments_', "File:", :class => 'control-label' %>
+      <%= label_tag 'diary_attachments_', "File:", :class => 'control-label' %>
       <div class="controls">
-        <%= file_field_tag("article[attachments][]") %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= label_tag :is_also_article, "also publish as an article?", :class => 'control-label' %>
-      <div class="controls">
-        <%= check_box_tag :is_also_article %>
+        <%= file_field_tag("diary[attachments][]") %>
       </div>
     </div>
 
