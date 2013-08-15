@@ -1,3 +1,5 @@
 <section id="contents">
-  <%= render @diaries %>
+  <% @diaries.each do |diary| %>
+    <%= render diary %>
+  <% end %>
 </section>

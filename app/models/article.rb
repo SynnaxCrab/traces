@@ -70,7 +70,8 @@ class Article < CouchRest::Model::Base
   end
 
   def self.create_by_user(params, user)
-    article = new(params[:article])
+    param_article = params[:article] || params[:diary]
+    article = new(param_article)
     article.author = user.id
     article.is_draft = params[:commit] == "Save" ? true : false
     article.save!
