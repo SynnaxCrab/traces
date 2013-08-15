@@ -18,15 +18,6 @@ class Article < CouchRest::Model::Base
   end
 
   design do
-    view :by_saved_at,
-      map: "
-        function(doc) {
-          if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] == true) && (doc['created_at'] != null)) {
-            emit(doc['created_at'], 1);
-          }
-        }",
-      reduce: "_sum"
-
     view :by_published_at,
       map: "
         function(doc) {
@@ -39,7 +30,7 @@ class Article < CouchRest::Model::Base
     view :by_title
     view :by__id
     view :by_slug
-    view :by_slug_published_at,
+    view :by_slug_and_published_at,
       map: "
         function(doc) {
           if ((doc['couchrest-type'] == 'Article') && (doc['is_draft'] != true) && (doc['slug'] != null) && (doc['created_at'] != null)) {
@@ -48,7 +39,7 @@ class Article < CouchRest::Model::Base
         }",
       reduce: "_sum"
 
-    view :by_comments_article_created_at,
+    view :article_comments,
       map: "
         function(doc) {
           if ((doc['couchrest-type'] == 'Comment')) {
@@ -56,40 +47,34 @@ class Article < CouchRest::Model::Base
           }
         }",
       reduce: "_sum"
-
   end
 
-  def self.parse_time(params)
-    if params[:month].nil?
-      begin_time = params[:year] + "-01-01"
-      end_time = (params[:year].to_i + 1).to_s + "-01-01"
+  def self.parse_time(params = { year: 0 })
+    year = params[:year].to_i
+    # only year param available
+    if params[:month].blank?
+      begin_time = Date.new(year)
+      end_time = Date.new(year + 1)
     else
-      begin_time = params[:year] + "-" + params[:month]
-      if (params[:month].to_i + 1 > 12)
-        end_time = (params[:year].to_i + 1).to_s + "-01"
-      else
-        if (params[:month].to_i + 1).to_s.length > 1
-          end_time = params[:year] + "-" + (params[:month].to_i + 1).to_s
-        else
-          end_time = params[:year] + "-0" + (params[:month].to_i + 1).to_s
-        end
-      end
+      month = params[:month].to_i
 
-      if params[:day].nil?
-        begin_time += "-01"
-        end_time += "-01"
+      if params[:day].blank?
+        begin_time = Date.new(year, month)
+        end_time = month == 12 ? Date.new(year + 1) : Date.new(year, month + 1)
       else
-        begin_time = begin_time + "-" + params[:day]
-        end_time = begin_time.to_date.next.to_s
+        begin_time = end_time = Date.new(year, month, params[:day].to_i)
       end
     end
+
     [begin_time, end_time]
   end
 
-  def self.new_by_user(param_article, param_commit, user)
-    article = self.new(param_article)
-    article.author = user.username
-    param_commit == "Save" ? article.is_draft = true : article.is_draft = false
+  def self.create_by_user(params, user)
+    param_article = params[:article] || params[:diary]
+    article = new(param_article)
+    article.author = user.id
+    article.is_draft = params[:commit] == "Save" ? true : false
+    article.save!
     article
   end
 
@@ -97,7 +82,7 @@ class Article < CouchRest::Model::Base
     begin_time, end_time = self.parse_time(params)
 
     if params[:slug]
-      articles = self.by_slug_published_at.
+      articles = self.by_slug_and_published_at.
         startkey([params[:slug], begin_time]).
         endkey([params[:slug], end_time])
     else
@@ -114,13 +99,13 @@ class Article < CouchRest::Model::Base
   end
 
   def tag_attributes=(tag_attributes)
-    tag_attributes.split(%r{,\s*}).each do |tag|
-      self.tags << tag
+    tag_attributes.split(/,\s*/).each do |tag|
+      tags << tag unless tags.include?(tag)
     end
   end
 
   def to_param
-    "#{slug}"
+    slug
   end
 
 end

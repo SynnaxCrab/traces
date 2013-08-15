@@ -3,21 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : 'Traces' %></title>
+
   <%= auto_discovery_link_tag(:atom, feed_path) %>
   <%= auto_discovery_link_tag(:rss, feed_path) %>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
-
-  <% if controller.action_name == "new" or controller.action_name == "create"%>
-    <title>Creating New Post</title>
-  <% else %>
-    <% if @articles.size == 1 %>
-      <title><%= @article.title %> | <%= t(:blog_title) %></title>
-    <% else %>
-      <title><%= t(:blog_title) %></title>
-    <% end %>
-  <% end %>
 
 </head>
 <body>
