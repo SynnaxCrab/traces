@@ -1,0 +1,21 @@
+{
+  "name": "traces",
+  "homepage": "https://github.com/winfield/traces",
+  "authors": [
+    "Winfield <winfield301@gmail.com>"
+  ],
+  "description": "traces vendor assets",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "marked": "latest",
+    "mustache": "latest",
+    "showdown": "latest"
+  }
+}

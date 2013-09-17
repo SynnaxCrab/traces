@@ -11,3 +11,4 @@ config/database.yml
 config/initializers/akismet.rb
 script/delete_spams.rb
 vendor/bundle
+vendor/assets/components

@@ -4,8 +4,8 @@
 //= require_tree ./effects
 //= require underscore
 //= require backbone
-//= require showdown
-//= require mustache
+//= require showdown/src/showdown
+//= require mustache/mustache
 //= require_tree ./templates
 //= require ./app
 //= require ./app_routes
