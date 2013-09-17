@@ -1,16 +1,18 @@
 App.Views.NewArticle = Backbone.View.extend
-  tagName  : 'div'
-  id       : 'new_post'
-  template : JST["templates/new_article"].call(this)
+  tagName                    : 'div'
+  id                         : 'post-editor'
+  template                   : JST["templates/articles/article_editor"].call(this)
+  titlePlaceholderTemplate   : JST["templates/articles/title_placeholder"].call(this)
+  contentPlaceholderTemplate : JST["templates/articles/content_placeholder"].call(this)
 
   initialize: ->
     _.bindAll this, 'render', 'afterSave'
     @collection
-      .bind('add', @afterSave)
+      .on('add', @afterSave)
     @render()
 
   events:
-    'click .save_post' : 'save'
+    'change [contenteditable]' : 'doSave'
 
   render: ->
     @$el.html(@template)

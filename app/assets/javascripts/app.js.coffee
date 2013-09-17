@@ -7,6 +7,22 @@ window.App =
     new App.Router()
     Backbone.history.start({pushState: true})
 
+    timer = 0
+    $(document)
+      .on 'focus', '[contenteditable]', ->
+        $this = $(this)
+        $this.data 'before', $this.html()
+        return $this
+      .on 'blur keyup paste', '[contenteditable]', ->
+        $this = $(this)
+        if $this.data('before') isnt $this.html()
+          $this.data 'before', $this.html()
+          clearInterval(timer)
+          timer = setTimeout ( ->
+            $this.trigger('change')
+          ), 1000
+          return $this
+
     # All navigation that is relative should be passed through the navigate
     # method, to be processed by the router. If the link has a `data-bypass`
     #  attribute, bypass the delegation completely.

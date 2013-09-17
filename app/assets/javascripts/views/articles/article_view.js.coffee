@@ -1,6 +1,6 @@
 App.Views.Article = Backbone.View.extend
   tagName  :  'article'
-  template :  JST["templates/article"].call(this)
+  template :  JST["templates/articles/article"].call(this)
 
   initialize: ->
     _.bindAll this, 'render'
