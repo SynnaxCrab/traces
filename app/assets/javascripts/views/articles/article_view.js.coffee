@@ -9,7 +9,7 @@ App.Views.Article = Backbone.View.extend
 
   render: ->
     templateData = @model.toJSON()
-    templateData.content = Markdown.makeHtml(templateData.content)
+    templateData.content = marked(templateData.content)
     $(@el).html(Mustache.to_html(@template, templateData)).fadeIn("slow")
     return this
 

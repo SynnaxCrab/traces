@@ -1,5 +1,3 @@
-window.Markdown = new Showdown.converter()
-
 window.App =
   Views: {}
   Collections: {}
